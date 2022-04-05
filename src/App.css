@@ -1,3 +1,74 @@
+/* Colors */
+
+:root {
+  --primary: #FFFFFF;
+  --secondary: #F0F4FF;
+  --tertiary: #B5B4D0;
+  --quaternary: #7F7E9A;
+
+  --black: #000000;
+  --shadow: rgba(0, 0, 0, 0.301);
+  --text: #000000;
+
+  --accent: #FCCC85;
+  --alarm: #FC8585;
+  --actions: #C61010;
+  --successes: #0F8831;
+}
+
+.bg-primary {background-color: var(--primary)}
+.bg-secondary {background-color: var(--secondary)}
+.bg-tertiary {background-color: var(--tertiary)}
+.bg-quaternary {background-color: var(--quaternary)}
+.bg-black {background-color: var(--black)}
+.bg-accent {background-color: var(--accent)}
+.bg-alarm {background-color: var(--alarm)}
+.bg-actions {background-color: var(--actions)}
+.bg-successes {background-color: var(--successes)}
+
+.primary {color: var(--primary)}
+.secondary {color: var(--secondary)}
+.tertiary {color: var(--tertiary)}
+.quaternary {color: var(--quaternary)}
+.black {color: var(--black)}
+.accent {color: var(--accent)}
+.alarm {color: var(--alarm)}
+.actions {color: var(--actions)}
+.successes {color: var(--successes)}
+
+/* Styling */
+
 body {
-  background-color: #FFFFFF;
+  background-color: var(--primary);
+  color: var(--text);
+}
+
+.container {
+  width: min(100ch, 100%);
+  margin-inline: auto;
+}
+
+.post * {
+  margin: 0;
+}
+
+.post {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 5px var(--shadow);
+
+  box-sizing: border-box;
+}
+
+.postContent {
+  background-color: var(--secondary);
+
+  padding: 1rem;
+}
+
+.postActions {
+  background-color: var(--tertiary);
+
+  padding: 1rem;
 }

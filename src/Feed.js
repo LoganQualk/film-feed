@@ -1,7 +1,10 @@
+import Post from "./Post";
+
 const Feed = () => {
     return ( 
-        <div>
+        <div className="container">
             <h1>Feed</h1>
+            <Post></Post>
         </div>
      );
 }
