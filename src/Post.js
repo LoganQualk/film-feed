@@ -11,7 +11,7 @@ const Post = () => {
                 <div>
                     Reactions go here
                 </div>
-                <div class>
+                <div>
                     Comment box goes here
                 </div>
             </div>
