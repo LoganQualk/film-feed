@@ -28,10 +28,18 @@ const Post = ({ data }) => {
         <div className="post">
             <div className="postContainer">
                 <div className="postContent">
-                    <div>
-                        <h3>{data.user}</h3>
+                    <h2>{data.user}</h2>
+                    <div className={data.attachedMovies.length > 1 ? "flexCol" : "flexRow"}>
+                        <div className='flexRow'>
+                            {data.attachedMovies.map((movie, index) =>
+                                <div key={index} className='posterContainer'>
+                                    <img src={movie.imageUrl} alt={movie.name + " Poster"} />
+                                    <p title={movie.name}><strong>{movie.name}</strong></p>
+                                </div>
+                            )}
+                        </div>
+                        <p className='postText'>{data.text}</p>
                     </div>
-                    <p>{data.text}</p>
                 </div>
                 <div className="postActions">
                     <div className="reactionEmojis">

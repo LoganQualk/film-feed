@@ -1,13 +1,22 @@
 import Post from "./components/Post";
 
 // Temp data - replace with firebase
+// will probably need to add key/values that link to profile/movies
 const posts = [
     {
         "user": "John Doe",
         "date": new Date(), // replace with date posted
         "attachedMovies": [
-            "Batman Begins",
-            "The Dark Knight"
+            {
+                "name": "The Dark Knightiasldkfhjalksj",
+                "year": 2008,
+                "imageUrl": "https://m.media-amazon.com/images/I/61zBUhQj22L._AC_SY679_.jpg"
+            },
+            {
+                "name": "The Dark Noot",
+                "year": 2008,
+                "imageUrl": "https://m.media-amazon.com/images/I/61zBUhQj22L._AC_SY679_.jpg"
+            }
         ],
         "text": "Which of these movies is yall's favorite?  I just watched both and I think I prefer The Dark Knight.",
         "reactions": {

@@ -130,15 +130,40 @@ body {
   box-sizing: border-box;
 }
 
-.postContainer {
-  box-shadow: 0 0 3px var(--shadow);
-  border-radius: 10px 10px 0px 0px;
-}
-
 .postContent {
   background-color: var(--secondary);
   border-radius: 10px 10px 0px 0px;
   padding: 1rem;
+}
+
+.posterContainer {
+  width: 6rem;
+
+  margin-top: 1rem;
+  margin-right: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.posterContainer img {
+  width: 5rem;
+  margin-bottom: .5rem;
+
+  border-radius: 5px;
+  box-shadow: 0 0 3px var(--shadow);
+}
+
+.posterContainer p {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.postText {
+  margin-top: 1rem;
 }
 
 .postActions {
