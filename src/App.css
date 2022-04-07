@@ -78,7 +78,7 @@
   align-items: flex-end;
 }
 
-/* Styling */
+/* Default Styling */
 
 body {
   background-color: var(--primary);
@@ -97,6 +97,8 @@ body {
   border-radius: 20px;
   border: none;
 
+  cursor: pointer;
+
   transition: var(--defaultTransition);
 }
 
@@ -105,22 +107,26 @@ body {
   transition: var(--defaultTransition);
 }
 
+/* Post Styling */
+
 .post * {
   margin: 0;
 }
 
 .post {
   width: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 5px var(--shadow);
-
+ 
   box-sizing: border-box;
+}
+
+.postContainer {
+  box-shadow: 0 0 3px var(--shadow);
+  border-radius: 10px 10px 0px 0px;
 }
 
 .postContent {
   background-color: var(--secondary);
-
+  border-radius: 10px 10px 0px 0px;
   padding: 1rem;
 }
 
@@ -170,12 +176,15 @@ body {
   margin-left: 1rem;
 }
 
-.postComments {
-  background-color: var(--secondary);
+.commentTree {
+  outline: 1px solid rgba(0, 0, 0, .5);
+  outline-offset: -1px;
 }
 
 .comment {
+  background-color: var(--secondary);
   padding: .5rem;
 
-  border-top: 1px solid black;
+  outline: 1px solid rgba(0, 0, 0, .5);
+  outline-offset: -1px;
 }

@@ -28,7 +28,27 @@ const posts = [
                         "user": "Bingo Boffman",
                         "date": new Date(), // replace with time/date replied,
                         "text": "Great comment",
-                        "replies": []
+                        "replies": [
+                            {
+                                "user": "Mary Jane",
+                                "date": new Date(), // replace with time/date replied,
+                                "text": "Good comment",
+                                "replies": [
+                                    {
+                                        "user": "Bingo Boffman",
+                                        "date": new Date(), // replace with time/date replied,
+                                        "text": "Great comment",
+                                        "replies": []
+                                    }
+                                ]
+                            },
+                            {
+                                "user": "Jonah Babona",
+                                "date": new Date(), // replace with time/date replied,
+                                "text": "Incredible comment",
+                                "replies": []
+                            }
+                        ]
                     }
                 ]
             },
@@ -36,7 +56,12 @@ const posts = [
                 "user": "Jonah Babona",
                 "date": new Date(), // replace with time/date replied,
                 "text": "Incredible comment",
-                "replies": []
+                "replies": [{
+                    "user": "Jonah Babona",
+                    "date": new Date(), // replace with time/date replied,
+                    "text": "Incredible comment",
+                    "replies": []
+                }]
             }
         ]
     }
