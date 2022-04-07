@@ -14,6 +14,8 @@
   --alarm: #FC8585;
   --actions: #C61010;
   --successes: #0F8831;
+
+  --defaultTransition: .2s ease;
 }
 
 .bg-primary {background-color: var(--primary)}
@@ -36,6 +38,46 @@
 .actions {color: var(--actions)}
 .successes {color: var(--successes)}
 
+/* Tools */
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.justifyStart {
+  justify-content: flex-start;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+.justifyEnd {
+  justify-content: flex-end;
+}
+
+.justifyBetween {
+  justify-content: space-between;
+}
+
+.alignStart {
+  align-items: flex-start;
+}
+
+.alignCenter {
+  align-items: center;
+}
+
+.alignEnd {
+  align-items: flex-end;
+}
+
 /* Styling */
 
 body {
@@ -46,6 +88,21 @@ body {
 .container {
   width: min(100ch, 100%);
   margin-inline: auto;
+}
+
+.defaultButton {
+  padding: 0rem 1rem;
+  font-weight: bold;
+
+  border-radius: 20px;
+  border: none;
+
+  transition: var(--defaultTransition);
+}
+
+.defaultButton:hover {
+  filter: brightness(1.1);
+  transition: var(--defaultTransition);
 }
 
 .post * {
@@ -69,6 +126,46 @@ body {
 
 .postActions {
   background-color: var(--tertiary);
+}
 
+.reactionEmojis {
+  padding: .5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.reactionEmoji {
+  width: 2rem;
+  margin-right: .5rem;
+  cursor: pointer;
+  transition: var(--defaultTransition);
+}
+
+.reactionEmoji:hover {
+  transform: scale(1.2);
+  transition: var(--defaultTransition);
+}
+
+.post hr {
+  background-color: var(--shadow);
+}
+
+.commentAction {
   padding: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentInput {
+  height: 1.5rem;
+  padding: .3rem;
+
+  flex-grow: 1;
+}
+
+.commentAction button {
+  margin-left: 1rem;
 }
