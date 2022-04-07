@@ -6,12 +6,20 @@ import sobEmoji from '../images/sob.svg'
 import surpriseEmoji from '../images/surprise.svg'
 import thumbsDownEmoji from '../images/thumbsDown.svg'
 
-const Post = ({data}) => {
+const Post = ({ data }) => {
+
+    const displayComments = (comments) => {
+        // Recursively gets comments from top layer to bottom
+        for (let i = 0; i < comments.length; i++) {
+            
+        }
+    }
+
     return (
         <div className="post">
             <div className="postContent">
                 <div>
-                    <h2>{data.user}</h2>
+                    <h3>{data.user}</h3>
                 </div>
                 <p>{data.text}</p>
             </div>
@@ -26,10 +34,24 @@ const Post = ({data}) => {
                 </div>
                 <hr />
                 <div className="commentAction">
-                    <input type="text" name="commentInput" className="commentInput" placeholder="Type a comment..."/>
+                    <input type="text" name="commentInput" className="commentInput" placeholder="Type a comment..." />
                     <button className="defaultButton bg-quaternary">Comment</button>
                 </div>
             </div>
+            {
+                data.replies.length > 0 &&
+                <div className="postComments">
+                    {data.replies.map(reply =>
+                        <div className='comment'>
+                            <div className='flexRow justifyBetween'>
+                                <h3>{reply.user}</h3>
+                                <button className="defaultButton bg-quaternary">Reply</button>
+                            </div>
+                            <p>{reply.text}</p>
+                        </div>
+                    )}
+                </div>
+            }
         </div>
     );
 }
