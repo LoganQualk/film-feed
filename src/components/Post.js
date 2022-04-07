@@ -34,7 +34,7 @@ const Post = ({ data }) => {
                             {data.attachedMovies.map((movie, index) =>
                                 <div key={index} className='posterContainer'>
                                     <img src={movie.imageUrl} alt={movie.name + " Poster"} />
-                                    <p><strong>{movie.name}</strong></p>
+                                    <p title={movie.name}><strong>{movie.name}</strong></p>
                                 </div>
                             )}
                         </div>

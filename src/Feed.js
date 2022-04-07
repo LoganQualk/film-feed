@@ -8,7 +8,7 @@ const posts = [
         "date": new Date(), // replace with date posted
         "attachedMovies": [
             {
-                "name": "The Dark Knigdddddddddddddddht",
+                "name": "The Dark Knightiasldkfhjalksj",
                 "year": 2008,
                 "imageUrl": "https://m.media-amazon.com/images/I/61zBUhQj22L._AC_SY679_.jpg"
             },
