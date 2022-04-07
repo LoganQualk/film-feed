@@ -9,6 +9,9 @@
   --black: #000000;
   --shadow: rgba(0, 0, 0, 0.301);
   --text: #000000;
+  --dark-purple-text: #4F4E78;
+  --handle-text: #8483C0;
+  --follower-text: #4F4E78;
 
   --accent: #FCCC85;
   --alarm: #FC8585;
@@ -37,8 +40,15 @@
 .alarm {color: var(--alarm)}
 .actions {color: var(--actions)}
 .successes {color: var(--successes)}
+.dark-purple-text {color: var(--dark-purple-text)}
+.handle-text {color: var(--handle-text)}
+.follower-text {color: var(--follower-text)}
 
 /* Utilities */
+
+.flex {
+  display: flex;
+}
 
 .flexRow {
   display: flex;
@@ -209,7 +219,25 @@ body {
 .comment {
   background-color: var(--secondary);
   padding: .5rem;
-
   outline: 1px solid rgba(0, 0, 0, .5);
   outline-offset: -1px;
+}
+
+/* Profile */
+
+.profileIcon {
+  margin: 0;
+  width: 15%;
+}
+
+#profileSVG {
+  width: 80%;
+}
+
+#profilePage h4 {
+  margin: 0;
+}
+
+#profilePage h3 {
+  margin-top: 0;
 }
