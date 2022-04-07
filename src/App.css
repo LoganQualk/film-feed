@@ -91,6 +91,7 @@
 /* Default Styling */
 
 body {
+  margin: 0;
   background-color: var(--primary);
   color: var(--text);
 }
@@ -215,4 +216,12 @@ body {
 
 #profilePage h3 {
   margin-top: 0;
+}
+
+/* Login */
+
+.loginPage {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--quaternary);
 }
