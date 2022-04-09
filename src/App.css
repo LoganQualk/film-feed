@@ -270,6 +270,26 @@ body {
   outline-offset: -1px;
 }
 
+/* Create Post Box */
+
+.fullWidth {
+  width: 100%;
+}
+
+.mostlyFullWidth {
+  width: 98%;
+}
+
+.inputWarning {
+  outline: 4px solid red;
+}
+
+.warningText {
+  padding-left: 1%;
+  padding-top: 1%;
+  color: red;
+}
+
 /* Profile */
 
 .profileIcon {
