@@ -1,16 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "./context/GlobalContext";
+import { useContext } from "react";
 
 const Signup = () => {
 
-    const navigate = useNavigate();
-
-    const handleClick = async (event, page) => {
-        event.preventDefault();
-        navigate("/" + page);
-    }
+    const {changePage} = useContext(GlobalContext);
 
     return ( 
-        <div className="loginPage flexCol justifyCenter alignCenter">
+        <div className="fullPage flexCol justifyCenter alignCenter bg-quaternary">
             <h1>FilmFeed</h1>
             <div className="flexCol alignCenter">
                 <div>
@@ -32,7 +28,7 @@ const Signup = () => {
                     <br />
                 </label>
                 <br />
-                <button className="bg-tertiary loginButton" onClick={(e) => handleClick(e, "login")}>Sign-up</button>
+                <button className="bg-tertiary loginButton" onClick={(e) => changePage(e, "login")}>Sign-up</button>
             </form>
         </div>
      );

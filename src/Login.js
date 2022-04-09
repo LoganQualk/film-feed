@@ -1,16 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "./context/GlobalContext";
+import { useContext } from "react";
 
 const Login = () => {
 
-    const navigate = useNavigate();
-
-    const handleClick = async (event, page) => {
-        event.preventDefault();
-        navigate("/" + page);
-    }
+    const {changePage} = useContext(GlobalContext);
 
     return (
-        <div className="loginPage flexCol justifyCenter alignCenter">
+        <div className="fullPage flexCol justifyCenter alignCenter bg-quaternary">
             <h1>Welcome to FilmFeed</h1>
             <div className="flexCol alignCenter">
                 <div>
@@ -28,11 +24,11 @@ const Login = () => {
                     <input className="loginField" type="text" name="password" placeholder="Password" />
                     <br />
                 </label>
-                <button className="loginButton" onClick={(e) => handleClick(e, "")}>Log-in</button>
+                <button className="loginButton" onClick={(e) => changePage(e, "")}>Log-in</button>
                 <br />
-                <button className="bg-tertiary loginButton" onClick={(e) => handleClick(e, "signup")}>Sign-up</button>
+                <button className="bg-tertiary loginButton" onClick={(e) => changePage(e, "signup")}>Sign-up</button>
             </form>
-            <h3 id="forgotPass" onClick={(e) => handleClick(e, "forgotPassword")}>Forgot Password?</h3>
+            <h3 id="forgotPass" onClick={(e) => changePage(e, "forgotPassword")}>Forgot Password?</h3>
         </div>
     );
 }

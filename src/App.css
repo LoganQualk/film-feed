@@ -100,6 +100,11 @@
   flex-wrap: wrap;
 }
 
+.fullPage {
+  width: 100vw;
+  height: 100vh;
+}
+
 /* Default Styling */
 
 body {
@@ -310,12 +315,6 @@ body {
 }
 
 /* Login */
-
-.loginPage {
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--quaternary);
-}
 
 .loginField {
   width: 600px;

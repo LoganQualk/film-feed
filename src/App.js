@@ -1,4 +1,5 @@
 import './App.css';
+import { GlobalProvider } from './context/GlobalContext';
 import {
   BrowserRouter,
   Routes,
@@ -12,11 +13,12 @@ import Movie from './Movie';
 import Profile from './Profile';
 import Signup from './Signup';
 import ForgotPassword from './ForgotPassword';
+import Settings from './Settings';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <GlobalProvider>
         <Routes>
           <Route path="/*" element={<Feed />} />
           <Route path="/login" element={<Login />} />
@@ -26,9 +28,10 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </GlobalProvider>
+    </BrowserRouter>
   );
 }
 
