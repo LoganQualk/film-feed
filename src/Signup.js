@@ -3,9 +3,9 @@ import { useContext } from "react";
 
 const Signup = () => {
 
-    const {changePage} = useContext(GlobalContext);
+    const { changePage } = useContext(GlobalContext);
 
-    return ( 
+    return (
         <div className="fullPage flexCol justifyCenter alignCenter bg-quaternary">
             <h1>FilmFeed</h1>
             <div className="flexCol alignCenter">
@@ -28,10 +28,13 @@ const Signup = () => {
                     <br />
                 </label>
                 <br />
-                <button className="bg-tertiary loginButton" onClick={(e) => changePage(e, "login")}>Sign-up</button>
+                <button className="bg-tertiary loginButton" onClick={(e) => {
+                    e.preventDefault();
+                    changePage("login");
+                }}>Sign-up</button>
             </form>
         </div>
-     );
+    );
 }
- 
+
 export default Signup;

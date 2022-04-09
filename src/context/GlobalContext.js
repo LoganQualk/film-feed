@@ -9,9 +9,8 @@ export const GlobalProvider = ({ children }) => {
 
     const navigate = useNavigate();
 
-    const changePage = async (event, page) => {
-        event.preventDefault();
-        navigate("/" + page);
+    const changePage = async (page, data) => { //data parameter is optional
+        navigate("/" + page, {state: data});
     }
 
     const globalState = {

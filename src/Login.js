@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 const Login = () => {
 
-    const {changePage} = useContext(GlobalContext);
+    const { changePage } = useContext(GlobalContext);
 
     return (
         <div className="fullPage flexCol justifyCenter alignCenter bg-quaternary">
@@ -24,11 +24,20 @@ const Login = () => {
                     <input className="loginField" type="text" name="password" placeholder="Password" />
                     <br />
                 </label>
-                <button className="loginButton" onClick={(e) => changePage(e, "")}>Log-in</button>
+                <button className="loginButton" onClick={(e) => {
+                    e.preventDefault();
+                    changePage("");
+                }}>Log-in</button>
                 <br />
-                <button className="bg-tertiary loginButton" onClick={(e) => changePage(e, "signup")}>Sign-up</button>
+                <button className="bg-tertiary loginButton" onClick={(e) => {
+                    e.preventDefault();
+                    changePage("signup")
+                }}>Sign-up</button>
             </form>
-            <h3 id="forgotPass" onClick={(e) => changePage(e, "forgotPassword")}>Forgot Password?</h3>
+            <h3 id="forgotPass" onClick={(e) => {
+                e.preventDefault();
+                changePage("forgotPassword");
+            }}>Forgot Password?</h3>
         </div>
     );
 }
