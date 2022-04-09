@@ -1,4 +1,5 @@
-import Post from "./components/Post";
+import Post from './components/Post';
+import CreatePostBox from './components/CreatePostBox';
 
 // Temp data - replace with firebase
 // will probably need to add key/values that link to profile/movies
@@ -80,6 +81,7 @@ const Feed = () => {
     return ( 
         <div className="container">
             <h1>Feed</h1>
+            <CreatePostBox />
             {posts.map((post, index) => <Post key={index} data={post}></Post>)}
         </div>
      );
