@@ -12,6 +12,10 @@
   --dark-purple-text: #4F4E78;
   --handle-text: #8483C0;
   --follower-text: #4F4E78;
+  --light-color-text: #C4C2FF;
+  --orange-text: #E5B366;
+  --green-text: #8FB99A;
+  --light-blue-text: #AFFAFF;
 
   --accent: #FCCC85;
   --alarm: #FC8585;
@@ -43,6 +47,10 @@
 .dark-purple-text {color: var(--dark-purple-text)}
 .handle-text {color: var(--handle-text)}
 .follower-text {color: var(--follower-text)}
+.light-purple-text {color: var(--light-color-text)}
+.orange-text {color: var(--orange-text)}
+.green-text {color: var(--green-text)}
+.light-blue-text {color: var(--light-blue-text)}
 
 /* Utilities */
 
@@ -287,4 +295,20 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: var(--quaternary);
+}
+
+.loginField {
+  width: 600px;
+  height: 50px;
+  padding-left: 1rem;
+  border-radius: 50px;
+  font-size: 16pt;
+}
+
+.loginButton {
+  width: 200px;
+  height: 50px;
+  padding-left: 1rem;
+  border-radius: 50px;
+  font-size: 16pt;
 }
