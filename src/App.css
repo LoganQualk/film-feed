@@ -109,6 +109,10 @@
   flex-grow: 1;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 /* Default Styling */
 
 body {
@@ -371,6 +375,7 @@ body {
 
   box-sizing: border-box;
   padding: .5rem;
+  margin-bottom: 1rem;
 
   background-color: var(--tertiary);
   border-radius: 10px;

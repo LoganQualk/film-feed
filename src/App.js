@@ -14,6 +14,7 @@ import Profile from './Profile';
 import Signup from './Signup';
 import ForgotPassword from './ForgotPassword';
 import Settings from './Settings';
+import SpecificList from './SpecificList';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/list" element={<SpecificList />} />
         </Routes>
       </GlobalProvider>
     </BrowserRouter>

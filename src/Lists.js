@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { GlobalContext } from "./context/GlobalContext";
+
 const Lists = () => {
 
     const lists = [
@@ -25,6 +28,8 @@ const Lists = () => {
         }
     ]
 
+    const {changePage} = useContext(GlobalContext);
+
     return (
         <div id="listPage" className="containerWithBackground">
             <div className="flexRow justifyBetween alignCenter">
@@ -33,8 +38,8 @@ const Lists = () => {
             </div>
             <hr />
             {
-                lists.map(list =>
-                    <div className="list">
+                lists.map((list, index) =>
+                    <div key={index} className="list pointer" onClick={() => changePage("list", list)}>
                         {lists[0].attachedMovies.map((movie, index) =>
                             <img className="listPoster" src={movie.imageUrl} alt={movie.name + " Poster"} />
                         )}
