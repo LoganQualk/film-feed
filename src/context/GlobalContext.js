@@ -15,7 +15,6 @@ export const GlobalProvider = ({ children }) => {
         changePage
     };
 
-    // Everything rendering in App.js IS children
     return (
         <GlobalContext.Provider value={globalState}>
             {children}
