@@ -10,6 +10,7 @@ import Diary from './Diary';
 import Lists from './Lists';
 import Movie from './Movie';
 import Profile from './Profile';
+import Signup from './Signup';
 
 function App() {
   return (
@@ -17,11 +18,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/*" element={<Feed />} />
-          <Route path="/logIn" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/diary" element={<Diary />} />
           <Route path="/lists" element={<Lists />} />
           <Route path="/movie" element={<Movie />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </BrowserRouter>
     </div>

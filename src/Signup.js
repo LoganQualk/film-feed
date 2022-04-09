@@ -1,12 +1,7 @@
-const Login = () => {
-
-    const handleClick = (page) => {
-        window.history.pushState({}, undefined, "/" + page);
-    }
-
-    return (
+const Signup = () => {
+    return ( 
         <div className="loginPage flexCol justifyCenter alignCenter">
-            <h1>Welcome to FilmFeed</h1>
+            <h1>FilmFeed</h1>
             <p className="flexCol alignCenter">
                 <div>
                     <span className="light-purple-text">Log movies in your diary for your eyes only. </span>
@@ -17,18 +12,20 @@ const Login = () => {
             </p>
             <form className="flexCol alignCenter">
                 <label className="flexCol">
+                    <input className="loginField" type="text" name="email" placeholder="Email" />
+                    <br />
                     <input className="loginField" type="text" name="username" placeholder="Username" />
                     <br />
                     <input className="loginField" type="text" name="password" placeholder="Password" />
                     <br />
+                    <input className="loginField" type="text" name="confirm" placeholder="Confirm Password" />
+                    <br />
                 </label>
-                <button className="loginButton" onClick={() => handleClick("")}>Log-in</button>
                 <br />
-                <button className="bg-tertiary loginButton" onClick={() => handleClick("signup")}>Sign-up</button>
+                <button className="bg-tertiary loginButton">Sign-up</button>
             </form>
-            <h3>Forgot Password?</h3>
         </div>
-    );
+     );
 }
-
-export default Login;
+ 
+export default Signup;
