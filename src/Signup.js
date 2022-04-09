@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Signup = () => {
 
     const navigate = useNavigate();
 
@@ -9,9 +9,9 @@ const Login = () => {
         navigate("/" + page);
     }
 
-    return (
+    return ( 
         <div className="loginPage flexCol justifyCenter alignCenter">
-            <h1>Welcome to FilmFeed</h1>
+            <h1>FilmFeed</h1>
             <div className="flexCol alignCenter">
                 <div>
                     <span className="light-purple-text">Log movies in your diary for your eyes only. </span>
@@ -20,21 +20,22 @@ const Login = () => {
                 </div>
                 <span className="light-blue-text">FilmFeed is the place for all your movie-discussing needs.</span>
             </div>
-            <br />
             <form className="flexCol alignCenter">
                 <label className="flexCol">
+                    <input className="loginField" type="text" name="email" placeholder="Email" />
+                    <br />
                     <input className="loginField" type="text" name="username" placeholder="Username" />
                     <br />
                     <input className="loginField" type="text" name="password" placeholder="Password" />
                     <br />
+                    <input className="loginField" type="text" name="confirm" placeholder="Confirm Password" />
+                    <br />
                 </label>
-                <button className="loginButton" onClick={(e) => handleClick(e, "")}>Log-in</button>
                 <br />
-                <button className="bg-tertiary loginButton" onClick={(e) => handleClick(e, "signup")}>Sign-up</button>
+                <button className="bg-tertiary loginButton" onClick={(e) => handleClick(e, "login")}>Sign-up</button>
             </form>
-            <h3 id="forgotPass" onClick={(e) => handleClick(e, "forgotPassword")}>Forgot Password?</h3>
         </div>
-    );
+     );
 }
-
-export default Login;
+ 
+export default Signup;
