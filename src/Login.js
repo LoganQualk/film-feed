@@ -1,20 +1,26 @@
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
 
-    const handleClick = (page) => {
-        window.history.pushState({}, undefined, "/" + page);
+    const navigate = useNavigate();
+
+    const handleClick = async (event, page) => {
+        event.preventDefault();
+        navigate("/" + page);
     }
 
     return (
         <div className="loginPage flexCol justifyCenter alignCenter">
             <h1>Welcome to FilmFeed</h1>
-            <p className="flexCol alignCenter">
+            <div className="flexCol alignCenter">
                 <div>
                     <span className="light-purple-text">Log movies in your diary for your eyes only. </span>
                     <span className="orange-text">Write posts about movies to keep your friends updated. </span>
                     <span className="green-text">Make reviews for the world to see your critical perspective. </span>
                 </div>
                 <span className="light-blue-text">FilmFeed is the place for all your movie-discussing needs.</span>
-            </p>
+            </div>
+            <br />
             <form className="flexCol alignCenter">
                 <label className="flexCol">
                     <input className="loginField" type="text" name="username" placeholder="Username" />
@@ -22,11 +28,11 @@ const Login = () => {
                     <input className="loginField" type="text" name="password" placeholder="Password" />
                     <br />
                 </label>
-                <button className="loginButton" onClick={() => handleClick("")}>Log-in</button>
+                <button className="loginButton" onClick={(e) => handleClick(e, "")}>Log-in</button>
                 <br />
-                <button className="bg-tertiary loginButton" onClick={() => handleClick("signup")}>Sign-up</button>
+                <button className="bg-tertiary loginButton" onClick={(e) => handleClick(e, "signup")}>Sign-up</button>
             </form>
-            <h3>Forgot Password?</h3>
+            <h3 id="forgotPass" onClick={(e) => handleClick(e, "forgotPassword")}>Forgot Password?</h3>
         </div>
     );
 }

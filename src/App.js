@@ -11,6 +11,7 @@ import Lists from './Lists';
 import Movie from './Movie';
 import Profile from './Profile';
 import Signup from './Signup';
+import ForgotPassword from './ForgotPassword';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/movie" element={<Movie />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
         </Routes>
       </BrowserRouter>
     </div>
