@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import logs from "./tempData/logs";
 
 const SpecificList = () => {
     const listData = useLocation().state;
@@ -11,21 +12,33 @@ const SpecificList = () => {
             </div>
             <hr />
             {
-                listData.attachedMovies.map((movie, index) =>
-                    <div key={index} className="list">
-                        <img className="listPoster" src={movie.imageUrl} alt={movie.name + " Poster"} />
-                        <div className="flexCol justifyBetween grow">
-                            <div>
-                                <h2>{movie.name}</h2>
-                                <p className="listDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam quidem inventore eum ducimus id cum porro, est in numquam neque alias soluta optio facere ea dolor pariatur doloribus ipsum totam?</p>
+                listData.attachedMovies.map((movie, index) => {
+                    const log = logs[movie.log];
+                    console.log(log);
+
+                    return (
+                        <div key={index} className="list">
+                            <img className="listPoster" src={movie.imageUrl} alt={movie.name + " Poster"} />
+                            <div className="flexCol justifyBetween grow">
+                                <div>
+                                    <h2>{movie.name}</h2>
+                                    {
+                                        log &&
+                                        <p className="listDescription">{log.text}</p>
+                                    }
+                                </div>
+                                {
+                                    log &&
+                                    <p><em>Watched on {log.date.toLocaleDateString()}</em></p>
+                                }
                             </div>
-                            <p><em>Watched on *some date*</em></p>
+                            <div className="flexCol justifyBetween">
+                                <button>Log</button>
+                                <button>Del</button>
+                            </div>
                         </div>
-                        <div className="flexCol justifyBetween">
-                            <button>Log</button>
-                            <button>Del</button>
-                        </div>
-                    </div>
+                    )
+                }
                 )
             }
         </div>
