@@ -14,9 +14,6 @@ import Profile from './Profile';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to FilmFeed!!</h1>
-      </header>
       <BrowserRouter>
         <Routes>
           <Route path="/*" element={<Feed />} />
