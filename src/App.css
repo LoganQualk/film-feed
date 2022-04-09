@@ -105,6 +105,10 @@
   height: 100vh;
 }
 
+.grow {
+  flex-grow: 1;
+}
+
 /* Default Styling */
 
 body {
@@ -120,8 +124,22 @@ body {
   margin-inline: auto;
 }
 
+.containerWithBackground {
+  width: min(90ch, 100%);
+  min-height: 800px;
+
+  margin-inline: auto;
+  margin-top: 2rem;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  background-color: var(--secondary);
+  border-radius: 10px;
+  box-shadow: 0 0 3px var(--shadow);
+}
+
 .defaultButton {
-  padding: 0rem 1rem;
+  padding: .5rem 1rem;
   font-weight: bold;
 
   border-radius: 20px;
@@ -334,4 +352,41 @@ body {
 
 #forgotPass {
   cursor: pointer;
+}
+
+/* Lists */
+
+#listPage h1, #listPage h2, #listPage p {
+  margin: 0;
+}
+
+#listPage hr {
+  margin: 0rem 0rem 1rem 0rem;
+}
+
+.list {
+  height: 7rem;
+  display: flex;
+  flex-direction: row;
+
+  box-sizing: border-box;
+  padding: .5rem;
+
+  background-color: var(--tertiary);
+  border-radius: 10px;
+}
+
+.listPoster {
+  margin-right: .5rem;
+
+  border-radius: 5px;
+  box-shadow: 0 0 3px var(--shadow);
+}
+
+.listDescription {
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
