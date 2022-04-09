@@ -17,8 +17,9 @@ const ForgotPassword = () => {
                 <label>
                     <input className="loginField" type="text" name="email" placeholder="Email address" />
                 </label>
-                <button className="loginButton">Send</button>
             </form>
+            <button className="loginButton" onClick={() => alert("Email sent!")}>Send</button> { /* This would send an email to the user... but we won't do that ;) */}
+            <br />
             <button className="bg-tertiary loginButton" onClick={(e) => handleClick(e, "login")}>Login/Sign-Up</button>
         </div>
      );
