@@ -1,12 +1,9 @@
 import { useContext } from "react";
 import { GlobalContext } from "./context/GlobalContext";
-import lists from "./tempData/lists";
 
 const Lists = () => {
 
-    const listData = lists;
-
-    const {changePage} = useContext(GlobalContext);
+    const {changePage, lists, setLists} = useContext(GlobalContext);
 
     return (
         <div id="listPage" className="containerWithBackground">
@@ -16,20 +13,20 @@ const Lists = () => {
             </div>
             <hr />
             {
-                listData.map((list, index) =>
-                    <div key={index} className="list pointer" onClick={() => changePage("list", list)}>
-                        {lists[0].attachedMovies.map((movie, movieIndex) =>
+                lists.map((list, index) =>
+                    <div key={index} className="list pointer">
+                        {list.attachedMovies.map((movie, movieIndex) =>
                             <img key={movieIndex} className="listPoster" src={movie.imageUrl} alt={movie.name + " Poster"} />
                         )}
                         <div className="flexCol justifyBetween grow">
                             <div>
-                                <h2>{list.name}</h2>
+                                <h2 onClick={() => changePage("list", list)}>{list.name}</h2>
                                 <p className="listDescription">{list.description}</p>
                             </div>
-                            <p><em>Created on {list.date.toLocaleDateString()}</em></p>
+                            <p><em>Created on </em></p>
                         </div>
                         <div className="flexCol justifyEnd">
-                            <button>Del</button>
+                            <button onClick={() => setLists(lists.filter(listToDelete => listToDelete.id !== list.id))}>Del</button>
                         </div>
                     </div>
                 )

@@ -1,4 +1,4 @@
-const posts = [
+const postData = [
     {
         "user": "John Doe",
         "date": new Date(), // replace with date posted
@@ -72,4 +72,4 @@ const posts = [
     }
 ]
 
-export default posts;
+export default postData;
