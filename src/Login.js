@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 const Login = () => {
 
-    const { changePage } = useContext(GlobalContext);
+    const { changePage, modalPage, setModalPage, setModalVisible } = useContext(GlobalContext);
 
     return (
         <div className="fullPage flexCol justifyCenter alignCenter bg-quaternary">
@@ -38,6 +38,10 @@ const Login = () => {
                 e.preventDefault();
                 changePage("forgotPassword");
             }}>Forgot Password?</h3>
+            <p onClick={() => {
+                setModalPage("modalTest");
+                setModalVisible(true);
+            }}>Testing Modal</p>
         </div>
     );
 }
