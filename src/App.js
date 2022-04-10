@@ -15,6 +15,7 @@ import Signup from './Signup';
 import ForgotPassword from './ForgotPassword';
 import Settings from './Settings';
 import SpecificList from './SpecificList';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
