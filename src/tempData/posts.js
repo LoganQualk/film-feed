@@ -16,12 +16,12 @@ const posts = [
         ],
         "text": "Which of these movies is yall's favorite?  I just watched both and I think I prefer The Dark Knight.",
         "reactions": {
-            "heart": 0,
-            "laugh": 0,
-            "cry": 0,
-            "surprise": 0,
-            "clap": 0,
-            "thumbsDown": 0
+            "heart": Math.floor(Math.random()*100),
+            "laugh": Math.floor(Math.random()*100),
+            "cry": Math.floor(Math.random()*100),
+            "surprise": Math.floor(Math.random()*100),
+            "clap": Math.floor(Math.random()*100),
+            "thumbsDown": Math.floor(Math.random()*100)
         },
         "replies": [ // using wording "replies" since I think it makes more sense in a nested JSON context, but can replace with comments if necessary
             {
