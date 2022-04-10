@@ -395,3 +395,66 @@ body {
   -webkit-box-orient: vertical;  
   overflow: hidden;
 }
+
+/* Header */
+.headerContainer {
+  background-color: #4F4E78;
+  width: 100%;
+  height: 130%;
+  padding: 30px;
+}
+
+.headerTitle {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.headerSubtitle {
+  font-size: medium;
+  padding-top: 20px;
+}
+
+.mainHeader {
+  padding-left: 50px;
+  padding-right: 50px;
+  justify-content: space-evenly;
+}
+
+.doubleGrow {
+  flex-grow: 2;
+}
+
+.userContainer {
+  justify-content: right;
+  text-align: right;
+}
+
+.bellSpacing {
+  padding-right: 20px;
+}
+
+.left {
+  justify-content: flex-end;
+}
+
+.searchbar {
+  font-size: 25px;
+}
+
+#dropdown-penny {
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
+  background-color: var(--handle-text);
+  border: 3px solid #FFFFFF;
+  color: #FFFFFF;
+}
+
+#dropdown-bell {
+  height: 40px;
+  width: 80px;
+  font-size: 15px;
+  background-color: var(--handle-text);
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+}
