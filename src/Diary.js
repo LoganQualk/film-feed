@@ -43,7 +43,7 @@ const Diary = () => {
                             <div class="month-movies">
                                 <div class="diary-entry">
                                     <div class="day">
-                                        20
+                                        log[1].date.getDay()
                                     </div>
                                     <div class="poster">
                                         <img class = "poster" src="https://deadline.com/wp-content/uploads/2019/01/do-the-right-thing-us-poster-1989-universal-pictures-spike-lee-danny-aiello-file-reference-32509-129tha-pmadf7-e1547846486255.jpg"/>
