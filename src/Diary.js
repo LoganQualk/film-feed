@@ -1,10 +1,13 @@
 import React from "react";
 import logs from "./tempData/logs";
+import Header from './components/Header';
 
 const Diary = () => {
     const logData = Object.entries(logs);
 
     return (
+        <>
+        <Header />
         <div>
             <h1>Diary</h1>
             {logData.sort((logA, logB) => logB[1].date - logA[1].date).map(log =>
@@ -68,7 +71,8 @@ const Diary = () => {
                     </div>
                 </React.Fragment>
             )}
-        </div>        
+        </div> 
+        </>       
     );
 }
 
