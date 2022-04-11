@@ -21,13 +21,13 @@ const Diary = () => {
                     <br/>
                     <br/>
                     <br/>
-                    <div class="navbar">
+                    <div class="diary-navbar">
                         <h3>My Diary</h3>
-                        <div class="dropdown">
-                        <button class="dropbtn" onclick="myFunction()">Dropdown
+                        <div class="diary-dropdown">
+                        <button class="diary-dropbtn" onclick="myFunction()">Dropdown
                             <i class="fa fa-caret-down"></i>
                         </button>
-                        <div class="dropdown-content" id="myDropdown">
+                        <div class="diary-dropdown-content" id="myDropdown">
                             <a href="#">Watch Date</a>
                             <a href="#">Your Rating</a>
                             <a href="#">Rewatch Count</a>
