@@ -47,7 +47,13 @@ const Diary = () => {
                             <div className="title">
                                 <em>Do The Right Thing</em> (1989)
                             </div>
-                            <div className="stars" style={{rating: 4}} aria-label="Rating of this product is 4 out of 5."></div>
+                            <div>
+                                <div className="clip-star-active"></div>
+                                <div className="clip-star-active"></div>
+                                <div className="clip-star-active"></div>
+                                <div className="clip-star-active"></div>
+                                <div className="clip-star-inactive"></div>
+                            </div>
                             <div className="rewatch">
                                 <i className="material-icons">replay</i>
                             </div>
