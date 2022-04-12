@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalState from "../hooks/useLocalState";
 import listData from "../tempData/lists";
@@ -19,13 +19,20 @@ export const GlobalProvider = ({ children }) => {
     const [logs, setLogs] = useLocalState("logs", logData);
 
     const navigate = useNavigate();
+    const [modalVisible, setModalVisible] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [modalPage, setModalPage] = useState(null);
+    // const [modalData, setModalData] = useState(null);
 
     const changePage = async (page, data) => { //data parameter is optional
-        navigate("/" + page, {state: data});
+        navigate("/" + page, { state: data });
     }
 
     const globalState = {
         changePage,
+        modalVisible, setModalVisible,
+        modalPage, setModalPage,
+        isLoaded, setIsLoaded,
         posts, setPosts,
         lists, setLists,
         logs, setLogs

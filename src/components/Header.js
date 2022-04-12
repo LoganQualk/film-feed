@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
+import { GlobalContext } from '../context/GlobalContext';
 
 const searchUrl =
   "https://api.themoviedb.org/3/search/movie?api_key=" +
@@ -12,6 +13,7 @@ const searchUrl =
 
 const Header = () => {
     const nav = useNavigate();
+    const { changePage } = useContext(GlobalContext); // please use changePage function instead of href, if you use href then the page will refresh and slow it down basically negating react
     let [results, setResults] = useState([]);
 
     async function httpGetMovies(title) {
@@ -48,7 +50,7 @@ const Header = () => {
             <div className="flex mainHeader">
                 <span className="primary headerTitle grow">FilmFeed</span>
 
-                <span className="doubleGrow">
+                <span className="doubleGrow flexRow alignCenter">
                     <input 
                         className="searchbar"
                         id="searchInput"
@@ -89,11 +91,11 @@ const Header = () => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="#/feed">My Feed</Dropdown.Item>
-                            <Dropdown.Item href="#/profile">My Profile</Dropdown.Item>
-                            <Dropdown.Item href="#/diary">My Diary</Dropdown.Item>
-                            <Dropdown.Item href="#/lists">My Movie Lists</Dropdown.Item>
-                            <Dropdown.Item href="#/settings">Settings</Dropdown.Item>
+                            <Dropdown.Item onClick={() => changePage("feed")}>My Feed</Dropdown.Item>
+                            <Dropdown.Item onClick={() => changePage("profile")}>My Profile</Dropdown.Item>
+                            <Dropdown.Item onClick={() => changePage("diary")}>My Diary</Dropdown.Item>
+                            <Dropdown.Item onClick={() => changePage("lists")}>My Movie Lists</Dropdown.Item>
+                            <Dropdown.Item onClick={() => changePage("settings")}>Settings</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </span>

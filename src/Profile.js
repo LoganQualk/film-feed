@@ -1,5 +1,7 @@
 import profileIcon from './images/profile-user.svg';
 import Post from "./components/Post";
+import React from 'react';
+import Header from './components/Header';
 
 const posts = [
     {
@@ -77,22 +79,26 @@ const posts = [
 
 const Profile = () => {
     return (
-        <div id="profilePage">
-            <div className="profileIcon flexCol alignCenter">
-                <h1 className="dark-purple-text">My Profile</h1>
-                <img id="profileSVG" src={profileIcon} alt="Profile Icon" />
-                <h2 className="tertiary">Penny Smith</h2>
-                <div>
-                    <h3 className="handle-text">@pennysreviews</h3>
-                    <h4 className='follower-text'>Followers: 1,894,015</h4>
-                    <h4 className='follower-text'>Following: 212</h4>
+        <React.Fragment>
+            <Header />
+            <div id="profilePage">
+                <div className="profileIcon flexCol alignCenter">
+                    <h1 className="dark-purple-text">My Profile</h1>
+                    <img id="profileSVG" src={profileIcon} alt="Profile Icon" />
+                    <h2 className="tertiary">Penny Smith</h2>
+                    <div>
+                        <h3 className="handle-text">@pennysreviews</h3>
+                        <h4 className='follower-text'>Followers: 1,894,015</h4>
+                        <h4 className='follower-text'>Following: 212</h4>
+                    </div>
+                </div>
+                <div className="container">
+                    <h1>My Posts</h1>
+                    {posts.map((post, index) => <Post key={index} data={post}></Post>)}
                 </div>
             </div>
-            <div className="container">
-                <h1>My Posts</h1>
-                {posts.map((post, index) => <Post key={index} data={post}></Post>)}
-            </div>
-        </div>
+        </React.Fragment>
+
     );
 }
 

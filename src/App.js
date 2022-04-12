@@ -16,6 +16,7 @@ import ForgotPassword from './ForgotPassword';
 import Settings from './Settings';
 import SpecificList from './SpecificList';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Modal from './Modal';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/list" element={<SpecificList />} />
         </Routes>
+        <Modal></Modal>
       </GlobalProvider>
     </BrowserRouter>
   );
