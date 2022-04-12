@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import { GlobalContext } from "./context/GlobalContext";
+import ModalTest from "./ModalTest";
 
 const Modal = () => {
 
-    const state = useContext(GlobalContext);
+    const { setModalVisible, setIsLoaded, modalPage, modalVisible } = useContext(GlobalContext);
     const closeModal = () => {
-        state.setModalVisible(false);
-        state.setModalData(null);
-        state.setIsLoaded(false);
+        setModalVisible(false);
+        // setModalData(null);
+        setIsLoaded(false);
     }
     const modalStyle = {
-        display: state.modalVisible ? "block" : "none"
+        display: modalVisible ? "block" : "none"
     }
 
     return (
@@ -23,7 +24,7 @@ const Modal = () => {
                 <div className="modal-content">
                     <span className="close" onClick={() => closeModal()}>&times;</span>
                     {
-                        (state.modalPage === "test" &&
+                        (modalPage === "test" &&
                         <ModalTest></ModalTest>) ||
                         <h1>ERROR: Page Not Found</h1>
                     }

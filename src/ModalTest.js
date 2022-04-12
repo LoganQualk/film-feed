@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "./Context/GlobalContext";
+// import React, { useContext } from "react";
+// import { GlobalContext } from "./Context/GlobalContext";
 
 const ModalTest = () => {
 
-    const state = useContext(GlobalContext);
+    // const state = useContext(GlobalContext);
 
     return ( 
         <div>
