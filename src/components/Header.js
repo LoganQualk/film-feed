@@ -11,7 +11,7 @@ const searchUrl =
 
 
 const Header = () => {
-    const { changePage } = useContext(GlobalContext);
+    const { changePage, setMovieId } = useContext(GlobalContext);
     let [results, setResults] = useState([]);
 
     async function httpGetMovies(title) {
@@ -34,6 +34,7 @@ const Header = () => {
                     let shortenedResults = apiResults.splice(0,10);
                     shortenedResults.push(
                         {
+                            id: 'More results',
                             title: 'Click for more results...',
                             release_date: null,
                         }
@@ -42,6 +43,11 @@ const Header = () => {
                 }
             );
         }
+    }
+
+    function setIdAndLoad(id) {
+        setMovieId(id);
+        changePage(`movie=${id}`);
     }
     // NEED TO DO SPECIFIC MOVIE PAGE
     // NEED TO MAEK WIDTH WIDTH OF SEARCHBAR
@@ -67,7 +73,7 @@ const Header = () => {
                             return (
                                 <button key={movie.id} 
                                         className='autocomplete-items' 
-                                        onClick={() => changePage(`movie=${movie.id}`)}>
+                                        onClick={() => setIdAndLoad(movie.id)}>
                                     {movie.title} {yrReleased ? '('+yrReleased+')' : ''}
                                 </button>
                             )

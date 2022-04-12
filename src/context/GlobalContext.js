@@ -7,8 +7,8 @@ import postData from "../tempData/posts";
 
 export const GlobalContext = createContext({
     changePage: () => {},
-    posts: [], lists: [], logs: [],
-    setPosts: () => {}, setLists: () => {}, setLogs: () => {},
+    posts: [], lists: [], logs: [], movieId: 0, 
+    setPosts: () => {}, setLists: () => {}, setLogs: () => {}, setMovieId: () => {}, 
 });
 
 export const GlobalProvider = ({ children }) => {
@@ -17,6 +17,7 @@ export const GlobalProvider = ({ children }) => {
     const [posts, setPosts] = useLocalState("posts", postData);
     const [lists, setLists] = useLocalState("lists", listData);
     const [logs, setLogs] = useLocalState("logs", logData);
+    const [movieId, setMovieId] = useLocalState("movieId", null);
 
     const navigate = useNavigate();
     const [modalVisible, setModalVisible] = useState(false);
@@ -35,7 +36,8 @@ export const GlobalProvider = ({ children }) => {
         isLoaded, setIsLoaded,
         posts, setPosts,
         lists, setLists,
-        logs, setLogs
+        logs, setLogs,
+        movieId, setMovieId,
     };
 
     return (
