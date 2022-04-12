@@ -437,10 +437,6 @@ body {
   justify-content: flex-end;
 }
 
-.searchbar {
-  font-size: 25px;
-}
-
 #dropdown-penny {
   height: 50px;
   width: 200px;
@@ -457,6 +453,34 @@ body {
   background-color: var(--handle-text);
   border: 2px solid #FFFFFF;
   color: #FFFFFF;
+}
+
+/* Search bar */
+.searchbar {
+  font-size: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#searchInput {
+  width: 85%;
+  height: 45px;
+}
+
+#searchButton {
+  height: 50px;
+}
+
+.searchResults {
+  position: absolute;
+}
+
+.autocomplete-items {
+  /* position: absolute; */
+  border: 1px solid #d4d4d4;
+  font-size: large;
+  background-color: var(--handle-text);
+  padding: 10px;
 }
 
 /*Diary Styling*/
