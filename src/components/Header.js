@@ -93,7 +93,7 @@ const Header = () => {
                         <Dropdown.Menu>
                             <Dropdown.Item onClick={() => changePage("feed")}>My Feed</Dropdown.Item>
                             <Dropdown.Item onClick={() => changePage("profile")}>My Profile</Dropdown.Item>
-                            <Dropdown.Item onClick={() => changePage("diary")}>My Diary</Dropdown.Item>
+                            <Dropdown.Item onClick={() => changePage("Diary")}>My Diary</Dropdown.Item>
                             <Dropdown.Item onClick={() => changePage("lists")}>My Movie Lists</Dropdown.Item>
                             <Dropdown.Item onClick={() => changePage("settings")}>Settings</Dropdown.Item>
                         </Dropdown.Menu>

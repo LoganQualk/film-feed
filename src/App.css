@@ -553,7 +553,6 @@ body {
   }
   
   .diary-dropdown .diary-dropbtn {
-    float: right;
     cursor: pointer;
     font-size: 16px;  
     border: none;
