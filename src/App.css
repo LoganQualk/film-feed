@@ -521,6 +521,9 @@ body {
   font-size: large;
   background-color: var(--handle-text);
   padding: 10px;
+  padding-left: 20px;
+  text-align: start;
+  width: initial;
 }
 
 /*Diary Styling*/

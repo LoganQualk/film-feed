@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
@@ -12,8 +11,7 @@ const searchUrl =
 
 
 const Header = () => {
-    const nav = useNavigate();
-    const { changePage } = useContext(GlobalContext); // please use changePage function instead of href, if you use href then the page will refresh and slow it down basically negating react
+    const { changePage } = useContext(GlobalContext);
     let [results, setResults] = useState([]);
 
     async function httpGetMovies(title) {
@@ -28,20 +26,23 @@ const Header = () => {
     }
 
     function displayResults(searchInput) {
-        let results = httpGetMovies(searchInput).then( (apiResults) => {
-                let shortenedResults = apiResults.splice(0,10);
-                shortenedResults.push(
-                    {
-                        title: 'Click for more results...',
-                        release_date: null,
-                    }
-                );
-                setResults(shortenedResults);
-            }
-        );
+        if(searchInput.length === 0 ) {
+            setResults([]);
+            return;
+        } else {
+            httpGetMovies(searchInput).then( (apiResults) => {
+                    let shortenedResults = apiResults.splice(0,10);
+                    shortenedResults.push(
+                        {
+                            title: 'Click for more results...',
+                            release_date: null,
+                        }
+                    );
+                    setResults(shortenedResults);
+                }
+            );
+        }
     }
-
-    // NEED TO CLEAR LIST WHEN INPUT IS CLEARED
     // NEED TO DO SPECIFIC MOVIE PAGE
     // NEED TO MAEK WIDTH WIDTH OF SEARCHBAR
 
@@ -57,15 +58,18 @@ const Header = () => {
                         placeholder="Search for a film/user..."
                         onChange={(e) => displayResults(e.target.value)}
                     />
-                    <div className="searchResults">
+                    <div className="searchResults flexCol">
                         {results.map((movie) => {
-                            // console.log(movie);
                             let yrReleased = null;
                             if(movie.release_date) {
                                 yrReleased = movie.release_date.split("-")[0];
                             }
                             return (
-                                <div key={movie.id} className='autocomplete-items'>{movie.title} {yrReleased ? '('+yrReleased+')' : ''}</div>
+                                <button key={movie.id} 
+                                        className='autocomplete-items' 
+                                        onClick={() => changePage(`movie=${movie.id}`)}>
+                                    {movie.title} {yrReleased ? '('+yrReleased+')' : ''}
+                                </button>
                             )
                         })
                         }
@@ -93,7 +97,7 @@ const Header = () => {
                         <Dropdown.Menu>
                             <Dropdown.Item onClick={() => changePage("feed")}>My Feed</Dropdown.Item>
                             <Dropdown.Item onClick={() => changePage("profile")}>My Profile</Dropdown.Item>
-                            <Dropdown.Item onClick={() => changePage("Diary")}>My Diary</Dropdown.Item>
+                            <Dropdown.Item onClick={() => changePage("diary")}>My Diary</Dropdown.Item>
                             <Dropdown.Item onClick={() => changePage("lists")}>My Movie Lists</Dropdown.Item>
                             <Dropdown.Item onClick={() => changePage("settings")}>Settings</Dropdown.Item>
                         </Dropdown.Menu>
