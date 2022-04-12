@@ -1,15 +1,76 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
+
+const searchUrl =
+  "https://api.themoviedb.org/3/search/movie?api_key=" +
+  process.env.REACT_APP_API_KEY +
+  "&query=";
 
 
 const Header = () => {
+    const nav = useNavigate();
+    let [results, setResults] = useState([]);
+
+    async function httpGetMovies(title) {
+        if (document.getElementById("searchInput").value) {
+            let response = await axios({
+            method: "GET",
+            url: searchUrl + title,
+            });
+            return response.data.results;
+        }
+        return null;
+    }
+
+    function displayResults(searchInput) {
+        let results = httpGetMovies(searchInput).then( (apiResults) => {
+                let shortenedResults = apiResults.splice(0,10);
+                shortenedResults.push(
+                    {
+                        title: 'Click for more results...',
+                        release_date: null,
+                    }
+                );
+                setResults(shortenedResults);
+            }
+        );
+    }
+
+    // NEED TO CLEAR LIST WHEN INPUT IS CLEARED
+    // NEED TO DO SPECIFIC MOVIE PAGE
+    // NEED TO MAEK WIDTH WIDTH OF SEARCHBAR
+
     return ( 
         <div className="headerContainer">
             <div className="flex mainHeader">
                 <span className="primary headerTitle grow">FilmFeed</span>
-                <input className="doubleGrow searchbar"></input>
-                <Button>Search</Button>
+
+                <span className="doubleGrow">
+                    <input 
+                        className="searchbar"
+                        id="searchInput"
+                        placeholder="Search for a film/user..."
+                        onChange={(e) => displayResults(e.target.value)}
+                    />
+                    <div className="searchResults">
+                        {results.map((movie) => {
+                            // console.log(movie);
+                            let yrReleased = null;
+                            if(movie.release_date) {
+                                yrReleased = movie.release_date.split("-")[0];
+                            }
+                            return (
+                                <div key={movie.id} className='autocomplete-items'>{movie.title} {yrReleased ? '('+yrReleased+')' : ''}</div>
+                            )
+                        })
+                        }
+                    </div>
+                    <Button id="searchButton">Search</Button>
+                </span>
+
                 <span className="userContainer grow flexRow justifyBetween">
                     <Dropdown>
                         <Dropdown.Toggle variant="danger" className="bellStyle rounded" id="dropdown-bell">

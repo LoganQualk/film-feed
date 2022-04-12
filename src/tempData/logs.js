@@ -1,4 +1,4 @@
-const logs = {
+const logData = {
     "2": {
         "title": "The Dark Knight 1",
         "date": new Date('4/5/2020'),
@@ -25,4 +25,4 @@ const logs = {
     }
 }
 
-export default logs;
+export default logData;

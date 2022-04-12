@@ -478,10 +478,6 @@ body {
   justify-content: flex-end;
 }
 
-.searchbar {
-  font-size: 25px;
-}
-
 #dropdown-penny {
   height: 50px;
   width: 200px;
@@ -500,13 +496,41 @@ body {
   color: #FFFFFF;
 }
 
+/* Search bar */
+.searchbar {
+  font-size: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#searchInput {
+  width: 85%;
+  height: 45px;
+}
+
+#searchButton {
+  height: 50px;
+}
+
+.searchResults {
+  position: absolute;
+}
+
+.autocomplete-items {
+  /* position: absolute; */
+  border: 1px solid #d4d4d4;
+  font-size: large;
+  background-color: var(--handle-text);
+  padding: 10px;
+}
+
 /*Diary Styling*/
-.navbar {
+  .diary-navbar {
     overflow: hidden;
     background-color: #7F7E9A;
   }
   
-  .navbar a {
+  .diary-navbar a {
     float: left;
     font-size: 16px;
     color: white;
@@ -514,7 +538,7 @@ body {
     padding: 14px 16px;
     text-decoration: none;
   }
-  .navbar h3 {
+  .diary-navbar h3 {
     float: left;
     font-size: 24px;
     color: white;
@@ -523,12 +547,12 @@ body {
     text-decoration: none;
   }
   
-  .dropdown {
+  .diary-dropdown {
     float: left;
     overflow: hidden;
   }
   
-  .dropdown .dropbtn {
+  .diary-dropdown .diary-dropbtn {
     float: right;
     cursor: pointer;
     font-size: 16px;  
@@ -541,7 +565,7 @@ body {
     margin: 0;
   }
   
-  .dropdown-content {
+  .diary-dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -550,7 +574,7 @@ body {
     z-index: 1;
   }
   
-  .dropdown-content a {
+  .diary-dropdown-content a {
     float: none;
     color: black;
     padding: 12px 16px;
@@ -559,16 +583,16 @@ body {
     text-align: left;
   }
   
-  .dropdown-content a:hover {background-color: #ddd;}
+  .diary-dropdown-content a:hover {background-color: #ddd;}
 
-  .dropdown:hover .dropdown-content {display: block;}
+  .diary-dropdown:hover .diary-dropdown-content {display: block;}
   
-  .dropdown:hover .dropbtn {background-color: #6c6b84;}
+  .diary-dropdown:hover .diary-dropbtn {background-color: #6c6b84;}
   
   .show {
     display: block;
   }
-  .navbar input[type=text] {
+  .diary-navbar input[type=text] {
     float: right;
     padding: 6px;
     margin-top: 8px;
@@ -577,7 +601,7 @@ body {
     font-size: 17px;
   }
 
-  .logbtn{
+  .diary-logbtn{
     background-color: #FCCC85;
     text-align: center;
     color:#7F7E9A;

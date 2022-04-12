@@ -33,6 +33,28 @@ const Post = ({ data }) => {
         )
     }
 
+    const updateReactions = (currentValue, reactionName) => {
+        if (reactionName === "heart") {
+            setHeartEmojiSelected(!currentValue);
+            data.reactions.heart = currentValue ? data.reactions.heart - 1 : data.reactions.heart + 1;
+        } else if (reactionName === "laugh") {
+            setCryingLaughingEmojiSelected(!currentValue);
+            data.reactions.laugh = currentValue ? data.reactions.laugh - 1 : data.reactions.laugh + 1;
+        } else if (reactionName === "cry") {
+            setSobEmojiSelected(!currentValue);
+            data.reactions.cry = currentValue ? data.reactions.cry - 1 : data.reactions.cry + 1;
+        } else if (reactionName === "surprise") {
+            setSurpriseEmojiSelected(!currentValue);
+            data.reactions.surprise = currentValue ? data.reactions.surprise - 1 : data.reactions.surprise + 1;
+        } else if (reactionName === "clap") {
+            setClapEmojiSelected(!currentValue);
+            data.reactions.clap = currentValue ? data.reactions.clap - 1 : data.reactions.clap + 1;
+        } else if (reactionName === "thumbsDown") {
+            setThumbsDownEmojiSelected(!currentValue);
+            data.reactions.thumbsDown = currentValue ? data.reactions.thumbsDown - 1 : data.reactions.thumbsDown + 1;
+        }
+    }
+
     return (
         <div className="post">
             <div className="postContainer">
@@ -52,29 +74,29 @@ const Post = ({ data }) => {
                 </div>
                 <div className="postActions">
                     <div className="reactionEmojis">
-                        <button className={'reactionEmojiContainer' + (heartEmojiSelected ? " emojiSelected" : "")} onClick={() => setHeartEmojiSelected(!heartEmojiSelected)}>
+                        <button className={'reactionEmojiContainer' + (heartEmojiSelected ? " emojiSelected" : "")} onClick={() => updateReactions(heartEmojiSelected, "heart")}>
                             <img className='reactionEmoji' src={heartEmoji} alt="Heart Emoji" />
-                            <p>5</p>
+                            <p>{data.reactions.heart}</p>
                         </button>
-                        <button className={'reactionEmojiContainer' + (cryingLaughingEmojiSelected ? " emojiSelected" : "")} onClick={() => setCryingLaughingEmojiSelected(!cryingLaughingEmojiSelected)}>
+                        <button className={'reactionEmojiContainer' + (cryingLaughingEmojiSelected ? " emojiSelected" : "")} onClick={() => updateReactions(cryingLaughingEmojiSelected, "laugh")}>
                             <img className='reactionEmoji' src={cryingLaughingEmoji} alt="Crying Laughing Emoji" />
-                            <p>5</p>
+                            <p>{data.reactions.laugh}</p>
                         </button>
-                        <button className={'reactionEmojiContainer' + (clapEmojiSelected ? " emojiSelected" : "")} onClick={() => setClapEmojiSelected(!clapEmojiSelected)}>
+                        <button className={'reactionEmojiContainer' + (clapEmojiSelected ? " emojiSelected" : "")} onClick={() => updateReactions(clapEmojiSelected, "clap")}>
                             <img className='reactionEmoji' src={clapEmoji} alt="Clap Emoji" />
-                            <p>5</p>
+                            <p>{data.reactions.clap}</p>
                         </button>
-                        <button className={'reactionEmojiContainer' + (sobEmojiSelected ? " emojiSelected" : "")} onClick={() => setSobEmojiSelected(!sobEmojiSelected)}>
+                        <button className={'reactionEmojiContainer' + (sobEmojiSelected ? " emojiSelected" : "")} onClick={() => updateReactions(sobEmojiSelected, "cry")}>
                             <img className='reactionEmoji' src={sobEmoji} alt="Sob Emoji" />
-                            <p>5</p>
+                            <p>{data.reactions.cry}</p>
                         </button>
-                        <button className={'reactionEmojiContainer' + (surpriseEmojiSelected ? " emojiSelected" : "")} onClick={() => setSurpriseEmojiSelected(!surpriseEmojiSelected)}>
+                        <button className={'reactionEmojiContainer' + (surpriseEmojiSelected ? " emojiSelected" : "")} onClick={() => updateReactions(surpriseEmojiSelected, "surprise")}>
                             <img className='reactionEmoji' src={surpriseEmoji} alt="Surprise Emoji" />
-                            <p>5</p>
+                            <p>{data.reactions.surprise}</p>
                         </button>
-                        <button className={'reactionEmojiContainer' + (thumbsDownEmojiSelected ? " emojiSelected" : "")} onClick={() => setThumbsDownEmojiSelected(!thumbsDownEmojiSelected)}>
+                        <button className={'reactionEmojiContainer' + (thumbsDownEmojiSelected ? " emojiSelected" : "")} onClick={() => updateReactions(thumbsDownEmojiSelected, "thumbsDown")}>
                             <img className='reactionEmoji' src={thumbsDownEmoji} alt="Thumbs Down Emoji" />
-                            <p>5</p>
+                            <p>{data.reactions.thumbsDown}</p>
                         </button>
                     </div>
                     <hr />
