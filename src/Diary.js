@@ -6,21 +6,20 @@ const Diary = () => {
     const logData = Object.entries(logs);
     const months = []; // track the months already in diary
     const sortDiary = () => {
-
     }
     const logMovie = () =>{
-    
     }
-
+    
+    let entry = ``
     for (var i in logData){
         let log = logData[i][1];
-        let stars = '';
+        let stars = " ";
         for(let i = 1; i <= log.rating; i++){
-            stars.concat('\n', '<div className="clip-star-active"></div>');
+            stars.concat(' ', '<div className="clip-star-active"></div>');
         }
         if(log.rating < 5){
             for(let i = 1; i <= 5-log.rating; i++){
-                stars.concat('\n', '<div className="clip-star-inactive"></div>');
+                stars.concat(' ', '<div className="clip-star-inactive"></div>');
             }
         }
         
@@ -29,36 +28,42 @@ const Diary = () => {
             hasReview = `<i className="fa fa-align-left"></i>`;
         }
 
-        let entry = `<div className="diary-entry">
-                        <div className="day">
+        entry = `<div class="diary-entry">
+                        <div class="day">
                         ` + log.date.getDay() + `
                         </div>
                         <div>
-                            <img className = "poster" src="`+ log.imageUrl +`"/>
+                            <img class = "poster" src="`+ log.imageUrl +`"/>
                         </div>
-                        <div className="title">
+                        <div class="title">
                             <em>` + log.title + `</em> `+ log.year +`
                         </div>
-                        <div>
+                        <div id="stars">
                             ` + stars + `
                         </div>
-                        <div className="rewatch">
-                            <i className="material-icons">replay</i>
+                        <div class="rewatch">
+                            <i class="material-icons">replay</i>
                         </div>
-                        <div className="review">
+                        <div class="review">
                             ` + hasReview + `
                         </div>
-                        <span className="fa-stack">
-                            <i className='fas fa-pencil-alt fa-stack-2x'></i>
-                            <i className="fa fa-trash-o fa-stack-1x"></i>
+                        <span class="fa-stack">
+                            <i class='fas fa-pencil-alt fa-stack-2x'></i>
+                            <i class="fa fa-trash-o fa-stack-1x"></i>
                         </span>
                     </div>`;
     }
+
+    const inject = () =>{
+        let month = document.getElementById("month");
+        month.innerHTML += entry;
+    }
+
     return (
         <>
             <Header />
             <div>
-                <button className="diary-logbtn" onClick={logMovie()}><span>&#43;</span> <strong>Log Movie</strong></button>
+                <button className="diary-logbtn" onClick={() => inject()}><span>&#43;</span> <strong>Log Movie</strong></button>
             </div>
             <br />
             <br />
@@ -78,11 +83,11 @@ const Diary = () => {
                 <input type="text" placeholder="Search for movies"/> 
             </div>
             <div className="diary-content">
-                <div id="month">
+                <div>
                     <div className="month-header">
                         <p>February 2022</p>
                     </div>
-                    <div className="month-movies">
+                    <div id="month" className="month-movies">
                         <div className="diary-entry">
                             <div className="day">
                                 20
@@ -93,7 +98,7 @@ const Diary = () => {
                             <div className="title">
                                 <em>Do The Right Thing</em> (1989)
                             </div>
-                            <div>
+                            <div id="stars">
                                 <div className="clip-star-active"></div>
                                 <div className="clip-star-active"></div>
                                 <div className="clip-star-active"></div>
