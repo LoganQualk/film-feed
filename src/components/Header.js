@@ -50,7 +50,7 @@ const Header = () => {
             <div className="flex mainHeader">
                 <span className="primary headerTitle grow">FilmFeed</span>
 
-                <span className="doubleGrow flexRow alignCenter">
+                <span className="doubleGrow alignCenter">
                     <input 
                         className="searchbar"
                         id="searchInput"

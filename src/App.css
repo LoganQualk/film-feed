@@ -517,7 +517,6 @@ body {
 }
 
 .autocomplete-items {
-  /* position: absolute; */
   border: 1px solid #d4d4d4;
   font-size: large;
   background-color: var(--handle-text);
