@@ -526,6 +526,58 @@ body {
   width: initial;
 }
 
+/* Movie Details */
+.detailsContainer {
+  display: flex;
+  padding: 100px;
+  background-color: var(--secondary);
+}
+
+.detailsPoster {
+  width: 300px;
+}
+
+.detailsInfo {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.detailsTitle {
+  font-size: 50px;
+  font-weight: bolder;
+  color: rgb(61, 60, 100);
+}
+
+.detailsYr {
+  font-size: 30px;
+  color: #6c6b84;
+  padding-left: 50px;
+}
+
+.detailsGenre {
+  padding: 5px;
+  border: 1px solid rgb(61, 60, 100);
+  border-radius: 15px;
+}
+
+.genreContainer {
+  padding: 4px;
+}
+
+.txtPadding {
+  padding-top: 8px;
+}
+
+.detailsTxt {
+  font-size: 20px;
+  color: #6c6b84;
+}
+
+.detailsFocus {
+  font-size: 25px;
+  color: #4F4E78;
+}
+
 /*Diary Styling*/
   .diary-navbar {
     overflow: hidden;
