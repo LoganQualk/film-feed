@@ -73,7 +73,6 @@ const Movie = () => {
 
     return ( 
         <div>
-            <Header />
             <div className="detailsContainer">
                 {details ? 
                 (<div className="flexRow">

@@ -524,6 +524,7 @@ body {
   padding-left: 20px;
   text-align: start;
   width: initial;
+  z-index: 1;
 }
 
 /* Movie Details */
@@ -610,6 +611,10 @@ body {
 
 .detailsLogEntry {
   color: rgb(61, 60, 100);
+}
+
+.tabContainer {
+  background: var(--secondary);
 }
 
 /*Diary Styling*/
