@@ -47,10 +47,8 @@ const Header = () => {
 
     function setIdAndLoad(id) {
         setMovieId(id);
-        changePage(`movie=${id}`);
+        changePage(`movie=${id}`, id);
     }
-    // NEED TO DO SPECIFIC MOVIE PAGE
-    // NEED TO MAEK WIDTH WIDTH OF SEARCHBAR
 
     return ( 
         <div className="headerContainer">

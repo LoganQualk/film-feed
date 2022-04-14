@@ -578,6 +578,10 @@ body {
   color: #4F4E78;
 }
 
+.detailsDiaryTitle {
+  text-align: center;
+}
+
 /*Diary Styling*/
   .diary-navbar {
     overflow: hidden;

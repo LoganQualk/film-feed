@@ -1,17 +1,26 @@
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { GlobalContext } from './context/GlobalContext';
+import { useLocation } from "react-router-dom";
 import Header from './components/Header';
 
 
 const Movie = () => {
-    const { movieId } = useContext(GlobalContext);
     const [loaded, setLoaded] = useState(false);
     const [details, setDetails] = useState([]);
     const [poster, setPoster] = useState();
     const [genres, setGenres] = useState([]);
     const [directors, setDirectors] = useState();
     const [cast, setCast] = useState([]);
+
+    const movieId = useLocation().state;
+    const [id, setId] = useState(movieId);
+    
+    useEffect(() => {
+        if(id !== movieId) {
+            setId(movieId);
+            setLoaded(false);
+        }
+    }, [movieId]);
     
     const detailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}`;
     async function httpGetDetails() {
@@ -73,15 +82,19 @@ const Movie = () => {
                         <div className="detailsTitle">{details.title}{details.release_date ? (<span className="detailsYr">({details.release_date.split("-")[0]})</span>) : ''}</div>
                         {directors ? (<div className="detailsTxt">Directed by: <span className="detailsFocus">{String(directors)}</span></div>) : ''}
                         {details.runtime ? (<div className="detailsTxt">Runtime: <span className="detailsFocus">{details.runtime} min</span></div>) : ''}
-                        {genres ? (<div className="detailsTxt txtPadding">Genres: {genres.map((g) => (<span className="genreContainer"><span className="detailsGenre">{g}</span></span>))}</div>) : ''}
+                        {genres ? (<div className="detailsTxt txtPadding">Genres: {genres.map((g) => (<span className="genreContainer" key={g}><span className="detailsGenre">{g}</span></span>))}</div>) : ''}
                         {cast ? (<div className="detailsTxt txtPadding">Cast: {String(cast).replace(/,/g, ', ')}</div>) : ''}
                         <br />
                         <div className="detailsFocus">{details.overview}</div>
-                    </div>
+                    </div> 
                 </div>)
                 :
                 <div>Loading</div>
                 }
+            </div>
+
+            <div className="detailsDiaryContainer flex">
+                <h1 className="detailsDiaryTitle">My Diary</h1>
             </div>
         </div>
     );
