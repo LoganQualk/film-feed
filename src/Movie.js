@@ -1,7 +1,8 @@
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
 import Header from './components/Header';
+import fakeLogs from './tempData/fakeLogs';
 
 
 const Movie = () => {
@@ -93,8 +94,18 @@ const Movie = () => {
                 }
             </div>
 
-            <div className="detailsDiaryContainer flex">
+            <div className="detailsDiaryContainer">
                 <h1 className="detailsDiaryTitle">My Diary</h1>
+                <div className="detailsLogs">
+                    {fakeLogs.map((log) => 
+                        (<div className="detailsLogContainer" key={log.date}>
+                            <div className="detailsLog">
+                                <div className="detailsLogDate">Date: {log.date}</div>
+                                <div className="detailsLogEntry">{log.entry}</div>
+                            </div>
+                        </div>)
+                    )}
+                </div>
             </div>
         </div>
     );

@@ -578,8 +578,38 @@ body {
   color: #4F4E78;
 }
 
+.detailsDiaryContainer {
+  background-color: var(--secondary);
+  padding-bottom: 100px;
+}
+
 .detailsDiaryTitle {
+  color: rgb(61, 60, 100);
   text-align: center;
+}
+
+.detailsLogs {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.detailsLogContainer {
+  padding: 10px;
+}
+
+.detailsLog {
+  padding: 25px;
+  border-radius: 25px;
+  background-color: var(--tertiary);
+}
+
+.detailsLogDate {
+  color: #6c6b84;
+  padding-bottom: 20px;
+}
+
+.detailsLogEntry {
+  color: rgb(61, 60, 100);
 }
 
 /*Diary Styling*/
