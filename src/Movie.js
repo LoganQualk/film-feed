@@ -93,7 +93,7 @@ const Movie = () => {
                 }
             </div>
 
-            <div className="detailsDiaryContainer">
+            <div className="detailsDiaryContainer flex flexCol">
                 <h1 className="detailsDiaryTitle">My Diary</h1>
                 <div className="detailsLogs">
                     {fakeLogs.map((log) => 
