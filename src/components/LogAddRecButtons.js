@@ -1,10 +1,19 @@
+import { useContext, useState } from "react";
 import Button from 'react-bootstrap/Button';
+import { GlobalContext } from "../context/GlobalContext";
 
 const LogAddRecButtons = () => {
+    const { setModalVisible, setModalPage } = useContext(GlobalContext);
+
+    function handleLog () {
+        setModalPage("logMovie");
+        setModalVisible(true);
+    }
+
     return (
     <div className="flexCol">
         <div className="detailsButton">
-            <Button>Log Movie to Diary</Button>
+            <Button onClick={handleLog}>Log Movie to Diary</Button>
         </div>
         <div className="detailsButton">
             <Button>Add Movie to Movie List</Button>

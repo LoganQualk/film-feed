@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { GlobalContext } from "./context/GlobalContext";
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
 import LogAddRecButtons from './components/LogAddRecButtons';
@@ -6,6 +7,8 @@ import fakeLogs from './tempData/fakeLogs';
 
 
 const Movie = () => {
+    const { setMovieName } = useContext(GlobalContext);
+
     const [loaded, setLoaded] = useState(false);
     const [details, setDetails] = useState([]);
     const [poster, setPoster] = useState();
@@ -52,6 +55,8 @@ const Movie = () => {
                 responseGenres.push(genreObj.name);
             });
             setGenres(responseGenres);
+
+            setMovieName(response.title);
 
             setLoaded(true);
         });
