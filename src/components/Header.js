@@ -48,7 +48,7 @@ const Header = () => {
     function setIdAndLoad(id) {
         setMovieId(id);
         changePage(`movie=${id}`, id);
-        document.getElementById("searchInput").value = ''
+        document.getElementById("searchInput").value = '';
         setResults([]);
     }
 

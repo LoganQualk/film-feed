@@ -619,6 +619,11 @@ body {
   background: var(--secondary);
 }
 
+.detailsButton {
+  padding: 10px;
+  color: #8483C0;
+}
+
 /*Diary Styling*/
   .diary-navbar {
     overflow: hidden;

@@ -53,7 +53,7 @@ export default function BasicTabs() {
   return (
 <div className="tabContainer">
     <Header />
-    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column',}}>
+    <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Details" {...a11yProps(0)} />
@@ -65,9 +65,6 @@ export default function BasicTabs() {
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
       </TabPanel>
     </Box>
 </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
-import Header from './components/Header';
+import LogAddRecButtons from './components/LogAddRecButtons';
 import fakeLogs from './tempData/fakeLogs';
 
 
@@ -87,6 +87,8 @@ const Movie = () => {
                         <br />
                         <div className="detailsFocus">{details.overview}</div>
                     </div> 
+
+                    <div><LogAddRecButtons /></div>
                 </div>)
                 :
                 <div>Loading</div>
