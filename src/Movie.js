@@ -7,7 +7,7 @@ import fakeLogs from './tempData/fakeLogs';
 
 
 const Movie = () => {
-    const { setMovieName } = useContext(GlobalContext);
+    const { setMovieName, setMovieYr, setMovieUrl } = useContext(GlobalContext);
 
     const [loaded, setLoaded] = useState(false);
     const [details, setDetails] = useState([]);
@@ -49,6 +49,7 @@ const Movie = () => {
         httpGetDetails().then((response) => {
             setDetails(response);
             setPoster(`https://image.tmdb.org/t/p/original/${response.poster_path}`);
+            setMovieUrl(`https://image.tmdb.org/t/p/original/${response.poster_path}`);
             
             let responseGenres = [];
             response.genres.map((genreObj) => {
@@ -57,6 +58,9 @@ const Movie = () => {
             setGenres(responseGenres);
 
             setMovieName(response.title);
+
+            let responseYr = details.release_date ? (details.release_date.split("-")[0]) : null;
+            setMovieYr(responseYr);
 
             setLoaded(true);
         });

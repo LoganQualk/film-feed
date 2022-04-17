@@ -7,8 +7,10 @@ import postData from "../tempData/posts";
 
 export const GlobalContext = createContext({
     changePage: () => {},
-    posts: [], lists: [], logs: [], movieId: 0, movieName: null,
-    setPosts: () => {}, setLists: () => {}, setLogs: () => {}, setMovieId: () => {}, 
+    posts: [], lists: [], logs: [], movieId: 0, movieName: null, movieYr: 0, movieUrl: null,
+    logId: 6,
+    setPosts: () => {}, setLists: () => {}, setLogs: () => {}, setMovieId: () => {}, setMovieName: () => {}, setMovieYr: () => {}, setMovieUrl: () => {},
+    setLogId: () => {}, 
 });
 
 export const GlobalProvider = ({ children }) => {
@@ -19,6 +21,9 @@ export const GlobalProvider = ({ children }) => {
     const [logs, setLogs] = useLocalState("logs", logData);
     const [movieId, setMovieId] = useLocalState("movieId", null);
     const [movieName, setMovieName] = useLocalState("movieName", null);
+    const [movieYr, setMovieYr] = useLocalState("movieYr", null);
+    const [movieUrl, setMovieUrl] = useLocalState("movieUrl", null);
+    const [logId, setLogId] = useLocalState("logId", 6);
 
     const navigate = useNavigate();
     const [modalVisible, setModalVisible] = useState(false);
@@ -40,6 +45,9 @@ export const GlobalProvider = ({ children }) => {
         logs, setLogs,
         movieId, setMovieId,
         movieName, setMovieName,
+        movieYr, setMovieYr,
+        movieUrl, setMovieUrl,
+        logId, setLogId,
     };
 
     return (

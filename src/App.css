@@ -624,6 +624,24 @@ body {
   color: #8483C0;
 }
 
+.dark-dark-purple-text {
+  color: rgb(61, 60, 100)
+}
+
+/* Modal */
+.modalPadding {
+  padding-left: 20px;
+}
+
+.modalDate {
+  padding-bottom: 20px;
+}
+
+.modalLogButton {
+  padding-right: 30px;
+  padding-top: 20px;
+}
+
 /*Diary Styling*/
   .diary-navbar {
     overflow: hidden;
