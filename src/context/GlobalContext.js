@@ -4,13 +4,14 @@ import useLocalState from "../hooks/useLocalState";
 import listData from "../tempData/lists";
 import logData from "../tempData/logs";
 import postData from "../tempData/posts";
+import specificLogsData from "../tempData/specificLogs";
 
 export const GlobalContext = createContext({
     changePage: () => {},
     posts: [], lists: [], logs: [], movieId: 0, movieName: null, movieYr: 0, movieUrl: null,
-    logId: 6,
+    specificLogs: [],
     setPosts: () => {}, setLists: () => {}, setLogs: () => {}, setMovieId: () => {}, setMovieName: () => {}, setMovieYr: () => {}, setMovieUrl: () => {},
-    setLogId: () => {}, 
+    setSpecificLogs: () => {}, 
 });
 
 export const GlobalProvider = ({ children }) => {
@@ -23,7 +24,7 @@ export const GlobalProvider = ({ children }) => {
     const [movieName, setMovieName] = useLocalState("movieName", null);
     const [movieYr, setMovieYr] = useLocalState("movieYr", null);
     const [movieUrl, setMovieUrl] = useLocalState("movieUrl", null);
-    const [logId, setLogId] = useLocalState("logId", 6);
+    const [specificLogs, setSpecificLogs] = useLocalState("specificLogs", specificLogsData);
 
     const navigate = useNavigate();
     const [modalVisible, setModalVisible] = useState(false);
@@ -47,7 +48,7 @@ export const GlobalProvider = ({ children }) => {
         movieName, setMovieName,
         movieYr, setMovieYr,
         movieUrl, setMovieUrl,
-        logId, setLogId,
+        specificLogs, setSpecificLogs,
     };
 
     return (

@@ -1,4 +1,4 @@
-let logData = {
+const logData = {
     "2": {
         "title": "The Dark Knight 1",
         "date": new Date('4/5/2020'),

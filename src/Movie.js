@@ -2,12 +2,12 @@ import { useState, useEffect, useContext } from 'react';
 import { GlobalContext } from "./context/GlobalContext";
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
+import ReactStars from "react-rating-stars-component";
 import LogAddRecButtons from './components/LogAddRecButtons';
-import fakeLogs from './tempData/fakeLogs';
 
 
 const Movie = () => {
-    const { setMovieName, setMovieYr, setMovieUrl } = useContext(GlobalContext);
+    const { setMovieName, setMovieYr, setMovieUrl, specificLogs } = useContext(GlobalContext);
 
     const [loaded, setLoaded] = useState(false);
     const [details, setDetails] = useState([]);
@@ -107,10 +107,31 @@ const Movie = () => {
             <div className="detailsDiaryContainer flex flexCol">
                 <h1 className="detailsDiaryTitle">My Diary</h1>
                 <div className="detailsLogs">
-                    {fakeLogs.map((log) => 
+                    {specificLogs.filter((log) => {if(log.title == null || log.title == details.title) return true;})
+                                 .sort(function(a, b) {return new Date(b.date) - new Date(a.date);})
+                                 .map((log) => 
                         (<div className="detailsLogContainer" key={log.date}>
                             <div className="detailsLog">
-                                <div className="detailsLogDate">Date: {log.date}</div>
+                                <div className="flexRow justifyBetween">
+                                    <div className="detailsLogDate">Date: {(new Date(log.date)).toLocaleDateString("en-US")}</div>
+                                    {log.rating ? 
+                                    (<div className="detailsStars"> 
+                                        <ReactStars
+                                            count={5}
+                                            size={24}
+                                            isHalf={true}
+                                            value={log.rating}
+                                            edit={false}
+                                            emptyIcon={<i className="far fa-star"></i>}
+                                            halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                            fullIcon={<i className="fa fa-star"></i>}
+                                            activeColor="#ffd700"
+                                        />
+                                    </div>)
+                                    :
+                                    <div></div>}
+                                </div>
+                                
                                 <div className="detailsLogEntry">{log.entry}</div>
                             </div>
                         </div>)

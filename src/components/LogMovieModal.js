@@ -5,11 +5,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "react-bootstrap";
 
+
 const LogMovieModal = () => {
-    const { movieName, movieYr, movieUrl, setModalVisible, logId } = useContext(GlobalContext);
+    const { movieName, movieYr, movieUrl, setModalVisible, specificLogs, setSpecificLogs } = useContext(GlobalContext);
     const [date, setDate] = useState(new Date());
 
-    const [rating, setRating] = useState(null);
+    const [rating, setRating] = useState(0);
     const [ratingChanged, setRatingChanged] = useState(false);
 
     const [notes, setNotes] = useState(null);
@@ -31,19 +32,25 @@ const LogMovieModal = () => {
     };
 
     const handleSubmit = (input) => {
-        let strId = String(logId);
+        let oldLogs = specificLogs;
+
         let logText = logChanged ? notes : null;
         let logRating = ratingChanged ? rating : null;
+
         let newLog = {
-            strId: {
-                "title": movieName,
-                "date": date,
-                "text": logText,
-                "rating": logRating,
-                "year": movieYr,
-                "imageUrl": movieUrl,
-            },
-        }
+                        "title": movieName,
+                        "date": date,
+                        "entry": logText,
+                        "rating": logRating,
+                        "year": movieYr,
+                        "imageUrl": movieUrl,
+                    };
+
+        oldLogs.push(newLog);
+        setSpecificLogs(oldLogs);
+
+        console.log('NEW LOGDATA: ' + JSON.stringify(oldLogs));
+
         setModalVisible(false);
     };
 
@@ -71,7 +78,7 @@ const LogMovieModal = () => {
                 </div>
             </div>
             <div className="flex justifyEnd modalLogButton">
-                <Button onClick={handleLog}>Log</Button>
+                <Button onClick={handleSubmit}>Log</Button>
             </div>
         </div>
      );
