@@ -5,6 +5,12 @@ import Header from './components/Header';
 const Diary = () => {
     const logData = Object.entries(logs);
     const months = []; // track the months already in diary
+    for(let i = 0; i < logData.length; i++){
+        if(!months.includes(logData[i][1].date.getMonth())){
+            months.push(logData[i][1].date.getMonth());
+            console.log(logData[i][1].date.getMonth());
+        }
+    }
     const sortDiary = () => {
     }
     const logMovie = () =>{
