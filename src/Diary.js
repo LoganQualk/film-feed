@@ -1,6 +1,8 @@
 import React from "react";
+import { useContext, useState } from "react";
 import logs from "./tempData/logs";
 import Header from './components/Header';
+import LogMovieModal from './components/LogMovieModal'
 
 const Diary = () => {
     const logData = Object.entries(logs);
@@ -8,15 +10,18 @@ const Diary = () => {
     for(let i = 0; i < logData.length; i++){
         if(!months.includes(logData[i][1].date.getMonth())){
             months.push(logData[i][1].date.getMonth());
-            console.log(logData[i][1].date.getMonth());
         }
     }
+
     const sortDiary = () => {
     }
     const logMovie = () =>{
     }
-    
-    let entry = ``
+
+    const render = () =>{
+        let entry = ``
+    let month = document.getElementById("month");
+        
     for (var i in logData){
         let log = logData[i][1];
         let stars = " ";
@@ -31,12 +36,12 @@ const Diary = () => {
         
         let hasReview = ``;
         if(log.text != null){
-            hasReview = `<i className="fa fa-align-left"></i>`;
+            hasReview = `<i class="fa fa-align-left"></i>`;
         }
-
+        
         entry = `<div class="diary-entry">
                         <div class="day">
-                        ` + log.date.getDay() + `
+                        ` + log.date.getDate() + `
                         </div>
                         <div>
                             <img class = "poster" src="`+ log.imageUrl +`"/>
@@ -58,18 +63,17 @@ const Diary = () => {
                             <i class="fa fa-trash-o fa-stack-1x"></i>
                         </span>
                     </div>`;
+        if(entry != null){
+            month.innerHTML += entry;
+        }                    
     }
-
-    const inject = () =>{
-        let month = document.getElementById("month");
-        month.innerHTML += entry;
     }
 
     return (
         <>
             <Header />
             <div>
-                <button className="diary-logbtn" onClick={() => inject()}><span>&#43;</span> <strong>Log Movie</strong></button>
+                <button className="diary-logbtn" onClick={() => <LogMovieModal />}><span>&#43;</span> <strong>Log Movie</strong></button>
             </div>
             <br />
             <br />
@@ -93,7 +97,7 @@ const Diary = () => {
                     <div className="month-header">
                         <p>February 2022</p>
                     </div>
-                    <div id="month" className="month-movies">
+                    <div id="month" className="month-movies" onLoad={() => render()}>
                         <div className="diary-entry">
                             <div className="day">
                                 20
@@ -117,9 +121,9 @@ const Diary = () => {
                             <div className="review">
                                 <i className="fa fa-align-left"></i>
                             </div>
-                            <span className="fa-stack">
-                                <i className='fas fa-pencil-alt fa-stack-2x'></i>
-                                <i className="fa fa-trash-o fa-stack-1x"></i>
+                            <span>
+                                <i className='fas fa-pencil-alt'></i>
+                                <i className="fa fa-trash-o"></i>
                             </span>
                         </div>
                     </div>
