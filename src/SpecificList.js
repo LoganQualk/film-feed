@@ -6,7 +6,7 @@ import { GlobalContext } from "./context/GlobalContext";
 import { generateID } from "./tools/generateID";
 
 const SpecificList = () => {
-    const { lists, setLists, logs, setLogs } = useContext(GlobalContext);
+    const { lists, setLists, logs, setLogs, setModalPage, setModalVisible, setMovieName } = useContext(GlobalContext);
     const currentList = useParams().listName;
 
     const listData = lists.find(list => list.name === currentList);
@@ -53,11 +53,15 @@ const SpecificList = () => {
                                                 </div>
                                                 {
                                                     log &&
-                                                    <p><em>Watched on {log.date.toLocaleDateString()}</em></p>
+                                                    <p><em>Watched on {new Date(log.date).toLocaleDateString()}</em></p>
                                                 }
                                             </div>
                                             <div className="flexCol justifyBetween">
-                                                <button>Log</button>
+                                                <button onClick={() => {
+                                                    setMovieName(movie.name);
+                                                    setModalPage("logMovie");
+                                                    setModalVisible(true);
+                                                }}>Log</button>
                                                 <button onClick={() => {
                                                     const listIndexToChange = lists.findIndex(list => list.name === currentList);
                                                     const newList = lists;
