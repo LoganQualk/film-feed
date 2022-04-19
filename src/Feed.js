@@ -17,7 +17,7 @@ const Feed = () => {
         <div className="container flexCol alignCenter">
             <br />
             <CreatePostBox />
-            {posts.map((post, index) => <Post key={index} data={post}></Post>)}
+            {posts.sort((a, b) => new Date(b.date) - new Date(a.date)).map((post, index) => <Post key={index} data={post}></Post>)}
         </div>
         </>
      );
