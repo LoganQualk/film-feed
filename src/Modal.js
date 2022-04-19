@@ -4,6 +4,7 @@ import ModalTest from "./ModalTest";
 import LogMovieModal from "./components/LogMovieModal";
 import AddToListModal from "./components/AddToListModal";
 import CreateListModal from "./components/CreateListModal";
+import AttachMovieModal from "./components/AttachMovieModal";
 
 const Modal = () => {
 
@@ -31,6 +32,7 @@ const Modal = () => {
                         (modalPage === "logMovie" && <LogMovieModal></LogMovieModal>) ||
                         (modalPage === "addToList" && <AddToListModal></AddToListModal>) || 
                         (modalPage === "createList" && <CreateListModal></CreateListModal>) || 
+                        (modalPage === "attachMovie" && <AttachMovieModal></AttachMovieModal>) ||
                         <h1>ERROR: Page Not Found</h1>
                     }
                 </div>

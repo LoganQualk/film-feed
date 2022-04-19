@@ -10,7 +10,7 @@ import { useContext } from 'react';
 
 const Feed = () => {
     const { posts } = useContext(GlobalContext);
-    console.log(posts);
+
     return ( 
         <>
         <Header />

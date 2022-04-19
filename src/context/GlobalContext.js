@@ -1,10 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalState from "../hooks/useLocalState";
 import listData from "../tempData/lists";
 import logData from "../tempData/logs";
 import postData from "../tempData/posts";
 import specificLogsData from "../tempData/specificLogs";
+import axios from "axios";
 
 export const GlobalContext = createContext({
     changePage: () => { },
@@ -32,6 +33,8 @@ export const GlobalProvider = ({ children }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const [modalPage, setModalPage] = useState(null);
+    let [results, setResults] = useState([]);
+    let [attachResults, setAttachResults] = useState([]);
     // const [modalData, setModalData] = useState(null);
 
     const changePage = async (page, data) => { //data parameter is optional
@@ -56,6 +59,69 @@ export const GlobalProvider = ({ children }) => {
         setPosts([...newPosts]);
     }
 
+    const searchUrl =
+        "https://api.themoviedb.org/3/search/movie?api_key=" +
+        process.env.REACT_APP_API_KEY +
+        "&query=";
+
+    async function httpGetMovies(title) {
+        if (title) {
+            let response = await axios({
+                method: "GET",
+                url: searchUrl + title,
+            });
+            return response.data.results;
+        }
+        return null;
+    }
+
+    function displayResults(searchInput) {
+        if (searchInput.length === 0) {
+            setResults([]);
+            return;
+        } else {
+            httpGetMovies(searchInput).then((apiResults) => {
+                let shortenedResults = apiResults.splice(0, 10);
+                shortenedResults.push(
+                    {
+                        id: 'More results',
+                        title: 'Click for more results...',
+                        release_date: null,
+                    }
+                );
+                setResults(shortenedResults);
+            }
+            );
+        }
+    }
+
+    function displayAttachResults(searchInput) {
+        if (searchInput.length === 0) {
+            setAttachResults([]);
+            return;
+        } else {
+            httpGetMovies(searchInput).then((apiResults) => {
+                let shortenedResults = apiResults.splice(0, 10);
+                shortenedResults.push(
+                    {
+                        id: 'More results',
+                        title: 'Click for more results...',
+                        release_date: null,
+                    }
+                );
+                setAttachResults(shortenedResults);
+            }
+            );
+        }
+    }
+
+    function setIdAndLoad(id) {
+        setMovieId(id);
+        changePage(`movie=${id}`, id);
+        document.getElementById("searchInput").value = '';
+        setResults([]);
+    }
+
     const globalState = {
         changePage,
         modalVisible, setModalVisible,
@@ -71,6 +137,12 @@ export const GlobalProvider = ({ children }) => {
         specificLogs, setSpecificLogs,
         createPost,
         createComment,
+        results, setResults,
+        httpGetMovies,
+        displayResults,
+        setIdAndLoad,
+        attachResults, setAttachResults,
+        displayAttachResults,
     };
 
     return (

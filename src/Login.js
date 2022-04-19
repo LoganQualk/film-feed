@@ -39,12 +39,12 @@ const Login = () => {
                 e.preventDefault();
                 changePage("forgotPassword");
             }}>Forgot Password?</h3>
-            <div>
+            {/* <div>
                 <p onClick={() => {
                     setModalPage("test");
                     setModalVisible(true);
                 }}>Testing Modal</p>
-            </div>
+            </div> */}
         </div>
     );
 }

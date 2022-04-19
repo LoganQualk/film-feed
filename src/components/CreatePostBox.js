@@ -1,4 +1,4 @@
-import db from "../tools/firebaseConfig";
+// import db from "../tools/firebaseConfig";
 import { useContext, useState } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import { generateID } from "../tools/generateID";
@@ -6,7 +6,7 @@ import { generateID } from "../tools/generateID";
 const CreatePostBox = () => {
     const [text, setText] = useState('');
     const [noText, setNoText] = useState(false);
-    const { posts, setPosts, createPost } = useContext(GlobalContext);
+    const { createPost, setModalPage, setModalVisible } = useContext(GlobalContext);
 
     const handleTextChange = (userText) => {
         if (userText.length == 0) {
@@ -69,9 +69,15 @@ const CreatePostBox = () => {
                 onChange={(event) => handleTextChange(event.target.value)}
             />
             {noText ? <div className="warningText">Must have text in post</div> : <div></div>}
-            <button id="postButton" className="defaultButton bg-quaternary" onClick={() => handlePost()}>
-                Post
-            </button>
+            <div className="flexRow justifyBetween fullWidth">
+                <button className="defaultButton bg-quaternary" onClick={() => {
+                    setModalPage("attachMovie");
+                    setModalVisible(true);
+                }}>Attach Movie</button>
+                <button id="postButton" className="defaultButton bg-quaternary" onClick={() => handlePost()}>
+                    Post
+                </button>
+            </div>
         </div>
     );
 }

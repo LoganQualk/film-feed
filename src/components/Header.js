@@ -1,56 +1,56 @@
 import { useContext, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import { GlobalContext } from '../context/GlobalContext';
 
-const searchUrl =
-  "https://api.themoviedb.org/3/search/movie?api_key=" +
-  process.env.REACT_APP_API_KEY +
-  "&query=";
+// const searchUrl =
+//   "https://api.themoviedb.org/3/search/movie?api_key=" +
+//   process.env.REACT_APP_API_KEY +
+//   "&query=";
 
 
 const Header = () => {
-    const { changePage, setMovieId } = useContext(GlobalContext);
-    let [results, setResults] = useState([]);
+    const { changePage, results, displayResults, setIdAndLoad } = useContext(GlobalContext);
+    // let [results, setResults] = useState([]);
 
-    async function httpGetMovies(title) {
-        if (document.getElementById("searchInput").value) {
-            let response = await axios({
-            method: "GET",
-            url: searchUrl + title,
-            });
-            return response.data.results;
-        }
-        return null;
-    }
+    // async function httpGetMovies(title) {
+    //     if (document.getElementById("searchInput").value) {
+    //         let response = await axios({
+    //         method: "GET",
+    //         url: searchUrl + title,
+    //         });
+    //         return response.data.results;
+    //     }
+    //     return null;
+    // }
 
-    function displayResults(searchInput) {
-        if(searchInput.length === 0 ) {
-            setResults([]);
-            return;
-        } else {
-            httpGetMovies(searchInput).then( (apiResults) => {
-                    let shortenedResults = apiResults.splice(0,10);
-                    shortenedResults.push(
-                        {
-                            id: 'More results',
-                            title: 'Click for more results...',
-                            release_date: null,
-                        }
-                    );
-                    setResults(shortenedResults);
-                }
-            );
-        }
-    }
+    // function displayResults(searchInput) {
+    //     if(searchInput.length === 0 ) {
+    //         setResults([]);
+    //         return;
+    //     } else {
+    //         httpGetMovies(searchInput).then( (apiResults) => {
+    //                 let shortenedResults = apiResults.splice(0,10);
+    //                 shortenedResults.push(
+    //                     {
+    //                         id: 'More results',
+    //                         title: 'Click for more results...',
+    //                         release_date: null,
+    //                     }
+    //                 );
+    //                 setResults(shortenedResults);
+    //             }
+    //         );
+    //     }
+    // }
 
-    function setIdAndLoad(id) {
-        setMovieId(id);
-        changePage(`movie=${id}`, id);
-        document.getElementById("searchInput").value = '';
-        setResults([]);
-    }
+    // function setIdAndLoad(id) {
+    //     setMovieId(id);
+    //     changePage(`movie=${id}`, id);
+    //     document.getElementById("searchInput").value = '';
+    //     setResults([]);
+    // }
 
     return ( 
         <div className="headerContainer">
