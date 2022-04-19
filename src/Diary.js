@@ -19,20 +19,21 @@ const monthDict = {0:'January',
 const Diary = () => {
 
     const {logs} = useContext(GlobalContext);
-
+    
     const logData = Object.entries(logs);
+    console.log(logData);
     const months = [1]; // track the months already in diary
     const updateMonths = () => {
         for(let i = 0; i < logData.length; i++){
-            if(!months.includes(logData[i][1].date.getMonth())){
-                months.push(logData[i][1].date.getMonth());
-                let month = monthDict[logData[i][1].date.getMonth()];
-                let monthYear = month + " " + logData[i][1].date.getFullYear()
+            if(!months.includes(new Date(logData[i][1].date).getMonth())){
+                months.push(new Date(logData[i][1].date).getMonth());
+                let month = monthDict[new Date(logData[i][1].date).getMonth()];
+                let monthYear = month + " " + new Date(logData[i][1].date).getFullYear()
                 let monthDiv = document.createElement("div")
                 monthDiv.innerHTML = `<div id="` + month + `" class="month-header">
                                         <p>` + monthYear + `</p>
                                     </div>
-                                    <div id="` + month + logData[i][1].date.getFullYear() + `" class="month-movies">
+                                    <div id="` + month + new Date(logData[i][1].date).getFullYear() + `" class="month-movies">
                                     </div>`;
                 
                 let diaryContent = document.getElementById("diaryContent");
@@ -42,7 +43,7 @@ const Diary = () => {
         for (var i in logData){
             let entry = ``
             let log = logData[i][1];
-            let monthYear = monthDict[log.date.getMonth()] + log.date.getFullYear()
+            let monthYear = monthDict[new Date(log.date).getMonth()] + new Date(log.date).getFullYear()
             let month = document.getElementById(monthYear);
             let stars = ``;
             
@@ -63,7 +64,7 @@ const Diary = () => {
             
             entry = `<div class="diary-entry">
                             <div class="day">
-                            ` + log.date.getDate() + `
+                            ` + new Date(log.date).getDate() + `
                             </div>
                             <div>
                                 <img class = "poster" src="`+ log.imageUrl +`"/>
