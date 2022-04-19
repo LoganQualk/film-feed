@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { GlobalContext } from "./context/GlobalContext";
 import ModalTest from "./ModalTest";
 import LogMovieModal from "./components/LogMovieModal";
+import AddToListModal from "./components/AddToListModal";
 
 const Modal = () => {
 
@@ -27,6 +28,7 @@ const Modal = () => {
                     {
                         (modalPage === "test" && <ModalTest></ModalTest>) ||
                         (modalPage === "logMovie" && <LogMovieModal></LogMovieModal>) ||
+                        (modalPage === "addToList" && <AddToListModal></AddToListModal>) || 
                         <h1>ERROR: Page Not Found</h1>
                     }
                 </div>
