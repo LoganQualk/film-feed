@@ -7,6 +7,7 @@ import surpriseEmoji from '../images/surprise.svg'
 import thumbsDownEmoji from '../images/thumbsDown.svg'
 import { useContext, useRef, useState } from 'react'
 import { GlobalContext } from '../context/GlobalContext'
+import Comment from './Comment'
 
 const Post = ({ data }) => {
     // Need to make it so when they are selected it actually changes the data, 
@@ -18,22 +19,13 @@ const Post = ({ data }) => {
     const [surpriseEmojiSelected, setSurpriseEmojiSelected] = useState(false);
     const [thumbsDownEmojiSelected, setThumbsDownEmojiSelected] = useState(false);
 
-    const { createComment } = useContext(GlobalContext);
+    const { createComment, posts, setPosts } = useContext(GlobalContext);
     const commentBoxRef = useRef(null);
 
     const displayComments = (comments, level) => {
         // Recursively gets comments from top layer to bottom
         return comments.sort((a, b) => new Date(b.date) - new Date(a.date)).map((comment, index) =>
-            <div key={index} className='commentTree' style={{ marginLeft: level > 0 ? 20 + "px" : "" }}>
-                <div className='comment'>
-                    <div className='flexRow justifyBetween'>
-                        <h3>{comment.user}</h3>
-                        <button className="defaultButton bg-quaternary">Reply</button>
-                    </div>
-                    <p>{comment.text}</p>
-                </div>
-                {displayComments(comment.replies, level + 1)}
-            </div>
+            <Comment key={index} index={index} comments={comments} comment={comment} level={level} displayComments={displayComments}></Comment>
         )
     }
 

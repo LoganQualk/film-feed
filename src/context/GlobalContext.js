@@ -15,6 +15,7 @@ export const GlobalContext = createContext({
     setSpecificLogs: () => { }, setUserSearchInput: () => { },
     createPost: () => { },
     createComment: () => { },
+    currentUser: ""
 });
 
 export const GlobalProvider = ({ children }) => {
@@ -28,6 +29,8 @@ export const GlobalProvider = ({ children }) => {
     const [movieYr, setMovieYr] = useLocalState("movieYr", null);
     const [movieUrl, setMovieUrl] = useLocalState("movieUrl", null);
     const [specificLogs, setSpecificLogs] = useLocalState("specificLogs", specificLogsData);
+
+    const [currentUser, setCurrentUser] = useLocalState("currentUser", "Sam Smith")
 
     const navigate = useNavigate();
     const [modalVisible, setModalVisible] = useState(false);
@@ -153,6 +156,7 @@ export const GlobalProvider = ({ children }) => {
         setIdAndLoad,
         attachResults, setAttachResults,
         displayAttachResults,
+        currentUser
     };
 
     return (
