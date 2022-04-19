@@ -3,6 +3,7 @@ import { GlobalContext } from "./context/GlobalContext";
 import ModalTest from "./ModalTest";
 import LogMovieModal from "./components/LogMovieModal";
 import AddToListModal from "./components/AddToListModal";
+import CreateListModal from "./components/CreateListModal";
 
 const Modal = () => {
 
@@ -29,6 +30,7 @@ const Modal = () => {
                         (modalPage === "test" && <ModalTest></ModalTest>) ||
                         (modalPage === "logMovie" && <LogMovieModal></LogMovieModal>) ||
                         (modalPage === "addToList" && <AddToListModal></AddToListModal>) || 
+                        (modalPage === "createList" && <CreateListModal></CreateListModal>) || 
                         <h1>ERROR: Page Not Found</h1>
                     }
                 </div>

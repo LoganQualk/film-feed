@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 
 
 const AddToListModal = () => {
-    const { movieName, movieYr, movieUrl, setModalVisible, lists, setLists } = useContext(GlobalContext);
+    const { movieName, movieYr, movieUrl, setModalVisible, setModalPage, lists } = useContext(GlobalContext);
 
     const [listPicked, setListPicked] = useState(null);
 
@@ -18,13 +18,12 @@ const AddToListModal = () => {
                     "log": null,
                  });
 
-            console.log('NEW LIST: ' + JSON.stringify(lists.find((listObj) => listObj.name === listPicked)["attachedMovies"]));            
+            console.log('NEW LIST: ' + JSON.stringify(lists.find((listObj) => listObj.name === listPicked)["attachedMovies"]));     
+            setModalVisible(false);
+            
         } else {
-
+            setModalPage("createList");
         }
-
-
-        setModalVisible(false);
     };
 
     return ( 
@@ -37,7 +36,7 @@ const AddToListModal = () => {
                 <button className="clickableList" key="createList" onClick={() => setListPicked("createList")}>+ Create New List</button>
             </div>
             <div className="flex justifyEnd modalLogButton">
-                <Button onClick={handleSubmit}>Save</Button>
+                <Button onClick={handleSubmit}>Add</Button>
             </div>
         </div>
      );
