@@ -27,12 +27,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/diary" element={<Diary />} />
           <Route path="/lists" element={<Lists />} />
+          <Route path="/lists=:listName" element={<SpecificList />} />
           <Route path="/movie=:filmid" element={<SpecificMovie />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/list" element={<SpecificList />} />
         </Routes>
         <Modal></Modal>
       </GlobalProvider>
