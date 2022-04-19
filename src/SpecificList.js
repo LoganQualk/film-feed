@@ -5,10 +5,10 @@ import { useContext } from "react";
 import { GlobalContext } from "./context/GlobalContext";
 
 const SpecificList = () => {
-    const { lists } = useContext(GlobalContext);
+    const { lists, setLists } = useContext(GlobalContext);
     const currentList = useParams().listName;
 
-    const listData = lists.find(list => list.name=currentList);
+    const listData = lists.find(list => list.name === currentList);
 
     return (
         <>
@@ -25,7 +25,6 @@ const SpecificList = () => {
                             {
                                 listData.attachedMovies.map((movie, index) => {
                                     const log = logs[movie.log];
-                                    console.log(log);
 
                                     return (
                                         <div key={index} className="list">
@@ -45,7 +44,12 @@ const SpecificList = () => {
                                             </div>
                                             <div className="flexCol justifyBetween">
                                                 <button>Log</button>
-                                                <button>Del</button>
+                                                <button onClick={() => {
+                                                    const listIndexToChange = lists.findIndex(list => list.name === currentList);
+                                                    const newList = lists;
+                                                    newList[listIndexToChange].attachedMovies = newList[listIndexToChange].attachedMovies.filter(movieInList => movie.id !== movieInList.id);
+                                                    setLists([...newList]);
+                                                }}>Del</button>
                                             </div>
                                         </div>
                                     )
