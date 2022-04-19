@@ -665,6 +665,17 @@ body {
   width: 70px;
 }
 
+.searchResultsFor {
+  color: var(--quaternary);
+  font-size: 25px;
+}
+
+.searchTitle {
+  color: rgb(61, 60, 100);
+  padding-left: 15px;
+  font-size: 28px;
+}
+
 /* Modals */
 .modalPadding {
   padding-left: 20px;
