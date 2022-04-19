@@ -10,6 +10,7 @@ import Login from './Login';
 import Diary from './Diary';
 import Lists from './Lists';
 import SpecificMovie from './SpecificMovie.tsx';
+import AllResults from './AllResults.tsx';
 import Profile from './Profile';
 import Signup from './Signup';
 import ForgotPassword from './ForgotPassword';
@@ -29,6 +30,7 @@ function App() {
           <Route path="/lists" element={<Lists />} />
           <Route path="/lists=:listName" element={<SpecificList />} />
           <Route path="/movie=:filmid" element={<SpecificMovie />} />
+          <Route path="/searchResults" element={<AllResults />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
