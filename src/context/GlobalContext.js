@@ -12,6 +12,8 @@ export const GlobalContext = createContext({
     specificLogs: [],
     setPosts: () => { }, setLists: () => { }, setLogs: () => { }, setMovieId: () => { }, setMovieName: () => { }, setMovieYr: () => { }, setMovieUrl: () => { },
     setSpecificLogs: () => { },
+    createPost: () => { },
+    createComment: () => { },
 });
 
 export const GlobalProvider = ({ children }) => {
@@ -40,6 +42,20 @@ export const GlobalProvider = ({ children }) => {
         setPosts([...posts, post]);
     }
 
+    const createComment = (id, comment) => {
+        const postToChange = posts.findIndex(post => post.id === id);
+        let newPosts = posts;
+        newPosts[postToChange].replies.push(
+            {
+                "user": "Penny Smith",
+                "date": new Date(), // replace with time/date replied,
+                "text": comment,
+                "replies": []
+            }
+        );
+        setPosts([...newPosts]);
+    }
+
     const globalState = {
         changePage,
         modalVisible, setModalVisible,
@@ -54,6 +70,7 @@ export const GlobalProvider = ({ children }) => {
         movieUrl, setMovieUrl,
         specificLogs, setSpecificLogs,
         createPost,
+        createComment,
     };
 
     return (

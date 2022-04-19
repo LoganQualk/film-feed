@@ -1,5 +1,6 @@
 const postData = [
     {
+        "id": "1",
         "user": "John Doe",
         "date": new Date(), // replace with date posted
         "attachedMovies": [

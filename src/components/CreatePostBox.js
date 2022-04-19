@@ -1,6 +1,7 @@
 import db from "../tools/firebaseConfig";
 import { useContext, useState } from "react";
 import { GlobalContext } from "../context/GlobalContext";
+import { generateID } from "../tools/generateID";
 
 const CreatePostBox = () => {
     const [text, setText] = useState('');
@@ -19,8 +20,8 @@ const CreatePostBox = () => {
 
     const handlePost = () => {
         if (text.length != 0) {
-            let newPost = posts;
             createPost({
+                "id": generateID(),
                 "user": "Penny Smith",
                 "date": new Date().toString(),
                 "attachedMovies": [], // we will handle this later

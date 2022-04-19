@@ -5,7 +5,8 @@ import clapEmoji from '../images/clap.svg'
 import sobEmoji from '../images/sob.svg'
 import surpriseEmoji from '../images/surprise.svg'
 import thumbsDownEmoji from '../images/thumbsDown.svg'
-import { useState } from 'react'
+import { useContext, useRef, useState } from 'react'
+import { GlobalContext } from '../context/GlobalContext'
 
 const Post = ({ data }) => {
     // Need to make it so when they are selected it actually changes the data, 
@@ -17,9 +18,12 @@ const Post = ({ data }) => {
     const [surpriseEmojiSelected, setSurpriseEmojiSelected] = useState(false);
     const [thumbsDownEmojiSelected, setThumbsDownEmojiSelected] = useState(false);
 
+    const { createComment } = useContext(GlobalContext);
+    const commentBoxRef = useRef(null);
+
     const displayComments = (comments, level) => {
         // Recursively gets comments from top layer to bottom
-        return comments.map((comment, index) =>
+        return comments.sort((a, b) => new Date(b.date) - new Date(a.date)).map((comment, index) =>
             <div key={index} className='commentTree' style={{ marginLeft: level > 0 ? 20 + "px" : "" }}>
                 <div className='comment'>
                     <div className='flexRow justifyBetween'>
@@ -101,8 +105,8 @@ const Post = ({ data }) => {
                     </div>
                     <hr />
                     <div className="commentAction">
-                        <input type="text" name="commentInput" className="commentInput" placeholder="Type a comment..." />
-                        <button className="defaultButton bg-quaternary">Comment</button>
+                        <input type="text" name="commentInput" className="commentInput" placeholder="Type a comment..." ref={commentBoxRef} />
+                        <button className="defaultButton bg-quaternary" onClick={() => createComment(data.id, commentBoxRef.current.value)}>Comment</button>
                     </div>
                 </div>
             </div>
