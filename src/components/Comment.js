@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useContext, useState } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
@@ -15,6 +15,22 @@ const Comment = ({ index, comments, comment, level }) => {
         )
     }
 
+    const submitComment = () => {
+        comments[index].replies.push({
+            "user": currentUser,
+            "date": new Date().toString(), // replace with time/date replied,
+            "text": replyRef.current.value,
+            "replies": []
+        });
+        setPosts([...posts]);
+        setReplying(false);
+        replyRef.current.value = "";
+    }
+
+    useEffect(() => {
+        if (replying) replyRef?.current?.focus();
+    }, [replying])
+
     return (
         <div className='commentTree' style={{ marginLeft: level > 0 ? 20 + "px" : "" }}>
             <div className='comment'>
@@ -23,7 +39,6 @@ const Comment = ({ index, comments, comment, level }) => {
                         <h4>{comment.user}</h4>
                         <button className="defaultButton bg-quaternary" onClick={() => {
                             setReplying(true);
-                            replyRef.current.focus();
                         }}>Reply</button>
                     </div>
                     <p>{comment.text}</p>
@@ -31,18 +46,13 @@ const Comment = ({ index, comments, comment, level }) => {
                 {
                     replying &&
                     <div className="commentAction bg-tertiary">
-                        <input type="text" name="commentInput" className="commentInput" placeholder="Type a reply..." ref={replyRef} />
+                        <input type="text" name="commentInput" className="commentInput" placeholder="Type a reply..."
+                            ref={replyRef} onKeyUp={(e) => {
+                                if (e.key === "Enter") submitComment()
+                            }} />
                         <button className="defaultButton bg-quaternary" onClick={() => setReplying(false)}>Discard</button>
                         <button className="defaultButton bg-quaternary" onClick={() => {
-                            comments[index].replies.push({
-                                "user": currentUser,
-                                "date": new Date().toString(), // replace with time/date replied,
-                                "text": replyRef.current.value,
-                                "replies": []
-                            });
-                            setPosts([...posts]);
-                            setReplying(false);
-                            replyRef.current.value = "";
+                            submitComment();
                         }}>Submit</button>
                     </div>
                 }
