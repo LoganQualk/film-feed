@@ -10,9 +10,9 @@ import axios from "axios";
 export const GlobalContext = createContext({
     changePage: () => { },
     posts: [], lists: [], logs: [], movieId: 0, movieName: null, movieYr: 0, movieUrl: null,
-    specificLogs: [],
+    specificLogs: [], allResults: [], userSearchInput: null,
     setPosts: () => { }, setLists: () => { }, setLogs: () => { }, setMovieId: () => { }, setMovieName: () => { }, setMovieYr: () => { }, setMovieUrl: () => { },
-    setSpecificLogs: () => { },
+    setSpecificLogs: () => { }, setUserSearchInput: () => { },
     createPost: () => { },
     createComment: () => { },
 });
@@ -34,6 +34,8 @@ export const GlobalProvider = ({ children }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [modalPage, setModalPage] = useState(null);
     let [results, setResults] = useState([]);
+    let [allResults, setAllResults] = useState([]);
+    let [userSearchInput, setUserSearchInput] = useState(null);
     let [attachResults, setAttachResults] = useState([]);
     // const [modalData, setModalData] = useState(null);
 
@@ -81,7 +83,8 @@ export const GlobalProvider = ({ children }) => {
             return;
         } else {
             httpGetMovies(searchInput).then((apiResults) => {
-                let shortenedResults = apiResults.splice(0, 10);
+                setAllResults(apiResults);
+                let shortenedResults = apiResults.slice(0, 10);
                 shortenedResults.push(
                     {
                         id: 'More results',
@@ -116,9 +119,14 @@ export const GlobalProvider = ({ children }) => {
     }
 
     function setIdAndLoad(id) {
-        setMovieId(id);
-        changePage(`movie=${id}`, id);
-        document.getElementById("searchInput").value = '';
+        if(id === "More results") {
+            setUserSearchInput(document.getElementById("searchInput").value);
+            changePage("searchResults");
+        } else {
+            setMovieId(id);
+            changePage(`movie=${id}`, id);
+            document.getElementById("searchInput").value = '';
+        }
         setResults([]);
     }
 
@@ -138,6 +146,8 @@ export const GlobalProvider = ({ children }) => {
         createPost,
         createComment,
         results, setResults,
+        allResults,
+        userSearchInput, setUserSearchInput,
         httpGetMovies,
         displayResults,
         setIdAndLoad,
