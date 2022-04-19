@@ -4,6 +4,7 @@ import logs from "./tempData/logs";
 import Header from './components/Header';
 import LogMovieModal from './components/LogMovieModal'
 import { GlobalContext } from "./context/GlobalContext";
+
 const monthDict = {0:'January',
                     1: 'February',
                     2: 'March',
@@ -59,7 +60,7 @@ const Diary = () => {
                 hasReview = `<i class="fa fa-align-left"></i>`;
             }
             
-            entry = `<div class="diary-entry">
+            entry = `<div id = "` + logData[i][0] + `" class="diary-entry">
                             <div class="day">
                             ` + log.date.getDate() + `
                             </div>
@@ -78,10 +79,10 @@ const Diary = () => {
                             <div class="review">
                                 ` + hasReview + `
                             </div>
-                            <span class="fa-stack">
+                            <div>
                                 <i class='fas fa-pencil-alt fa-stack-2x'></i>
-                                <i class="fa fa-trash-o fa-stack-1x"></i>
-                            </span>
+                                <button onclick="deleteEntry()"><i class="fa fa-trash-o"></i></button>
+                            </div>
                         </div>`;
             if(entry != null && month != null){
                 month.innerHTML += entry;
@@ -91,69 +92,19 @@ const Diary = () => {
     
 
     const sortDiary = () => {
-    }
+    };
     const logMovie = () =>{
-    }
-
-    /*const render = () =>{
-        for (var i in logData){
-            let entry = ``
-            let log = logData[i][1];
-            let monthYear = monthDict[log.date.getMonth()] + log.date.getFullYear()
-            let month = document.getElementById(monthYear);
-            console.log(monthYear);
-            let stars = ``;
-            
-            for(let i = 1; i <= log.rating; i++){
-                stars += `<div class="clip-star-active"></div>`;
-            }
-            
-            if(log.rating < 5){
-                for(let i = 1; i <= 5-log.rating; i++){
-                    stars += `<div class="clip-star-inactive"></div>`;
-                }
-            }
-            
-            let hasReview = ``;
-            if(log.text != null){
-                hasReview = `<i class="fa fa-align-left"></i>`;
-            }
-            
-            entry = `<div class="diary-entry">
-                            <div class="day">
-                            ` + log.date.getDate() + `
-                            </div>
-                            <div>
-                                <img class = "poster" src="`+ log.imageUrl +`"/>
-                            </div>
-                            <div class="title">
-                                <em>` + log.title + `</em> `+ log.year +`
-                            </div>
-                            <div id="stars">
-                                ` + stars + `
-                            </div>
-                            <div class="rewatch">
-                                <i class="material-icons">replay</i>
-                            </div>
-                            <div class="review">
-                                ` + hasReview + `
-                            </div>
-                            <span class="fa-stack">
-                                <i class='fas fa-pencil-alt fa-stack-2x'></i>
-                                <i class="fa fa-trash-o fa-stack-1x"></i>
-                            </span>
-                        </div>`;
-            if(entry != null){
-                month.innerHTML += entry;
-            }                    
-        }
-    }*/
+    };
+    const deleteEntry = () =>{
+        console.log("COOCH");
+        //document.getElementById(id).remove();
+    };
 
     return (
         <>
             <Header />
             <div>
-                <button className="diary-logbtn" onClick={() => <LogMovieModal />}><span>&#43;</span> <strong>Log Movie</strong></button>
+                <button className="diary-logbtn"><span>&#43;</span> <strong>Log Movie</strong></button>
             </div>
             <br />
             <br />
@@ -178,7 +129,7 @@ const Diary = () => {
                         <p>February 2022</p>
                     </div>
                     <div id="February2022" className="month-movies">
-                        <div className="diary-entry">
+                        <div id="1" className="diary-entry">
                             <div className="day">
                                 20
                             </div>
@@ -201,10 +152,10 @@ const Diary = () => {
                             <div className="review">
                                 <i className="fa fa-align-left"></i>
                             </div>
-                            <span>
+                            <div>
                                 <i className='fas fa-pencil-alt'></i>
-                                <i className="fa fa-trash-o"></i>
-                            </span>
+                                <button onClick={() => deleteEntry()}><i className="fa fa-trash-o"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
