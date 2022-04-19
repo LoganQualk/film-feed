@@ -4,10 +4,12 @@ import ReactStars from "react-rating-stars-component";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "react-bootstrap";
+import { generateID } from "../tools/generateID";
 
 
 const LogMovieModal = () => {
-    const { movieName, movieYr, movieUrl, setModalVisible, specificLogs, setSpecificLogs } = useContext(GlobalContext);
+    const { movieName, movieId, movieYr, movieUrl, setModalVisible, specificLogs, setSpecificLogs, 
+        logs, setLogs, lists, setLists } = useContext(GlobalContext);
     const [date, setDate] = useState(new Date());
 
     const [rating, setRating] = useState(0);
@@ -49,6 +51,24 @@ const LogMovieModal = () => {
         oldLogs.push(newLog);
         setSpecificLogs(oldLogs);
 
+        // This code will add it to the logs data instead of specificLogs, used in specific lists
+        let newLogs = logs;
+        newLog.text = logText;
+        delete newLog["entry"];
+        newLog.date = new Date(newLog.date);
+        const logId = generateID();
+        newLogs[logId] = newLog;
+        setLogs({...newLogs})
+
+        let newLists = lists;
+        for (let i = 0; i < lists.length; i++) {
+            for (let j = 0; j < lists[i].attachedMovies.length; j++) {
+                if (lists[i].attachedMovies[j].id === movieId) {
+                    newLists[i].attachedMovies[j].log = logId;
+                }
+            }
+        }
+        setLists([...newLists])
         console.log('NEW LOGDATA: ' + JSON.stringify(oldLogs));
 
         setModalVisible(false);

@@ -6,23 +6,12 @@ import { GlobalContext } from "./context/GlobalContext";
 import { generateID } from "./tools/generateID";
 
 const SpecificList = () => {
-    const { lists, setLists, logs, setLogs, setModalPage, setModalVisible, setMovieName } = useContext(GlobalContext);
+    const { lists, setLists, logs, setLogs, setModalPage, setModalVisible, 
+        setMovieName, setMovieId, setMovieYr, setMovieUrl } = useContext(GlobalContext);
+
     const currentList = useParams().listName;
 
     const listData = lists.find(list => list.name === currentList);
-
-    const logMovie = () => {
-        const newLogs = logs;
-        newLogs[generateID()] = {
-            "title": "The Dark Knight 4",
-            "date": new Date('2/17/2022'),
-            "text": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse ex ad cupiditate adipisci ut illo suscipit vitae doloremque asperiores. Doloremque quos repellendus, iusto omnis voluptatibus impedit eaque laboriosam. Earum, sit.",
-            "rating": 3,
-            "year": 2008,
-            "imageUrl": "https://m.media-amazon.com/images/I/61zBUhQj22L._AC_SY679_.jpg"
-        }
-        setLogs({...newLogs});
-    }
 
     return (
         <>
@@ -59,6 +48,9 @@ const SpecificList = () => {
                                             <div className="flexCol justifyBetween">
                                                 <button onClick={() => {
                                                     setMovieName(movie.name);
+                                                    setMovieId(movie.id);
+                                                    setMovieYr(movie.year);
+                                                    setMovieUrl(movie.imageUrl);
                                                     setModalPage("logMovie");
                                                     setModalVisible(true);
                                                 }}>Log</button>

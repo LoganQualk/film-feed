@@ -1,6 +1,5 @@
 import React from "react";
-import { useContext, useState } from "react";
-import logs from "./tempData/logs";
+import { useContext } from "react";
 import Header from './components/Header';
 import LogMovieModal from './components/LogMovieModal'
 import { GlobalContext } from "./context/GlobalContext";
@@ -18,6 +17,9 @@ const monthDict = {0:'January',
                     11: 'December'};
 
 const Diary = () => {
+
+    const {logs} = useContext(GlobalContext);
+
     const logData = Object.entries(logs);
     const months = [1]; // track the months already in diary
     const updateMonths = () => {
