@@ -113,8 +113,8 @@ const Header = () => {
 
             <div className="headerSubtitle flex justifyCenter">
                 <span className="light-purple-text">Log movies in your diary for your eyes only. </span>
-                <span className="orange-text">Write posts about movies to keep your friends updated. </span>
-                <span className="green-text">Make reviews for the world to see your critical perspective. </span>
+                <span className="orange-text">Write posts to keep your friends updated. </span>
+                <span className="green-text">Make review posts for the world to see your critical perspective. </span>
                 <span className="light-blue-text">FilmFeed is the place for all your movie-discussing needs.</span>
             </div>
         </div>
