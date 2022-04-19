@@ -10,13 +10,18 @@ const LogAddRecButtons = () => {
         setModalVisible(true);
     }
 
+    function handleAdd() {
+        setModalPage("addToList");
+        setModalVisible(true);
+    }
+
     return (
     <div className="flexCol">
         <div className="detailsButton">
             <Button onClick={handleLog}>Log Movie to Diary</Button>
         </div>
         <div className="detailsButton">
-            <Button>Add Movie to Movie List</Button>
+            <Button onClick={handleAdd}>Add Movie to Movie List</Button>
         </div>
         <div className="detailsButton">
             <Button>Recommend to Friend</Button>

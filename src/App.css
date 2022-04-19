@@ -642,10 +642,10 @@ body {
 }
 
 .dark-dark-purple-text {
-  color: rgb(61, 60, 100)
+  color: rgb(61, 60, 100);
 }
 
-/* Modal */
+/* Modals */
 .modalPadding {
   padding-left: 20px;
 }
@@ -657,6 +657,50 @@ body {
 .modalLogButton {
   padding-right: 30px;
   padding-top: 20px;
+}
+
+.clickableLists {
+  font-size: 28px;
+}
+
+.clickableList {
+  color: var(--follower-text);
+  background-color: var(--tertiary);
+  border: 2px solid rgb(151, 150, 190);
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+}
+
+.clickableList:hover {
+  color: rgb(151, 134, 182);
+  background-color: var(--tertiary);
+  border: 2px solid rgb(151, 150, 190);
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+}
+
+.clickableList:focus {
+  color: rgb(61, 60, 100);
+  font-weight: 800;
+  background-color: var(--tertiary);
+  border: 2px solid rgb(151, 150, 190);
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+}
+
+.movieDescriptionBox {
+  padding-top: 30px;
+}
+
+.backButton {
+  color: rgb(61, 60, 100);
+  font-size: 30px;
+  font-weight: bolder;
+  background: var(--tertiary);
+  border: none;
 }
 
 /*Diary Styling*/
