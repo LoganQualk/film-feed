@@ -92,6 +92,7 @@ const Profile = () => {
                         <h4 className='follower-text'>Following: 212</h4>
                     </div>
                 </div>
+                <br />
                 <div className="container">
                     <h1>My Posts</h1>
                     {posts.map((post, index) => <Post key={index} data={post}></Post>)}

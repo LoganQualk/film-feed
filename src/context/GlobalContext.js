@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalState from "../hooks/useLocalState";
 import listData from "../tempData/lists";
@@ -7,11 +7,11 @@ import postData from "../tempData/posts";
 import specificLogsData from "../tempData/specificLogs";
 
 export const GlobalContext = createContext({
-    changePage: () => {},
+    changePage: () => { },
     posts: [], lists: [], logs: [], movieId: 0, movieName: null, movieYr: 0, movieUrl: null,
     specificLogs: [],
-    setPosts: () => {}, setLists: () => {}, setLogs: () => {}, setMovieId: () => {}, setMovieName: () => {}, setMovieYr: () => {}, setMovieUrl: () => {},
-    setSpecificLogs: () => {}, 
+    setPosts: () => { }, setLists: () => { }, setLogs: () => { }, setMovieId: () => { }, setMovieName: () => { }, setMovieYr: () => { }, setMovieUrl: () => { },
+    setSpecificLogs: () => { },
 });
 
 export const GlobalProvider = ({ children }) => {
@@ -36,6 +36,10 @@ export const GlobalProvider = ({ children }) => {
         navigate("/" + page, { state: data });
     }
 
+    const createPost = (post) => {
+        setPosts([...posts, post]);
+    }
+
     const globalState = {
         changePage,
         modalVisible, setModalVisible,
@@ -49,6 +53,7 @@ export const GlobalProvider = ({ children }) => {
         movieYr, setMovieYr,
         movieUrl, setMovieUrl,
         specificLogs, setSpecificLogs,
+        createPost,
     };
 
     return (

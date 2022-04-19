@@ -113,6 +113,10 @@
   cursor: pointer;
 }
 
+.marginBottomSmall {
+  margin-bottom: 1rem;
+}
+
 /* Default Styling */
 
 body {
@@ -166,8 +170,9 @@ body {
 }
 
 .post {
-  width: 100%;
- 
+  width: min(100%, 80ch);
+  margin-bottom: 2.5rem;
+
   box-sizing: border-box;
 }
 
@@ -298,6 +303,18 @@ body {
 }
 
 /* Create Post Box */
+
+#createPostBox {
+  background-color: var(--tertiary);
+  width: min(100%, 80ch);
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 3px var(--shadow);
+}
 
 .fullWidth {
   width: 100%;

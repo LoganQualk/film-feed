@@ -1,41 +1,58 @@
 import db from "../tools/firebaseConfig";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 
-
-const CreatePostBox = ({ data }) => {
+const CreatePostBox = () => {
     const [text, setText] = useState('');
     const [noText, setNoText] = useState(false);
+    const { posts, setPosts, createPost } = useContext(GlobalContext);
 
     const handleTextChange = (userText) => {
-        if(userText.length == 0) {
+        if (userText.length == 0) {
             setNoText(true);
             setText('');
         } else {
             setNoText(false);
-            setText(userText)
+            setText(userText);
         }
     }
 
     const handlePost = () => {
-        if(text.length != 0) {
-            try {
-                let id = Date.now();
-                db.ref("users/pennysreviews/posts/" + id)
-                .set({
-                        date: new Date(),
-                        attached: [
-                            {
-                                url: "somePosterUrl",
-                                title: "movie title",
-                            }
-                        ],
-                        description: text,
-                        emotes: [0, 0, 0, 0, 0, 0,],
-                    });
-                console.log("Posted: " + id);
-            } catch (err) {
-                console.log(err);
-            }
+        if (text.length != 0) {
+            let newPost = posts;
+            createPost({
+                "user": "Penny Smith",
+                "date": new Date().toString(),
+                "attachedMovies": [], // we will handle this later
+                "text": text,
+                "reactions": {
+                    "heart": 0,
+                    "laugh": 0,
+                    "cry": 0,
+                    "surprise": 0,
+                    "clap": 0,
+                    "thumbsDown": 0
+                },
+                "replies": []
+            });
+            // try {
+            //     let id = Date.now();
+            //     db.ref("users/pennysreviews/posts/" + id)
+            //     .set({
+            //             date: new Date(),
+            //             attached: [
+            //                 {
+            //                     url: "somePosterUrl",
+            //                     title: "movie title",
+            //                 }
+            //             ],
+            //             description: text,
+            //             emotes: [0, 0, 0, 0, 0, 0,],
+            //         });
+            //     console.log("Posted: " + id);
+            // } catch (err) {
+            //     console.log(err);
+            // }
             setText('');
         } else {
             setNoText(true);
@@ -43,27 +60,17 @@ const CreatePostBox = ({ data }) => {
     };
 
     return (
-        <div className="post">
-            <div className="postContainer">
-                <div className="postActions">
-                    <div className="commentAction">
-                        <div className="commentInput">
-                            <input type="text" 
-                                name="commentInput" 
-                                className="commentInput mostlyFullWidth" 
-                                placeholder="What's on your mind?" 
-                                onChange={(event) => handleTextChange(event.target.value)}
-                            />
-                            {noText ? <div className="warningText">Must have text in post</div> : <div></div>}
-                        </div>
-                    </div>
-                    <div>
-                    <button className="defaultButton bg-quaternary" onClick={handlePost}>
-                        Post
-                    </button>
-                    </div>
-                </div>
-            </div>
+        <div id="createPostBox">
+            <input type="text"
+                name="commentInput"
+                className="commentInput fullWidth marginBottomSmall"
+                placeholder="What's on your mind?"
+                onChange={(event) => handleTextChange(event.target.value)}
+            />
+            {noText ? <div className="warningText">Must have text in post</div> : <div></div>}
+            <button id="postButton" className="defaultButton bg-quaternary" onClick={() => handlePost()}>
+                Post
+            </button>
         </div>
     );
 }
