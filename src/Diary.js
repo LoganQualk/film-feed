@@ -22,7 +22,6 @@ const Diary = () => {
     const {logs} = useContext(GlobalContext);
     
     const logData = Object.entries(logs);
-    console.log(logData);
     const months = [1]; // track the months already in diary
     const updateMonths = () => {
         for(let i = 0; i < logData.length; i++){
@@ -68,10 +67,10 @@ const Diary = () => {
                             ` + new Date(log.date).getDate() + `
                             </div>
                             <div>
-                                <img class = "poster" src="`+ log.imageUrl +`"/>
+                                <img class = "poster" src="https://m.media-amazon.com/images/I/61zBUhQj22L._AC_SY679_.jpg"/>
                             </div>
                             <div class="title">
-                                <em>` + log.title + `</em> `+ log.year +`
+                                <em>` + log.title + `</em> (2008)
                             </div>
                             <div id="stars">
                                 ` + stars + `
