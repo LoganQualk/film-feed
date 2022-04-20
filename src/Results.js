@@ -9,7 +9,7 @@ const compute5StarRating = (value) => {
 };
 
 const Results = () => {
-    const { changePage, allResults, setMovieId, userSearchInput, setIdAndLoad } = useContext(GlobalContext);
+    const { allResults, userSearchInput, setIdAndLoad } = useContext(GlobalContext);
 
     return (
         <>

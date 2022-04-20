@@ -1,12 +1,10 @@
-import logs from "./tempData/logs";
 import { useParams } from "react-router-dom";
 import Header from "./components/Header";
 import { useContext } from "react";
 import { GlobalContext } from "./context/GlobalContext";
-import { generateID } from "./tools/generateID";
 
 const SpecificList = () => {
-    const { lists, setLists, logs, setLogs, setModalPage, setModalVisible, 
+    const { lists, setLists, logs, setModalPage, setModalVisible, 
         setMovieName, setMovieId, setMovieYr, setMovieUrl } = useContext(GlobalContext);
 
     const currentList = useParams().listName;

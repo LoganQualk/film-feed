@@ -15,7 +15,7 @@ export const GlobalContext = createContext({
     setSpecificLogs: () => { }, setUserSearchInput: () => { },
     createPost: () => { },
     createComment: () => { },
-    currentUser: ""
+    currentUser: "", setCurrentUser: () => {}
 });
 
 export const GlobalProvider = ({ children }) => {
@@ -156,7 +156,7 @@ export const GlobalProvider = ({ children }) => {
         setIdAndLoad,
         attachResults, setAttachResults,
         displayAttachResults,
-        currentUser
+        currentUser, setCurrentUser
     };
 
     return (

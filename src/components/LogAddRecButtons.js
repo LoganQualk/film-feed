@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Button from 'react-bootstrap/Button';
 import { GlobalContext } from "../context/GlobalContext";
 

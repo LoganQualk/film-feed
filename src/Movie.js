@@ -24,7 +24,7 @@ const Movie = () => {
             setId(movieId);
             setLoaded(false);
         }
-    }, [movieId]);
+    }, [movieId, id]);
     
     const detailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}`;
     async function httpGetDetails() {
@@ -52,9 +52,9 @@ const Movie = () => {
             setMovieUrl(`https://image.tmdb.org/t/p/original/${response.poster_path}`);
             
             let responseGenres = [];
-            response.genres.map((genreObj) => {
-                responseGenres.push(genreObj.name);
-            });
+            response.genres.map((genreObj) => 
+                responseGenres.push(genreObj.name)
+            );
             setGenres(responseGenres);
 
             setMovieName(response.title);
@@ -68,10 +68,12 @@ const Movie = () => {
         httpGetCredits().then((response) => {
             let responseDirectors = [];
             response.crew.filter(
-                            (crewObj) => {if(crewObj.job === "Director") return true;})
-                         .map((directorObj) => {
-                            responseDirectors.push(directorObj.name);
-                         });
+                            (crewObj) => {if(crewObj.job === "Director") {
+                                return true;
+                            } else return false})
+                         .map((directorObj) => 
+                            responseDirectors.push(directorObj.name)
+                         );
             setDirectors(responseDirectors);
 
             let responseCast = response.cast.splice(0, 4)
@@ -85,7 +87,7 @@ const Movie = () => {
             <div className="detailsContainer">
                 {details ? 
                 (<div className="flexRow">
-                    <img className="detailsPoster" src={poster} />
+                    <img className="detailsPoster" src={poster} alt='Poster'/>
 
                     <div className="flexCol detailsInfo">
                         <div className="detailsTitle">{details.title}{details.release_date ? (<span className="detailsYr">({details.release_date.split("-")[0]})</span>) : ''}</div>
@@ -107,7 +109,7 @@ const Movie = () => {
             <div className="detailsDiaryContainer flex flexCol">
                 <h1 className="detailsDiaryTitle">My Diary</h1>
                 <div className="detailsLogs">
-                    {specificLogs.filter((log) => {if(log.title == null || log.title == details.title) return true;})
+                    {specificLogs.filter((log) => {if(log.title === null || log.title === details.title) return true; else return false})
                                  .sort(function(a, b) {return new Date(b.date) - new Date(a.date);})
                                  .map((log) => 
                         (<div className="detailsLogContainer" key={log.date}>

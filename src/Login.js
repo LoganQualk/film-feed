@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 const Login = () => {
 
-    const { changePage, setModalPage, setModalVisible } = useContext(GlobalContext);
+    const { changePage } = useContext(GlobalContext);
     // const state = useContext(GlobalContext)
 
     return (

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function useLocalState(key, initial) {
   const [value, setValue] = useState(() => {
-    if (typeof window !== undefined && window.localStorage) {
+    if (window !== undefined && window.localStorage) {
       const saved = window.localStorage.getItem(key);
       if (saved) {
         return JSON.parse(saved);

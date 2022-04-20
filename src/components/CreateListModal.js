@@ -5,7 +5,7 @@ import { generateID } from "../tools/generateID";
 
 
 const CreateListModal = () => {
-    const { movieName, movieId, movieYr, movieUrl, setModalPage, setModalVisible, lists, setLists } = useContext(GlobalContext);
+    const { movieName, movieYr, movieUrl, setModalPage, setModalVisible, lists, setLists } = useContext(GlobalContext);
     const [listName, setListName] = useState(null);
     const [listDescription, setListDescription] = useState(null);
 

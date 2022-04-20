@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import Header from './components/Header';
-import LogMovieModal from './components/LogMovieModal'
+// import LogMovieModal from './components/LogMovieModal'
 import { GlobalContext } from "./context/GlobalContext";
 
 const monthDict = {0:'January',
@@ -95,8 +95,8 @@ const Diary = () => {
 
     const sortDiary = () => {
     };
-    const logMovie = () =>{
-    };
+    // const logMovie = () =>{
+    // };
     const deleteEntry = () =>{
         console.log("COOCH");
         //document.getElementById(id).remove();
@@ -118,9 +118,9 @@ const Diary = () => {
                     <i className="fa fa-caret-down"></i>
                 </button>
                 <div className="diary-dropdown-content" id="myDropdown">
-                    <a href="#" onClick={sortDiary()}>Watch Date</a>
-                    <a href="#" onClick={sortDiary()}>Your Rating</a>
-                    <a href="#" onClick={sortDiary()}>Rewatch Count</a>
+                    <p onClick={sortDiary()}>Watch Date</p>
+                    <p href="#" onClick={sortDiary()}>Your Rating</p>
+                    <p href="#" onClick={sortDiary()}>Rewatch Count</p>
                 </div>
                 </div>
                 <input type="text" placeholder="Search for movies"/> 
@@ -136,7 +136,7 @@ const Diary = () => {
                                 20
                             </div>
                             <div>
-                                <img className = "poster" src="https://deadline.com/wp-content/uploads/2019/01/do-the-right-thing-us-poster-1989-universal-pictures-spike-lee-danny-aiello-file-reference-32509-129tha-pmadf7-e1547846486255.jpg"/>
+                                <img className = "poster" src="https://deadline.com/wp-content/uploads/2019/01/do-the-right-thing-us-poster-1989-universal-pictures-spike-lee-danny-aiello-file-reference-32509-129tha-pmadf7-e1547846486255.jpg" alt="Poster"/>
                             </div>
                             <div className="title">
                                 <em>Do The Right Thing</em> (1989)

@@ -9,7 +9,7 @@ const CreatePostBox = () => {
     const { createPost, setModalPage, setModalVisible } = useContext(GlobalContext);
 
     const handleTextChange = (userText) => {
-        if (userText.length == 0) {
+        if (userText.length === 0) {
             setNoText(true);
             setText('');
         } else {
@@ -19,7 +19,7 @@ const CreatePostBox = () => {
     }
 
     const handlePost = () => {
-        if (text.length != 0) {
+        if (text.length !== 0) {
             createPost({
                 "id": generateID(),
                 "user": "Penny Smith",
