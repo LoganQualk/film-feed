@@ -19,7 +19,7 @@ const Post = ({ data }) => {
     const [surpriseEmojiSelected, setSurpriseEmojiSelected] = useState(false);
     const [thumbsDownEmojiSelected, setThumbsDownEmojiSelected] = useState(false);
 
-    const { createComment, posts, setPosts } = useContext(GlobalContext);
+    const { createComment } = useContext(GlobalContext);
     const commentBoxRef = useRef(null);
 
     const displayComments = (comments, level) => {
