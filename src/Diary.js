@@ -22,13 +22,22 @@ const Diary = () => {
     const {logs} = useContext(GlobalContext);
     
     const logData = Object.entries(logs);
-    const months = [1]; // track the months already in diary
+    const months = [{"February2022":{"MonthYear": "February 2022",
+                        "Month": 1,
+                    "Year": 2022}}]; // track the months already in diary
+    const monthYears = ["February2022"]
+    
     const updateMonths = () => {
         for(let i = 0; i < logData.length; i++){
-            if(!months.includes(new Date(logData[i][1].date).getMonth())){
-                months.push(new Date(logData[i][1].date).getMonth());
-                let month = monthDict[new Date(logData[i][1].date).getMonth()];
-                let monthYear = month + " " + new Date(logData[i][1].date).getFullYear()
+            let month = monthDict[new Date(logData[i][1].date).getMonth()];
+            let monthYear = month + " " + new Date(logData[i][1].date).getFullYear()
+
+            if(!monthYears.includes(monthYear)){
+                monthYears.push(monthYear);
+                months.push({mothYear: {"MonthYear": monthYear,
+                    "Month": new Date(logData[i][1].date).getMonth(),
+                    "Year": new Date(logData[i][1].date).getFullYear()}});
+
                 let monthDiv = document.createElement("div")
                 monthDiv.innerHTML = `<div id="` + month + `" class="month-header">
                                         <p>` + monthYear + `</p>
@@ -40,6 +49,7 @@ const Diary = () => {
                 diaryContent.prepend(monthDiv);
             }
         }
+        
         for (var i in logData){
             let entry = ``
             let log = logData[i][1];
@@ -67,10 +77,10 @@ const Diary = () => {
                             ` + new Date(log.date).getDate() + `
                             </div>
                             <div>
-                                <img class = "poster" src="https://m.media-amazon.com/images/I/61zBUhQj22L._AC_SY679_.jpg"/>
+                                <img class = "poster" src="` + log.imageUrl + `"/>
                             </div>
                             <div class="title">
-                                <em>` + log.title + `</em> (2008)
+                                <em>` + log.title + `</em> (` + log.year + `)
                             </div>
                             <div id="stars">
                                 ` + stars + `
