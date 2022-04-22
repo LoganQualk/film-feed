@@ -10,9 +10,9 @@ import axios from "axios";
 export const GlobalContext = createContext({
     changePage: () => { },
     posts: [], lists: [], logs: [], movieId: 0, movieName: null, movieYr: 0, movieUrl: null,
-    specificLogs: [], allResults: [], userSearchInput: null,
+    specificLogs: [], tempAllResults: [], allResults: [], userSearchInput: null,
     setPosts: () => { }, setLists: () => { }, setLogs: () => { }, setMovieId: () => { }, setMovieName: () => { }, setMovieYr: () => { }, setMovieUrl: () => { },
-    setSpecificLogs: () => { }, setUserSearchInput: () => { },
+    setSpecificLogs: () => { }, setUserSearchInput: () => { }, 
     createPost: () => { },
     createComment: () => { },
     currentUser: "", setCurrentUser: () => {}
@@ -37,6 +37,7 @@ export const GlobalProvider = ({ children }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [modalPage, setModalPage] = useState(null);
     let [results, setResults] = useState([]);
+    let [tempAllResults, setTempAllResults] = useState([]);
     let [allResults, setAllResults] = useState([]);
     let [userSearchInput, setUserSearchInput] = useState(null);
     let [attachResults, setAttachResults] = useState([]);
@@ -86,7 +87,7 @@ export const GlobalProvider = ({ children }) => {
             return;
         } else {
             httpGetMovies(searchInput).then((apiResults) => {
-                setAllResults(apiResults);
+                setTempAllResults(apiResults);
                 let shortenedResults = apiResults.slice(0, 10);
                 shortenedResults.push(
                     {
@@ -121,8 +122,20 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    async function httpGetCredits(idInput) {
+        const creditsUrl = `https://api.themoviedb.org/3/movie/${idInput}/credits?api_key=${process.env.REACT_APP_API_KEY}`;
+
+        return await axios({
+            method: "GET",
+            url: creditsUrl,
+        }).then((response) => {
+            return response.data;
+        });
+    }
+
     function setIdAndLoad(id) {
         if(id === "More results") {
+            setAllResults(tempAllResults);
             setUserSearchInput(document.getElementById("searchInput").value);
             changePage("searchResults");
         } else {
@@ -132,6 +145,7 @@ export const GlobalProvider = ({ children }) => {
         }
         setResults([]);
     }
+    
 
     const globalState = {
         changePage,
@@ -151,6 +165,7 @@ export const GlobalProvider = ({ children }) => {
         results, setResults,
         allResults,
         userSearchInput, setUserSearchInput,
+        httpGetCredits,
         httpGetMovies,
         displayResults,
         setIdAndLoad,

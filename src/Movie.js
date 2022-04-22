@@ -7,7 +7,7 @@ import LogAddRecButtons from './components/LogAddRecButtons';
 
 
 const Movie = () => {
-    const { setMovieName, setMovieYr, setMovieUrl, specificLogs } = useContext(GlobalContext);
+    const { setMovieName, setMovieYr, setMovieUrl, specificLogs, httpGetCredits } = useContext(GlobalContext);
 
     const [loaded, setLoaded] = useState(false);
     const [details, setDetails] = useState([]);
@@ -35,15 +35,6 @@ const Movie = () => {
             return response.data;
         });
     }
-    const creditsUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_API_KEY}`;
-    async function httpGetCredits() {
-        return await axios({
-            method: "GET",
-            url: creditsUrl,
-        }).then((response) => {
-            return response.data;
-        });
-    }
 
     if(!loaded) {
         httpGetDetails().then((response) => {
@@ -65,7 +56,7 @@ const Movie = () => {
             setLoaded(true);
         });
 
-        httpGetCredits().then((response) => {
+        httpGetCredits(movieId).then((response) => {
             let responseDirectors = [];
             response.crew.filter(
                             (crewObj) => {if(crewObj.job === "Director") {
@@ -91,10 +82,10 @@ const Movie = () => {
 
                     <div className="flexCol detailsInfo">
                         <div className="detailsTitle">{details.title}{details.release_date ? (<span className="detailsYr">({details.release_date.split("-")[0]})</span>) : ''}</div>
-                        {directors ? (<div className="detailsTxt">Directed by: <span className="detailsFocus">{String(directors)}</span></div>) : ''}
+                        {directors ? (<div className="detailsTxt">Directed by: <span className="detailsFocus">{directors.length !== 0 ? String(directors).replace(/,/g, ', ') : <em>Unknown</em>}</span></div>) : ''}
                         {details.runtime ? (<div className="detailsTxt">Runtime: <span className="detailsFocus">{details.runtime} min</span></div>) : ''}
-                        {genres ? (<div className="detailsTxt txtPadding">Genres: {genres.map((g) => (<span className="genreContainer" key={g}><span className="detailsGenre">{g}</span></span>))}</div>) : ''}
-                        {cast ? (<div className="detailsTxt txtPadding">Cast: {String(cast).replace(/,/g, ', ')}</div>) : ''}
+                        {genres ? (<div className="detailsTxt txtPadding">Genres: {genres.length !== 0 ? genres.map((g) => (<span className="genreContainer" key={g}><span className="detailsGenre">{g}</span></span>)) : <em>Unknown</em>}</div>) : ''}
+                        {cast ? (<div className="detailsTxt txtPadding">Cast: {cast.length !== 0 ? String(cast).replace(/,/g, ', ') : <em>Unknown</em>}</div>) : ''}
                         <br />
                         <div className="detailsFocus">{details.overview}</div>
                     </div> 

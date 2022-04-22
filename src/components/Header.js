@@ -1,56 +1,11 @@
 import { useContext } from 'react';
-// import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import { GlobalContext } from '../context/GlobalContext';
 
-// const searchUrl =
-//   "https://api.themoviedb.org/3/search/movie?api_key=" +
-//   process.env.REACT_APP_API_KEY +
-//   "&query=";
-
 
 const Header = () => {
     const { changePage, results, displayResults, setIdAndLoad } = useContext(GlobalContext);
-    // let [results, setResults] = useState([]);
-
-    // async function httpGetMovies(title) {
-    //     if (document.getElementById("searchInput").value) {
-    //         let response = await axios({
-    //         method: "GET",
-    //         url: searchUrl + title,
-    //         });
-    //         return response.data.results;
-    //     }
-    //     return null;
-    // }
-
-    // function displayResults(searchInput) {
-    //     if(searchInput.length === 0 ) {
-    //         setResults([]);
-    //         return;
-    //     } else {
-    //         httpGetMovies(searchInput).then( (apiResults) => {
-    //                 let shortenedResults = apiResults.splice(0,10);
-    //                 shortenedResults.push(
-    //                     {
-    //                         id: 'More results',
-    //                         title: 'Click for more results...',
-    //                         release_date: null,
-    //                     }
-    //                 );
-    //                 setResults(shortenedResults);
-    //             }
-    //         );
-    //     }
-    // }
-
-    // function setIdAndLoad(id) {
-    //     setMovieId(id);
-    //     changePage(`movie=${id}`, id);
-    //     document.getElementById("searchInput").value = '';
-    //     setResults([]);
-    // }
 
     return ( 
         <div className="headerContainer">
@@ -112,7 +67,7 @@ const Header = () => {
             </div>
 
             <div className="headerSubtitle flex justifyCenter">
-                <span className="light-purple-text">Log movies in your diary for your eyes only. </span>
+                <span className="light-purple-text">Log watched movies in your diary for your eyes only. </span>
                 <span className="orange-text">Write posts to keep your friends updated. </span>
                 <span className="green-text">Make review posts for the world to see your critical perspective. </span>
                 <span className="light-blue-text">FilmFeed is the place for all your movie-discussing needs.</span>
