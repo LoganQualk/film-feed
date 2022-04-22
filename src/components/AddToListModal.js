@@ -4,19 +4,29 @@ import { Button } from "react-bootstrap";
 
 
 const AddToListModal = () => {
-    const { movieName, movieYr, movieUrl, setModalVisible, setModalPage, lists } = useContext(GlobalContext);
+    const { movieName, movieYr, movieUrl, setModalVisible, setModalPage, lists, setLists } = useContext(GlobalContext);
 
     const [listPicked, setListPicked] = useState(null);
 
     const handleSubmit = (input) => {
         if(listPicked !== "createList") {
-            lists.find((listObj) => listObj.name === listPicked)["attachedMovies"]
-                 .push({
-                    "name": movieName,
-                    "year": movieYr,
-                    "imageUrl": movieUrl,
-                    "log": null,
-                 });
+            let allButPickedLists = lists.filter((listObj) => {if(listObj.name === listPicked) {return false;} else {return true;}});
+            let updatedList = lists.find((listObj) => listObj.name === listPicked);
+            setLists([...allButPickedLists, {
+                "name": updatedList.name,
+                "id": updatedList.id,
+                "description": updatedList.description,
+                "date": updatedList.date,
+                "attachedMovies": [...updatedList.attachedMovies,
+                    {
+                        "name": movieName,
+                        "year": movieYr,
+                        "imageUrl": movieUrl,
+                        "log": null
+                    },
+                ],
+            }
+            ]);
 
             console.log('NEW LIST: ' + JSON.stringify(lists.find((listObj) => listObj.name === listPicked)["attachedMovies"]));     
             setModalVisible(false);
