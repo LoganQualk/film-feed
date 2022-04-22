@@ -27,7 +27,7 @@ const Results = () => {
     Promise.all(directorRequests).then((response) => {
         response.forEach((responseObj) => {
             if(responseObj) {
-                if(responseObj.directors !== 0) {
+                if(responseObj.directors !== 0 && responseObj.id) {
                     document.getElementById(`${responseObj.id}Director`).innerHTML = String(responseObj.directors).replace(/,/g, ', ');
                 } else {
                     document.getElementById(`${responseObj.id}Director`).innerHTML = `<em>Unknown</em>`;

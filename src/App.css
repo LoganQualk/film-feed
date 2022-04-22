@@ -524,6 +524,7 @@ body {
   font-size: 25px;
   padding-left: 15px;
   padding-right: 15px;
+  z-index: 5;
 }
 
 #searchInput {
@@ -537,6 +538,8 @@ body {
 
 .searchResults {
   position: absolute;
+  padding-top: 45px;
+  width: 36%;
 }
 
 .autocomplete-items {
@@ -548,6 +551,14 @@ body {
   text-align: start;
   width: initial;
   z-index: 5;
+}
+
+.invalidSearch {
+  border: 4px solid red;
+}
+
+.invalidSearchText {
+  color: red;
 }
 
 /* Movie Details */

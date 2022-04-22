@@ -1,11 +1,32 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import { GlobalContext } from '../context/GlobalContext';
 
 
 const Header = () => {
-    const { changePage, results, displayResults, setIdAndLoad } = useContext(GlobalContext);
+    const { currentUser, changePage, results, displayResultsPage, displayResults, setIdAndLoad } = useContext(GlobalContext);
+    const [inputDesign, setInputDesign] = useState('searchbar');
+    const [invalid, setInvalid] = useState(false);
+
+    const handleSearch = () => {
+        if(document.getElementById("searchInput").value.length !== 0) {
+            displayResultsPage(document.getElementById("searchInput").value);
+            setIdAndLoad("More results");
+            document.getElementById("searchInput").value = '';
+        } else {
+            setInvalid(true);
+            setInputDesign('searchbar invalidSearch');
+        }
+    }
+
+    const handleInputChange = (inputChange) => {
+        displayResults(inputChange);
+        if(inputDesign !== 'searchbar') {
+            setInvalid(false);
+            setInputDesign('searchbar');
+        }
+    };
 
     return ( 
         <div className="headerContainer">
@@ -13,29 +34,36 @@ const Header = () => {
                 <span className="primary headerTitle grow">FilmFeed</span>
 
                 <span className="doubleGrow alignCenter">
-                    <input 
-                        className="searchbar"
-                        id="searchInput"
-                        placeholder="Search for a film/user..."
-                        onChange={(e) => displayResults(e.target.value)}
-                    />
-                    <div className="searchResults flexCol">
-                        {results.map((movie) => {
-                            let yrReleased = null;
-                            if(movie.release_date) {
-                                yrReleased = movie.release_date.split("-")[0];
+                    <div className="flexCol">
+                        <div className="flexRow">
+                            <input 
+                                className={inputDesign}
+                                id="searchInput"
+                                placeholder="Search for a film/user..."
+                                onChange={(e) => handleInputChange(e.target.value)}
+                            />
+
+                            <Button id="searchButton" onClick={handleSearch}>Search</Button>
+                        </div>
+                        <div className="searchResults flexCol">
+                            {results.map((movie) => {
+                                let yrReleased = null;
+                                if(movie.release_date) {
+                                    yrReleased = movie.release_date.split("-")[0];
+                                }
+                                return (
+                                    <button key={movie.id} 
+                                            className='autocomplete-items' 
+                                            onClick={() => setIdAndLoad(movie.id)}>
+                                        {movie.title} {yrReleased ? '('+yrReleased+')' : ''}
+                                    </button>
+                                )
+                            })
                             }
-                            return (
-                                <button key={movie.id} 
-                                        className='autocomplete-items' 
-                                        onClick={() => setIdAndLoad(movie.id)}>
-                                    {movie.title} {yrReleased ? '('+yrReleased+')' : ''}
-                                </button>
-                            )
-                        })
-                        }
+                        </div>
+                        {invalid ? <div className="invalidSearchText">Must have text to search</div> : ''}
                     </div>
-                    <Button id="searchButton">Search</Button>
+                    
                 </span>
 
                 <span className="userContainer grow flexRow justifyBetween">
@@ -52,7 +80,7 @@ const Header = () => {
                     </Dropdown>
                     <Dropdown>
                         <Dropdown.Toggle variant="warning" className="profileStyle rounded" id="dropdown-penny">
-                            Penny Smith
+                            {currentUser}
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>

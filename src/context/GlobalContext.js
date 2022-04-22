@@ -12,7 +12,7 @@ export const GlobalContext = createContext({
     posts: [], lists: [], logs: [], movieId: 0, movieName: null, movieYr: 0, movieUrl: null,
     specificLogs: [], tempAllResults: [], allResults: [], userSearchInput: null,
     setPosts: () => { }, setLists: () => { }, setLogs: () => { }, setMovieId: () => { }, setMovieName: () => { }, setMovieYr: () => { }, setMovieUrl: () => { },
-    setSpecificLogs: () => { }, setUserSearchInput: () => { }, 
+    setSpecificLogs: () => { }, setUserSearchInput: () => { }, displayResultsPage: () => { },
     createPost: () => { },
     createComment: () => { },
     currentUser: "", setCurrentUser: () => {}
@@ -102,6 +102,12 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    function displayResultsPage(searchInput) {
+        httpGetMovies(searchInput).then((apiResults) => {
+            setTempAllResults(apiResults);
+        });
+    }
+
     function displayAttachResults(searchInput) {
         if (searchInput.length === 0) {
             setAttachResults([]);
@@ -167,7 +173,7 @@ export const GlobalProvider = ({ children }) => {
         userSearchInput, setUserSearchInput,
         httpGetCredits,
         httpGetMovies,
-        displayResults,
+        displayResults, displayResultsPage, 
         setIdAndLoad,
         attachResults, setAttachResults,
         displayAttachResults,
