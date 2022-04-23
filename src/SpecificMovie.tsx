@@ -8,6 +8,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Movie from './Movie';
+import MovieReviews from './MovieReviews';
 import Header from './components/Header';
 
 interface TabPanelProps {
@@ -64,7 +65,7 @@ export default function BasicTabs() {
         <Movie />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <MovieReviews />
       </TabPanel>
     </Box>
 </div>
