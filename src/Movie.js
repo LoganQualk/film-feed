@@ -125,7 +125,7 @@ const Movie = () => {
                                     <div></div>}
                                 </div>
                                 
-                                <div className="detailsLogEntry">{log.entry}</div>
+                                <div className="detailsLogEntry">{log.text}</div>
                             </div>
                         </div>)
                     )}

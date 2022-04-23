@@ -42,19 +42,18 @@ const LogMovieModal = () => {
         let newLog = {
                         "title": movieName,
                         "date": date,
-                        "entry": logText,
+                        "text": logText,
                         "rating": logRating,
                         "year": movieYr,
                         "imageUrl": movieUrl,
                     };
 
-        oldLogs.push(newLog);
-        setSpecificLogs(oldLogs);
+        // oldLogs.push(newLog);
+        setSpecificLogs([...specificLogs, newLog]);
 
         // This code will add it to the logs data instead of specificLogs, used in specific lists
         let newLogs = logs;
         newLog.text = logText;
-        delete newLog["entry"];
         newLog.date = new Date(newLog.date);
         const logId = generateID();
         newLogs[logId] = newLog;
@@ -69,7 +68,7 @@ const LogMovieModal = () => {
             }
         }
         setLists([...newLists])
-        console.log('NEW LOGDATA: ' + JSON.stringify(oldLogs));
+        console.log('NEW LOGDATA: ' + JSON.stringify(logs));
 
         setModalVisible(false);
     };
