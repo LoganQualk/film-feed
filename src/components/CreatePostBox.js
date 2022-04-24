@@ -86,7 +86,7 @@ const CreatePostBox = () => {
                     <Dropdown.Toggle split id="dropdown-split-basic" />
 
                     <Dropdown.Menu>
-                        {postTexts.filter(postText => postText !== postButtonText).map(postText => <Dropdown.Item onClick={() => setPostButtonText(postText)}>{postText}</Dropdown.Item>)}
+                        {postTexts.filter(postText => postText !== postButtonText).map(postText => <Dropdown.Item key={postText} onClick={() => setPostButtonText(postText)}>{postText}</Dropdown.Item>)}
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
