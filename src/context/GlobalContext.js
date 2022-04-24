@@ -11,8 +11,10 @@ export const GlobalContext = createContext({
     changePage: () => { },
     posts: [], lists: [], logs: [], movieId: 0, movieName: null, movieYr: 0, movieUrl: null,
     specificLogs: [], tempAllResults: [], allResults: [], userSearchInput: null, reviews: [], tabValue: 0,
+    attachedModalItems: [],
     setPosts: () => { }, setLists: () => { }, setLogs: () => { }, setMovieId: () => { }, setMovieName: () => { }, setMovieYr: () => { }, setMovieUrl: () => { },
-    setSpecificLogs: () => { }, setUserSearchInput: () => { }, displayResultsPage: () => { }, setReviews: () => { }, setTabValue: (value: number) => { },
+    setSpecificLogs: () => { }, setUserSearchInput: () => { }, displayResultsPage: () => { }, setReviews: () => { }, setTabValue: (value) => { },
+    setAttachedModalItems: () => { },
     createPost: () => { },
     createComment: () => { },
     currentUser: "", setCurrentUser: () => {}
@@ -31,6 +33,7 @@ export const GlobalProvider = ({ children }) => {
     const [specificLogs, setSpecificLogs] = useLocalState("specificLogs", specificLogsData);
     const [reviews, setReviews] = useLocalState("reviews", []);
     const [tabValue, setTabValue] = useLocalState("tabValue", 0);
+    const [attachedModalItems, setAttachedModalItems] = useLocalState("attachedModalItems", []);
 
     const [currentUser, setCurrentUser] = useLocalState("currentUser", "Sam Smith")
 
@@ -178,6 +181,7 @@ export const GlobalProvider = ({ children }) => {
         httpGetMovies,
         displayResults, displayResultsPage, 
         tabValue, setTabValue,
+        attachedModalItems, setAttachedModalItems,
         reviews, setReviews,
         setIdAndLoad,
         attachResults, setAttachResults,

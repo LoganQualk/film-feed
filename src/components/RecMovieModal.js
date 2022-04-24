@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { GlobalContext } from "../context/GlobalContext";
-import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "react-bootstrap";
 import SearchIcon from '@mui/icons-material/Search';
 import friends from "../tempData/friends";
+import AttachedModalItem from "./AttachedModalItem";
 
 
 const RecMovieModal = () => {
-    const { movieName, movieId, movieYr, movieUrl, setModalVisible } = useContext(GlobalContext);
+    const { movieName, movieId, movieYr, movieUrl, setModalVisible, attachedModalItems, setAttachedModalItems } = useContext(GlobalContext);
     const [userResults, setUserResults] = useState([]);
 
     const handleChange = (input) => {
@@ -17,7 +17,9 @@ const RecMovieModal = () => {
             setUserResults(
                 friends.filter((friendObj) => {
                     if(friendObj.name.includes(input) || friendObj.username.includes(input)) {
-                        return true;
+                        if(!attachedModalItems.includes(friendObj.username)) {
+                            return true;
+                        }
                     }
                     return false;
                 })
@@ -25,9 +27,11 @@ const RecMovieModal = () => {
         }
         
     };
-
+    
     const handlePicked = (input) => {
-        document.getElementById("userRecSearch").value = input;
+        document.getElementById("userRecSearch").value = '';
+    
+        setAttachedModalItems([...attachedModalItems, input]);
         setUserResults([]);
     };
 
@@ -53,6 +57,10 @@ const RecMovieModal = () => {
                         </button>)
                     )}
                 </div>
+            </div>
+
+            <div className="flex flexCol alignCenter">
+                {attachedModalItems ? attachedModalItems.map((item) => <AttachedModalItem key={item} id={item}/>) : ''}
             </div>
             <div className="flex justifyEnd modalLogButton">
                 <Button onClick={handleSubmit}>Recommend</Button>

@@ -9,11 +9,13 @@ import RecMovieModal from "./components/RecMovieModal";
 
 const Modal = () => {
 
-    const { setModalVisible, setIsLoaded, modalPage, modalVisible } = useContext(GlobalContext);
+    const { setModalVisible, setIsLoaded, modalPage, modalVisible, setAttachedModalItems } = useContext(GlobalContext);
     const closeModal = () => {
         setModalVisible(false);
         // setModalData(null);
         setIsLoaded(false);
+        setAttachedModalItems([]);
+        document.getElementById("userRecSearch").value = '';
     }
     const modalStyle = {
         display: modalVisible ? "block" : "none"

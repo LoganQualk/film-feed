@@ -812,6 +812,35 @@ body {
   color: var(--follower-text);
 }
 
+.attachedtoModal {
+  color: var(--primary);
+  background-color: var(--quaternary);
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  border: none;
+}
+
+.deleteButton {
+  background-color: var(--alarm);
+  padding: 8px;
+  border: none;
+  border-radius: 15px;
+}
+
+.deleteButtonContainerModal {
+  padding-left: 10px;
+}
+
+.userCircleModal {
+  color: var(--light-color-text);
+  padding-right: 10px;
+}
+
+.attachedModalContainer {
+  padding: 15px;
+}
+
 /*Diary Styling*/
   .diary-navbar {
     overflow: hidden;
