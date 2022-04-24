@@ -28,7 +28,9 @@ const Movie = () => {
     if(!loaded) {
         httpGetDetails(movieId).then((response) => {
             setDetails(response);
-            setPoster(`https://image.tmdb.org/t/p/original/${response.poster_path}`);
+
+            let responsePoster = response.poster_path ? `https://image.tmdb.org/t/p/original/${response.poster_path}` : null;
+            setPoster(responsePoster);
             setMovieUrl(`https://image.tmdb.org/t/p/original/${response.poster_path}`);
             
             let responseGenres = [];
@@ -67,7 +69,7 @@ const Movie = () => {
             <div className="detailsContainer">
                 {details ? 
                 (<div className="flexRow">
-                    <img className="detailsPoster" src={poster} alt='Poster'/>
+                    { poster ? <img className="detailsPoster" src={poster} alt='Poster'/> : <div className="detailsNoPoster">No Poster</div>}
 
                     <div className="flexCol detailsInfo">
                         <div className="detailsTitle">{details.title}{details.release_date ? (<span className="detailsYr">({details.release_date.split("-")[0]})</span>) : ''}</div>

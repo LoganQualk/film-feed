@@ -52,7 +52,7 @@ const SpecificPostBox = () => {
             <div className="flexRow alignCenter">
                 <div className='flexRow wrap'>
                     <div className='posterContainer'>
-                        <img src={movieUrl} alt={movieName + " Poster"} />
+                        {!movieUrl.includes('null') ? <img src={movieUrl} alt={movieName + " Poster"} /> : <div className="searchNoPoster">No Poster</div>}
                         <p title={movieName}><strong>{movieName}</strong></p>
                     </div>
                 </div>

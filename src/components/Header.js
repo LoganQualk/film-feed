@@ -6,12 +6,13 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 
 const Header = () => {
-    const { currentUser, changePage, results, displayResultsPage, displayResults, setIdAndLoad } = useContext(GlobalContext);
+    const { currentUser, changePage, results, displayResultsPage, displayResults, setIdAndLoad, setTenPageResults} = useContext(GlobalContext);
     const [inputDesign, setInputDesign] = useState('searchbar');
     const [invalid, setInvalid] = useState(false);
 
     const handleSearch = () => {
         if(document.getElementById("searchInput").value.length !== 0) {
+            setTenPageResults([]);
             displayResultsPage(document.getElementById("searchInput").value);
             setIdAndLoad("More results");
             document.getElementById("searchInput").value = '';

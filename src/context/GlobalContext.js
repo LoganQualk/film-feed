@@ -11,10 +11,10 @@ export const GlobalContext = createContext({
     changePage: () => { },
     posts: [], lists: [], logs: [], movieId: 0, movieName: null, movieYr: 0, movieUrl: null,
     specificLogs: [], tempAllResults: [], allResults: [], userSearchInput: null, reviews: [], tabValue: 0,
-    attachedModalItems: [],
+    attachedModalItems: [], tenPageResults: [],
     setPosts: () => { }, setLists: () => { }, setLogs: () => { }, setMovieId: () => { }, setMovieName: () => { }, setMovieYr: () => { }, setMovieUrl: () => { },
     setSpecificLogs: () => { }, setUserSearchInput: () => { }, displayResultsPage: () => { }, setReviews: () => { }, setTabValue: (value) => { },
-    setAttachedModalItems: () => { },
+    setAttachedModalItems: () => { }, setTenPageResults: () => { }, httpGetTenPageMovies: () => { }, 
     createPost: () => { },
     createComment: () => { },
     currentUser: "", setCurrentUser: () => {}
@@ -36,6 +36,7 @@ export const GlobalProvider = ({ children }) => {
     const [attachedModalItems, setAttachedModalItems] = useLocalState("attachedModalItems", []);
     const [currentListId, setCurrentListId] = useLocalState("currentListId", null);
     const [attachMovieLocation, setAttachMovieLocation] = useLocalState("attachMovieLocation", "");
+    const [tenPageResults, setTenPageResults] = useLocalState("tenPageResults", []);
 
     const [currentUser, setCurrentUser] = useLocalState("currentUser", "Sam Smith")
 
@@ -88,6 +89,19 @@ export const GlobalProvider = ({ children }) => {
         return null;
     }
 
+    async function httpGetTenPageMovies(title, pageNum) {
+        if (title) {
+            let allSearchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${title}&page=${pageNum}`
+            let allResponse = await axios({
+                method: "GET",
+                url: allSearchUrl,
+            });
+            setAllResults(allResponse.data.results);
+            return allResponse.data.results;
+        }
+        return null;
+    }
+
     function displayResults(searchInput) {
         if (searchInput.length === 0) {
             setResults([]);
@@ -112,7 +126,7 @@ export const GlobalProvider = ({ children }) => {
     function displayResultsPage(searchInput) {
         httpGetMovies(searchInput).then((apiResults) => {
             setTempAllResults(apiResults);
-        });
+        }); 
     }
 
     function displayAttachResults(searchInput) {
@@ -191,9 +205,11 @@ export const GlobalProvider = ({ children }) => {
         userSearchInput, setUserSearchInput,
         httpGetCredits,
         httpGetMovies,
+        httpGetTenPageMovies, 
         displayResults, displayResultsPage, 
         tabValue, setTabValue,
         attachedModalItems, setAttachedModalItems,
+        tenPageResults, setTenPageResults,
         reviews, setReviews,
         setIdAndLoad,
         attachResults, setAttachResults,

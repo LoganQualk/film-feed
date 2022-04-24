@@ -60,7 +60,7 @@ const Post = ({ data }) => {
                         <div className='flexRow wrap'>
                             {data.attachedMovies.map((movie, index) =>
                                 <div key={index} className='posterContainer'>
-                                    <img src={movie.imageUrl} alt={movie.name + " Poster"} />
+                                    {movie.imageUrl && !movie.imageUrl.includes('null') ? <img src={movie.imageUrl} alt={movie.name + " Poster"} /> : <div className="searchNoPoster">No Poster</div>}
                                     <p title={movie.name}><strong>{movie.name}</strong></p>
                                 </div>
                             )}

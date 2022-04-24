@@ -658,6 +658,15 @@ body {
   width: 300px;
 }
 
+.detailsNoPoster {
+  background-color: grey;
+  width: 300px;
+  padding-top: 120px;
+  font-size: 50px;
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
 .detailsInfo {
   padding-left: 50px;
   padding-right: 50px;
@@ -752,6 +761,10 @@ body {
   width: 70px;
 }
 
+.reviewsNoPoster {
+  width: 70px;
+}
+
 /* Search Results Page */
 .resultsContainer {
   padding-bottom: 30px;
@@ -791,6 +804,22 @@ body {
 .searchDirector {
   color: var(--dark-purple-text);
   text-align: start;
+}
+
+.searchDropdownContainer {
+  /* padding: 5px; */
+}
+
+.searchDropdown {
+  padding: 5px;
+}
+
+.searchNoPoster {
+  width: 70px;
+  height: 110px;
+  background-color: grey;
+  padding-top: 20px;
+  padding-left: 10px;
 }
 
 /* Modals */
