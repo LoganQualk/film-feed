@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import { GlobalContext } from '../context/GlobalContext';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 
 const Header = () => {
@@ -69,7 +70,7 @@ const Header = () => {
                 <span className="userContainer grow flexRow justifyBetween">
                     <Dropdown>
                         <Dropdown.Toggle variant="danger" className="bellStyle rounded" id="dropdown-bell">
-                            Bell
+                            <NotificationsNoneIcon />
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
