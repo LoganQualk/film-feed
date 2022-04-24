@@ -5,11 +5,13 @@ import { GlobalContext } from "./context/GlobalContext";
 
 const SpecificList = () => {
     const { lists, setLists, logs, setModalPage, setModalVisible, 
-        setMovieName, setMovieId, setMovieYr, setMovieUrl } = useContext(GlobalContext);
+        setMovieName, setMovieId, setMovieYr, setMovieUrl, 
+        setCurrentListId, setAttachMovieLocation, displayAttachResults } = useContext(GlobalContext);
 
     const currentList = useParams().listName;
 
     const listData = lists.find(list => list.name === currentList);
+    console.log(listData.id);
 
     return (
         <>
@@ -21,6 +23,9 @@ const SpecificList = () => {
                             <div className="flexRow justifyBetween alignCenter">
                                 <h1>{listData.name}</h1>
                                 <button className="defaultButton bg-quaternary" onClick={() => {
+                                    setCurrentListId(listData.id);
+                                    displayAttachResults("");
+                                    setAttachMovieLocation("list");
                                     setModalPage("attachMovie");
                                     setModalVisible(true);
                                 }}>Add to list</button>
