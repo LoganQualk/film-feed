@@ -2,11 +2,14 @@
 import { useContext, useState } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import { generateID } from "../tools/generateID";
+import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from "@mui/material/ButtonGroup";
 
 const CreatePostBox = () => {
     const [text, setText] = useState('');
     const [noText, setNoText] = useState(false);
-    const { createPost, setModalPage, setModalVisible } = useContext(GlobalContext);
+    const { createPost, setModalPage, setModalVisible, currentUser } = useContext(GlobalContext);
 
     const handleTextChange = (userText) => {
         if (userText.length === 0) {
@@ -18,11 +21,14 @@ const CreatePostBox = () => {
         }
     }
 
+    const postTexts = ["Post to friends", "Post to public"]
+    const [postButtonText, setPostButtonText] = useState(postTexts[0])
+
     const handlePost = () => {
         if (text.length !== 0) {
             createPost({
                 "id": generateID(),
-                "user": "Penny Smith",
+                "user": currentUser,
                 "date": new Date().toString(),
                 "attachedMovies": [], // we will handle this later
                 "text": text,
@@ -74,9 +80,15 @@ const CreatePostBox = () => {
                     setModalPage("attachMovie");
                     setModalVisible(true);
                 }}>Attach Movie</button>
-                <button id="postButton" className="defaultButton bg-quaternary" onClick={() => handlePost()}>
-                    Post
-                </button>
+                <Dropdown as={ButtonGroup}>
+                    <Button onClick={() => handlePost()}>{postButtonText}</Button>
+
+                    <Dropdown.Toggle split id="dropdown-split-basic" />
+
+                    <Dropdown.Menu>
+                        {postTexts.filter(postText => postText !== postButtonText).map(postText => <Dropdown.Item onClick={() => setPostButtonText(postText)}>{postText}</Dropdown.Item>)}
+                    </Dropdown.Menu>
+                </Dropdown>
             </div>
         </div>
     );
