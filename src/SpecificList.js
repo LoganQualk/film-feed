@@ -6,12 +6,11 @@ import { GlobalContext } from "./context/GlobalContext";
 const SpecificList = () => {
     const { lists, setLists, logs, setModalPage, setModalVisible, 
         setMovieName, setMovieId, setMovieYr, setMovieUrl, 
-        setCurrentListId, setAttachMovieLocation, displayAttachResults } = useContext(GlobalContext);
+        setCurrentListId, setAttachMovieLocation, displayAttachResults, changePage } = useContext(GlobalContext);
 
     const currentList = useParams().listName;
 
     const listData = lists.find(list => list.name === currentList);
-    console.log(listData.id);
 
     return (
         <>
@@ -40,7 +39,7 @@ const SpecificList = () => {
                                             <img className="listPoster" src={movie.imageUrl} alt={movie.name + " Poster"} />
                                             <div className="flexCol justifyBetween grow">
                                                 <div>
-                                                    <h2>{movie.name}</h2>
+                                                    <h2 className="pointer" onClick={() => changePage("movie=" + movie.tmdbId)}>{movie.name}</h2>
                                                     {
                                                         log &&
                                                         <p className="listDescription">{log.text}</p>

@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { GlobalContext } from "./context/GlobalContext";
-import axios from 'axios';
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import LogAddRecButtons from './components/LogAddRecButtons';
 
@@ -16,7 +15,7 @@ const Movie = () => {
     const [directors, setDirectors] = useState();
     const [cast, setCast] = useState([]);
 
-    const movieId = useLocation().state;
+    const movieId = useParams().filmid;
     const [id, setId] = useState(movieId);
     
     useEffect(() => {
