@@ -15,6 +15,11 @@ const LogAddRecButtons = () => {
         setModalVisible(true);
     }
 
+    function handleRec() {
+        setModalPage("recMovie");
+        setModalVisible(true);
+    }
+
     return (
     <div className="flexCol">
         <div className="detailsButton">
@@ -24,7 +29,7 @@ const LogAddRecButtons = () => {
             <Button onClick={handleAdd}>Add Movie to Movie List</Button>
         </div>
         <div className="detailsButton">
-            <Button>Recommend to Friend</Button>
+            <Button onClick={handleRec}>Recommend to Friend</Button>
         </div>
     </div>);
 };
