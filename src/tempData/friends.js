@@ -61,7 +61,7 @@ const friendsData = [
     },
     {
         "name": "Keanu Reeves",
-        "username": "marysmovies",
+        "username": "reeving-reviews",
         "following": 530,
         "followers": 6294,
     },

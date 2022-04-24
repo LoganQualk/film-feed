@@ -783,18 +783,33 @@ body {
 }
 
 .userSearch {
-  width: 60%;
+  width: 500px;
   height: 40px;
   font-size: 20px;
   border-radius: 25px 0px 0px 25px;
   padding-left: 10px;
+  border: 3px solid grey;
+  z-index: 5;
 }
 
 .userSearchButton {
   color: var(--light-color-text);
   background-color: var(--follower-text);
   border-radius: 0px 25px 25px 0px;
-  border: var(--follower-text) solid 3px;
+  border: 3px solid var(--follower-text);
+}
+
+.userRecResults {
+  position: absolute;
+  padding-top: 38px;
+  padding-left: 120px;
+  width: 595px;
+}
+
+.userSearchResultName {
+  padding-left: 20px;
+  font-size: 15px;
+  color: var(--follower-text);
 }
 
 /*Diary Styling*/
