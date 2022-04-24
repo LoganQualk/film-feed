@@ -17,12 +17,12 @@ const postData = [
         ],
         "text": "Which of these movies is yall's favorite?  I just watched both and I think I prefer The Dark Knight.",
         "reactions": {
-            "heart": Math.floor(Math.random()*100),
-            "laugh": Math.floor(Math.random()*100),
-            "cry": Math.floor(Math.random()*100),
-            "surprise": Math.floor(Math.random()*100),
-            "clap": Math.floor(Math.random()*100),
-            "thumbsDown": Math.floor(Math.random()*100)
+            "heart": 52,
+            "laugh": 12,
+            "cry": 2,
+            "surprise": 4,
+            "clap": 32,
+            "thumbsDown": 6
         },
         "replies": [ // using wording "replies" since I think it makes more sense in a nested JSON context, but can replace with comments if necessary
             {
@@ -84,12 +84,12 @@ const postData = [
         ],
         "text": "I don't know who this Jason Momoa guy is... But he is a fantastic actor!",
         "reactions": {
-            "heart": Math.floor(Math.random()*100),
-            "laugh": Math.floor(Math.random()*100),
-            "cry": Math.floor(Math.random()*100),
-            "surprise": Math.floor(Math.random()*100),
-            "clap": Math.floor(Math.random()*100),
-            "thumbsDown": Math.floor(Math.random()*100)
+            "heart": 72,
+            "laugh": 81,
+            "cry": 1,
+            "surprise": 18,
+            "clap": 51,
+            "thumbsDown": 3
         },
         "replies": [ // using wording "replies" since I think it makes more sense in a nested JSON context, but can replace with comments if necessary
             {
@@ -140,12 +140,12 @@ const postData = [
         ],
         "text": "You guys remember this movie? I absolute adore it.",
         "reactions": {
-            "heart": Math.floor(Math.random()*100),
-            "laugh": Math.floor(Math.random()*100),
-            "cry": Math.floor(Math.random()*100),
-            "surprise": Math.floor(Math.random()*100),
-            "clap": Math.floor(Math.random()*100),
-            "thumbsDown": Math.floor(Math.random()*100)
+            "heart": 41,
+            "laugh": 5,
+            "cry": 2,
+            "surprise": 2,
+            "clap": 36,
+            "thumbsDown": 11
         },
         "replies": [ // using wording "replies" since I think it makes more sense in a nested JSON context, but can replace with comments if necessary
             {
