@@ -7,7 +7,7 @@ import AttachedModalItem from "./AttachedModalItem";
 
 
 const RecMovieModal = () => {
-    const { movieName, movieId, movieYr, movieUrl, setModalVisible, attachedModalItems, setAttachedModalItems } = useContext(GlobalContext);
+    const { movieName, setModalVisible, attachedModalItems, setAttachedModalItems } = useContext(GlobalContext);
     const [userResults, setUserResults] = useState([]);
 
     const handleChange = (input) => {
