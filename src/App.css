@@ -421,7 +421,31 @@ body {
   border-radius: 10px;
 }
 
+.carouselImage {
+  width: 4.5rem !important;
+  margin-right: .5rem !important;
+
+  border-radius: 5px !important;
+  box-shadow: 0 0 3px var(--shadow) !important;
+  flex: 0 0 auto !important;
+}
+
+.carousel {
+  min-width: 14.8rem !important;
+  margin-right: .5rem;
+}
+
+.react-multiple-carousel__arrow {
+  outline: 2px solid white !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  background-color: black !important;
+}
+
 .listPoster {
+  height: 100%;
+  width: 100%;
+  max-width: 4.8rem;
   margin-right: .5rem;
 
   border-radius: 5px;

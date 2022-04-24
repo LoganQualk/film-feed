@@ -1,9 +1,18 @@
 import { useContext } from "react";
 import Header from "./components/Header";
 import { GlobalContext } from "./context/GlobalContext";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const Lists = () => {
     const { changePage, lists, setLists, setModalPage, setModalVisible, setMovieName } = useContext(GlobalContext);
+
+    const responsive = {
+        desktop: {
+          breakpoint: { max: 3000, min: 0 },
+          items: 3,
+        }
+      };
 
     return (
         <>
@@ -21,9 +30,14 @@ const Lists = () => {
                 {
                     lists.map((list, index) =>
                         <div key={index} className="list">
-                            {list.attachedMovies.map((movie, movieIndex) =>
+                            {/* {list.attachedMovies.map((movie, movieIndex) =>
                                 <img key={movieIndex} className="listPoster" src={movie.imageUrl} alt={movie.name + " Poster"} />
-                            )}
+                            )} */}
+                            <Carousel shouldResetAutoplay={false} containerClass="carousel" sliderClass="carousel" itemClass="carouselImage" responsive={responsive}>
+                                {list.attachedMovies.map((movie, movieIndex) =>
+                                    <img key={movieIndex} className="listPoster" src={movie.imageUrl} alt={movie.name + " Poster"} />
+                                )}
+                            </Carousel>
                             <div className="flexCol justifyBetween grow">
                                 <div>
                                     <h2 className="pointer" onClick={() => changePage("lists=" + list.name, list)}>{list.name}</h2>
@@ -32,7 +46,7 @@ const Lists = () => {
                                 <p><em>Created on {new Date(list.date).toLocaleDateString()}</em></p>
                             </div>
                             <div className="flexCol justifyEnd">
-                                <button className="defaultButton bg-alarm"  onClick={() => setLists(lists.filter(listToDelete => listToDelete.id !== list.id))}>Delete</button>
+                                <button className="defaultButton bg-alarm" onClick={() => setLists(lists.filter(listToDelete => listToDelete.id !== list.id))}>Delete</button>
                             </div>
                         </div>
                     )
