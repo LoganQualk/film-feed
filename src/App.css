@@ -432,7 +432,9 @@ body {
 
 .carousel {
   min-width: 14.8rem !important;
+  height: 100%;
   margin-right: .5rem;
+  padding: .1rem;
 }
 
 .react-multiple-carousel__arrow {
@@ -447,6 +449,7 @@ body {
   width: 100%;
   max-width: 4.8rem;
   margin-right: .5rem;
+  background-color: rgb(216, 216, 216);
 
   border-radius: 5px;
   box-shadow: 0 0 3px var(--shadow);
