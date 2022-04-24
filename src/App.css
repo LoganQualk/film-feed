@@ -300,6 +300,14 @@ body {
   flex-grow: 1;
 }
 
+.postInput {
+  /* height: 1.5rem; */
+  padding: .3rem;
+
+  flex-grow: 1;
+  height: 8rem;
+}
+
 .commentAction button {
   margin-left: 1rem;
 }

@@ -62,9 +62,9 @@ const CreatePostBox = () => {
 
     return (
         <div id="createPostBox">
-            <input type="text"
-                name="commentInput"
-                className="commentInput fullWidth marginBottomSmall"
+            <textarea type="text"
+                name="postInput"
+                className="postInput fullWidth marginBottomSmall"
                 placeholder="What's on your mind?"
                 onChange={(event) => handleTextChange(event.target.value)}
             />
