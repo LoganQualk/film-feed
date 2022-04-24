@@ -3,7 +3,7 @@ const listData = [
         "name": "Favorite Horror Movies",
         "id": "92cca919-0ae5-4e5b-a0d7-e2f63de6b04c",
         "description": "I really need to watch these again!",
-        "date": "2022-04-24T22:08:25.049Z",
+        "date": "2020-02-21T22:08:25.049Z",
         "attachedMovies": [
             {
                 "name": "Saw",
@@ -40,10 +40,10 @@ const listData = [
         ]
     },
     {
-        "name": "Movies My Mom Recommended Me",
+        "name": "My Mom's Favorites",
         "id": "5b93c912-4067-4f89-886d-5b77eee5c63d",
         "description": "Not sure I want to watch these...",
-        "date": "2022-04-24T22:12:10.184Z",
+        "date": "2021-12-27T22:12:10.184Z",
         "attachedMovies": [
             {
                 "name": "The Young Messiah",
@@ -91,7 +91,7 @@ const listData = [
         "name": "Rom-Coms I Should Watch",
         "id": "05aaad6d-f909-4f75-a1b1-ad5f33073f54",
         "description": "These look awesome!",
-        "date": "2022-04-24T22:19:43.393Z",
+        "date": "2022-04-18T22:19:43.393Z",
         "attachedMovies": [
             {
                 "name": "American Pie",

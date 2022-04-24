@@ -63,9 +63,19 @@
   flex-direction: row;
 }
 
+.flexRowReverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .flexCol {
   display: flex;
   flex-direction: column;
+}
+
+.flexColReverse {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .justifyStart {
@@ -423,7 +433,23 @@ body {
   overflow: hidden;
 }
 
+.listContent {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .list h2 {
+  width: 22ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#listPage h1 {
+  max-width: 80%;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }

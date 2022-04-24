@@ -4,8 +4,8 @@ import { useContext } from "react";
 import { GlobalContext } from "./context/GlobalContext";
 
 const SpecificList = () => {
-    const { lists, setLists, logs, setModalPage, setModalVisible, 
-        setMovieName, setMovieId, setMovieYr, setMovieUrl, 
+    const { lists, setLists, logs, setModalPage, setModalVisible,
+        setMovieName, setMovieId, setMovieYr, setMovieUrl,
         setCurrentListId, setAttachMovieLocation, displayAttachResults, changePage } = useContext(GlobalContext);
 
     const currentList = useParams().listName;
@@ -50,21 +50,24 @@ const SpecificList = () => {
                                                     <p><em>Watched on {new Date(log.date).toLocaleDateString()}</em></p>
                                                 }
                                             </div>
-                                            <div className="flexCol justifyBetween">
-                                                <button className="defaultButton bg-quaternary" onClick={() => {
-                                                    setMovieName(movie.name);
-                                                    setMovieId(movie.id);
-                                                    setMovieYr(movie.year);
-                                                    setMovieUrl(movie.imageUrl);
-                                                    setModalPage("logMovie");
-                                                    setModalVisible(true);
-                                                }}>Log</button>
+                                            <div className="flexColReverse justifyBetween">
                                                 <button className="defaultButton bg-alarm" onClick={() => {
                                                     const listIndexToChange = lists.findIndex(list => list.name === currentList);
                                                     const newList = lists;
                                                     newList[listIndexToChange].attachedMovies = newList[listIndexToChange].attachedMovies.filter(movieInList => movie.id !== movieInList.id);
                                                     setLists([...newList]);
                                                 }}>Delete</button>
+                                                {
+                                                    !log &&
+                                                    <button className="defaultButton bg-quaternary" onClick={() => {
+                                                        setMovieName(movie.name);
+                                                        setMovieId(movie.id);
+                                                        setMovieYr(movie.year);
+                                                        setMovieUrl(movie.imageUrl);
+                                                        setModalPage("logMovie");
+                                                        setModalVisible(true);
+                                                    }}>Log</button>
+                                                }
                                             </div>
                                         </div>
                                     )
