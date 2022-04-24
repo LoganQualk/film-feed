@@ -157,6 +157,16 @@ export const GlobalProvider = ({ children }) => {
         setResults([]);
         setTabValue(0);
     }
+
+    const httpGetDetails = async (id) => {
+        const detailsUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
+        return await axios({
+            method: "GET",
+            url: detailsUrl,
+        }).then((response) => {
+            return response.data;
+        });
+    }
     
 
     const globalState = {
@@ -186,7 +196,8 @@ export const GlobalProvider = ({ children }) => {
         setIdAndLoad,
         attachResults, setAttachResults,
         displayAttachResults,
-        currentUser, setCurrentUser
+        currentUser, setCurrentUser,
+        httpGetDetails
     };
 
     return (

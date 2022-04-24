@@ -7,7 +7,7 @@ import LogAddRecButtons from './components/LogAddRecButtons';
 
 
 const Movie = () => {
-    const { setMovieName, setMovieYr, setMovieUrl, specificLogs, httpGetCredits } = useContext(GlobalContext);
+    const { setMovieName, setMovieYr, setMovieUrl, specificLogs, httpGetCredits, httpGetDetails } = useContext(GlobalContext);
 
     const [loaded, setLoaded] = useState(false);
     const [details, setDetails] = useState([]);
@@ -25,19 +25,9 @@ const Movie = () => {
             setLoaded(false);
         }
     }, [movieId, id]);
-    
-    const detailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}`;
-    async function httpGetDetails() {
-        return await axios({
-            method: "GET",
-            url: detailsUrl,
-        }).then((response) => {
-            return response.data;
-        });
-    }
 
     if(!loaded) {
-        httpGetDetails().then((response) => {
+        httpGetDetails(movieId).then((response) => {
             setDetails(response);
             setPoster(`https://image.tmdb.org/t/p/original/${response.poster_path}`);
             setMovieUrl(`https://image.tmdb.org/t/p/original/${response.poster_path}`);

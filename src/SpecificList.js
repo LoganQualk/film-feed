@@ -20,7 +20,10 @@ const SpecificList = () => {
                         <div>
                             <div className="flexRow justifyBetween alignCenter">
                                 <h1>{listData.name}</h1>
-                                <button className="defaultButton bg-quaternary">Add to list</button>
+                                <button className="defaultButton bg-quaternary" onClick={() => {
+                                    setModalPage("attachMovie");
+                                    setModalVisible(true);
+                                }}>Add to list</button>
                             </div>
                             <hr />
                             {
