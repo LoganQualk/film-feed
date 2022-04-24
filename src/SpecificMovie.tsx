@@ -3,6 +3,7 @@
 */
 
 import * as React from 'react';
+import { GlobalContext } from './context/GlobalContext';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -46,9 +47,17 @@ function a11yProps(index: number) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+  const { tabValue, setTabValue } = React.useContext(GlobalContext);
+
+  React.useEffect(() => {
+    if(value !== tabValue) {
+      setValue(tabValue);
+    }
+  }, [value, tabValue]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    setTabValue(newValue);
   };
 
   return (

@@ -10,9 +10,9 @@ import axios from "axios";
 export const GlobalContext = createContext({
     changePage: () => { },
     posts: [], lists: [], logs: [], movieId: 0, movieName: null, movieYr: 0, movieUrl: null,
-    specificLogs: [], tempAllResults: [], allResults: [], userSearchInput: null,
+    specificLogs: [], tempAllResults: [], allResults: [], userSearchInput: null, reviews: [], tabValue: 0,
     setPosts: () => { }, setLists: () => { }, setLogs: () => { }, setMovieId: () => { }, setMovieName: () => { }, setMovieYr: () => { }, setMovieUrl: () => { },
-    setSpecificLogs: () => { }, setUserSearchInput: () => { }, displayResultsPage: () => { },
+    setSpecificLogs: () => { }, setUserSearchInput: () => { }, displayResultsPage: () => { }, setReviews: () => { }, setTabValue: (value: number) => { },
     createPost: () => { },
     createComment: () => { },
     currentUser: "", setCurrentUser: () => {}
@@ -29,6 +29,8 @@ export const GlobalProvider = ({ children }) => {
     const [movieYr, setMovieYr] = useLocalState("movieYr", null);
     const [movieUrl, setMovieUrl] = useLocalState("movieUrl", null);
     const [specificLogs, setSpecificLogs] = useLocalState("specificLogs", specificLogsData);
+    const [reviews, setReviews] = useLocalState("reviews", []);
+    const [tabValue, setTabValue] = useLocalState("tabValue", 0);
 
     const [currentUser, setCurrentUser] = useLocalState("currentUser", "Sam Smith")
 
@@ -150,6 +152,7 @@ export const GlobalProvider = ({ children }) => {
             document.getElementById("searchInput").value = '';
         }
         setResults([]);
+        setTabValue(0);
     }
     
 
@@ -174,6 +177,8 @@ export const GlobalProvider = ({ children }) => {
         httpGetCredits,
         httpGetMovies,
         displayResults, displayResultsPage, 
+        tabValue, setTabValue,
+        reviews, setReviews,
         setIdAndLoad,
         attachResults, setAttachResults,
         displayAttachResults,

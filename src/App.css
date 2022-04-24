@@ -340,6 +340,23 @@ body {
   color: red;
 }
 
+/* Create Review Box */
+#reviewPostBox {
+  background-color: var(--tertiary);
+  width: min(100%, 80ch);
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 3px var(--shadow);
+}
+
+.reviewText {
+  padding-right: 24px;
+}
+
 /* Profile */
 
 .profileIcon {
@@ -660,6 +677,10 @@ body {
 
 .dark-dark-purple-text {
   color: rgb(61, 60, 100);
+}
+
+.reviewsPoster {
+  width: 70px;
 }
 
 /* Search Results Page */
