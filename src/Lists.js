@@ -32,7 +32,7 @@ const Lists = () => {
                                 <p><em>Created on {new Date(list.date).toLocaleDateString()}</em></p>
                             </div>
                             <div className="flexCol justifyEnd">
-                                <button onClick={() => setLists(lists.filter(listToDelete => listToDelete.id !== list.id))}>Del</button>
+                                <button className="defaultButton bg-alarm"  onClick={() => setLists(lists.filter(listToDelete => listToDelete.id !== list.id))}>Delete</button>
                             </div>
                         </div>
                     )

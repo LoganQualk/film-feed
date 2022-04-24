@@ -51,7 +51,7 @@ const SpecificList = () => {
                                                 }
                                             </div>
                                             <div className="flexCol justifyBetween">
-                                                <button onClick={() => {
+                                                <button className="defaultButton bg-quaternary" onClick={() => {
                                                     setMovieName(movie.name);
                                                     setMovieId(movie.id);
                                                     setMovieYr(movie.year);
@@ -59,12 +59,12 @@ const SpecificList = () => {
                                                     setModalPage("logMovie");
                                                     setModalVisible(true);
                                                 }}>Log</button>
-                                                <button onClick={() => {
+                                                <button className="defaultButton bg-alarm" onClick={() => {
                                                     const listIndexToChange = lists.findIndex(list => list.name === currentList);
                                                     const newList = lists;
                                                     newList[listIndexToChange].attachedMovies = newList[listIndexToChange].attachedMovies.filter(movieInList => movie.id !== movieInList.id);
                                                     setLists([...newList]);
-                                                }}>Del</button>
+                                                }}>Delete</button>
                                             </div>
                                         </div>
                                     )
