@@ -34,7 +34,7 @@ export const GlobalProvider = ({ children }) => {
     const [reviews, setReviews] = useLocalState("reviews", []);
     const [tabValue, setTabValue] = useLocalState("tabValue", 0);
     const [attachedModalItems, setAttachedModalItems] = useLocalState("attachedModalItems", []);
-    const [currentListId, setCurrentListId] = useLocalState(null);
+    const [currentListId, setCurrentListId] = useLocalState("currentListId", null);
     const [attachMovieLocation, setAttachMovieLocation] = useLocalState("attachMovieLocation", "");
 
     const [currentUser, setCurrentUser] = useLocalState("currentUser", "Sam Smith")

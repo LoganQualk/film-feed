@@ -30,7 +30,6 @@ const Lists = () => {
                 {
                     lists.map((list, index) => {
                         const blankPostersNeeded = Math.max(3 - list.attachedMovies.length, 0);
-                        console.log(blankPostersNeeded);
                         let blankPosters = [];
                         for (let i = 0; i < blankPostersNeeded; i++) {
                             blankPosters.push(0)
