@@ -6,6 +6,7 @@ const Settings = () => {
         <React.Fragment>
             <Header />
             <div className="fullPage flexCol justifyCenter alignCenter">
+                <h1>Settings</h1>
                 <form>
                     <label>
                         <div className="flexRow"><p>Change User Name</p><input type="text" name="changeUsername" placeholder="Current Username" /></div>

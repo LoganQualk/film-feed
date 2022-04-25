@@ -98,7 +98,10 @@ const Post = ({ data }) => {
                     <hr />
                     <div className="commentAction">
                         <input type="text" name="commentInput" className="commentInput" placeholder="Type a comment..." ref={commentBoxRef} />
-                        <button className="defaultButton bg-quaternary" onClick={() => createComment(data.id, commentBoxRef.current.value)}>Comment</button>
+                        <button className="defaultButton bg-quaternary" onClick={() => {
+                            createComment(data.id, commentBoxRef.current.value);
+                            commentBoxRef.current.value = "";
+                        }}>Comment</button>
                     </div>
                 </div>
             </div>

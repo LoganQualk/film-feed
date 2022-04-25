@@ -64,7 +64,7 @@ export const GlobalProvider = ({ children }) => {
         let newPosts = posts;
         newPosts[postToChange].replies.push(
             {
-                "user": "Penny Smith",
+                "user": currentUser,
                 "date": new Date(), // replace with time/date replied,
                 "text": comment,
                 "replies": []
