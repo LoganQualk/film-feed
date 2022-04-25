@@ -1,5 +1,5 @@
 // import db from "../tools/firebaseConfig";
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import { generateID } from "../tools/generateID";
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -7,31 +7,20 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from "@mui/material/ButtonGroup";
 
 const CreatePostBox = () => {
-    const [text, setText] = useState('');
-    const [noText, setNoText] = useState(false);
+    const defaultPostText = useRef(null);
     const { createPost, setModalPage, setModalVisible, currentUser } = useContext(GlobalContext);
-
-    const handleTextChange = (userText) => {
-        if (userText.length === 0) {
-            setNoText(true);
-            setText('');
-        } else {
-            setNoText(false);
-            setText(userText);
-        }
-    }
 
     const postTexts = ["Post to friends", "Post to public"]
     const [postButtonText, setPostButtonText] = useState(postTexts[0])
 
     const handlePost = () => {
-        if (text.length !== 0) {
+        if (defaultPostText.current.value.length !== 0) {
             createPost({
                 "id": generateID(),
                 "user": currentUser,
                 "date": new Date().toString(),
                 "attachedMovies": [], // we will handle this later
-                "text": text,
+                "text": defaultPostText.current.value,
                 "reactions": {
                     "heart": 0,
                     "laugh": 0,
@@ -42,27 +31,9 @@ const CreatePostBox = () => {
                 },
                 "replies": []
             });
-            // try {
-            //     let id = Date.now();
-            //     db.ref("users/pennysreviews/posts/" + id)
-            //     .set({
-            //             date: new Date(),
-            //             attached: [
-            //                 {
-            //                     url: "somePosterUrl",
-            //                     title: "movie title",
-            //                 }
-            //             ],
-            //             description: text,
-            //             emotes: [0, 0, 0, 0, 0, 0,],
-            //         });
-            //     console.log("Posted: " + id);
-            // } catch (err) {
-            //     console.log(err);
-            // }
-            setText('');
+            defaultPostText.current.value = '';
         } else {
-            setNoText(true);
+            alert("Must have text in post");
         }
     };
 
@@ -72,9 +43,9 @@ const CreatePostBox = () => {
                 name="postInput"
                 className="postInput fullWidth marginBottomSmall"
                 placeholder="What's on your mind?"
-                onChange={(event) => handleTextChange(event.target.value)}
+                ref={defaultPostText}
+                // onChange={(event) => handleTextChange(event.target.value)}
             />
-            {noText ? <div className="warningText">Must have text in post</div> : <div></div>}
             <div className="flexRow justifyBetween fullWidth">
                 <button className="defaultButton bg-quaternary" onClick={() => {
                     setModalPage("attachMovie");

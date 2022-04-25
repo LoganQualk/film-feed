@@ -379,11 +379,12 @@ body {
 
 .profileIcon {
   margin: 0;
-  width: 15%;
+  width: 20%;
+  padding-inline: 1.5rem;
 }
 
 #profileSVG {
-  width: 80%;
+  width: 12.25rem;
 }
 
 #profilePage h4 {
@@ -392,6 +393,10 @@ body {
 
 #profilePage h3 {
   margin-top: 0;
+}
+
+#profilePosts {
+  width: 60%;
 }
 
 /* Login */
