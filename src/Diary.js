@@ -1,7 +1,6 @@
 import React from "react";
 import { useContext } from "react";
 import Header from './components/Header';
-// import LogMovieModal from './components/LogMovieModal'
 import { GlobalContext } from "./context/GlobalContext";
 
 const monthDict = {0:'January',
@@ -22,10 +21,12 @@ const Diary = () => {
     const {logs, setModalPage, setModalVisible, setAttachMovieLocation} = useContext(GlobalContext);
     
     const logData = Object.entries(logs);
+    
     const months = [{"February2022":{"MonthYear": "February 2022",
                         "Month": 1,
                     "Year": 2022}}]; // track the months already in diary
-    const monthYears = ["February2022"]
+    const monthYears = ["February 2022"];
+    const deleted = [];
     
     const updateMonths = () => {
         for(let i = 0; i < logData.length; i++){
@@ -38,7 +39,7 @@ const Diary = () => {
                     "Month": new Date(logData[i][1].date).getMonth(),
                     "Year": new Date(logData[i][1].date).getFullYear()}});
 
-                let monthDiv = document.createElement("div")
+                let monthDiv = document.createElement("div");
                 monthDiv.innerHTML = `<div id="` + month + `" class="month-header">
                                         <p>` + monthYear + `</p>
                                     </div>
@@ -51,19 +52,22 @@ const Diary = () => {
         }
         
         for (var i in logData){
-            let entry = ``
+            //let entry = ``
             let log = logData[i][1];
             let monthYear = monthDict[new Date(log.date).getMonth()] + new Date(log.date).getFullYear()
             let month = document.getElementById(monthYear);
             let stars = ``;
             
             for(let i = 1; i <= log.rating; i++){
-                stars += `<div class="clip-star-active"></div>`;
+                stars += `<i class="fa fa-star" style="font-size:36px;color:gold"></i>`;
             }
             
             if(log.rating < 5){
                 for(let i = 1; i <= 5-log.rating; i++){
-                    stars += `<div class="clip-star-inactive"></div>`;
+                    stars += `<i class="fa fa-star" style="font-size:36px;color:grey"></i>`;
+                }
+                if(5 - log.rating < 1){
+                    stars += `<i class="fa fa-star-half-full" style="font-size:36px;color:gold"></i>`
                 }
             }
             
@@ -71,8 +75,8 @@ const Diary = () => {
             if(log.text != null){
                 hasReview = `<i class="fa fa-align-left"></i>`;
             }
-            
-            entry = `<div id = "` + logData[i][0] + `" class="diary-entry">
+            let entry = document.createElement("div");
+            entry.innerHTML = `<div id = "` + logData[i][0] + `" class="diary-entry">
                             <div class="day">
                             ` + new Date(log.date).getDate() + `
                             </div>
@@ -93,23 +97,21 @@ const Diary = () => {
                             </div>
                             <div>
                                 <i class='fas fa-pencil-alt fa-stack-2x'></i>
-                                <button onclick="deleteEntry()"><i class="fa fa-trash-o"></i></button>
+                                <button onclick={deleted.push(this.parentNode.parentNode.id)}><i class="fa fa-trash-o"></i></button>
                             </div>
                         </div>`;
             if(entry != null && month != null){
-                month.innerHTML += entry;
+                month.append(entry);
             }                    
         }
     }
-    
+
+    const deleteEntry = (id) =>{
+        console.log(id);
+        //document.getElementById(id).remove();
+    };
 
     const sortDiary = () => {
-    };
-    // const logMovie = () =>{
-    // };
-    const deleteEntry = () =>{
-        console.log("COOCH");
-        //document.getElementById(id).remove();
     };
 
     return (
@@ -128,7 +130,7 @@ const Diary = () => {
             <div className="diary-navbar">
                 <h3>My Diary</h3>
                 <div className="diary-dropdown">
-                <button className="diary-dropbtn">Dropdown
+                <button className="diary-dropbtn">Sort By
                     <i className="fa fa-caret-down"></i>
                 </button>
                 <div className="diary-dropdown-content" id="myDropdown">
@@ -155,13 +157,6 @@ const Diary = () => {
                             <div className="title">
                                 <em>Do The Right Thing</em> (1989)
                             </div>
-                            <div id="stars">
-                                <div className="clip-star-active"></div>
-                                <div className="clip-star-active"></div>
-                                <div className="clip-star-active"></div>
-                                <div className="clip-star-active"></div>
-                                <div className="clip-star-inactive"></div>
-                            </div>
                             <div className="rewatch">
                                 <i className="material-icons">replay</i>
                             </div>
@@ -170,7 +165,7 @@ const Diary = () => {
                             </div>
                             <div>
                                 <i className='fas fa-pencil-alt'></i>
-                                <button onClick={() => deleteEntry()}><i className="fa fa-trash-o"></i></button>
+                                <button onClick={() => deleteEntry(this.id)}><i className="fa fa-trash-o"></i></button>
                             </div>
                         </div>
                     </div>

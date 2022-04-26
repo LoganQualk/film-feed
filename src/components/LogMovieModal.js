@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "react-bootstrap";
 import { generateID } from "../tools/generateID";
+import { resolveModuleName } from "typescript";
 
 
 const LogMovieModal = () => {
