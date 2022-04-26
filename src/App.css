@@ -575,6 +575,11 @@ body {
   padding: 30px;
 }
 
+.logoButton {
+  background-color: var(--dark-purple-text);
+  border: none;
+}
+
 .headerTitle {
   font-size: 40px;
   font-weight: bold;

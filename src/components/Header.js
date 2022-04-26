@@ -33,7 +33,9 @@ const Header = () => {
     return ( 
         <div className="headerContainer">
             <div className="flex mainHeader">
-                <span className="primary headerTitle grow">FilmFeed</span>
+                <button className="primary headerTitle grow logoButton" onClick={() => changePage('feed')}>
+                    FilmFeed
+                </button>
 
                 <span className="doubleGrow alignCenter">
                     <div className="flexCol">
