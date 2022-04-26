@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import Button from 'react-bootstrap/Button';
 import { generateID } from "../tools/generateID";
@@ -6,7 +6,9 @@ import { generateID } from "../tools/generateID";
 const AttachMovieModal = () => {
 
     const { displayAttachResults, attachResults, httpGetDetails, currentListId, attachMovieLocation, 
-        lists, setLists, setModalVisible, setModalPage, postBoxAttachedMovie, setPostBoxAttachedMovie } = useContext(GlobalContext);
+        lists, setLists, setModalVisible, setModalPage, postBoxAttachedMovie, setPostBoxAttachedMovie,
+        setMovieName, setMovieId, setMovieYr, setMovieUrl } = useContext(GlobalContext);
+    const [date, setDate] = useState(new Date());
     
     return (
         <div>
@@ -54,6 +56,14 @@ const AttachMovieModal = () => {
                                         setPostBoxAttachedMovie([...postBoxAttachedMovie]);
                                         setModalVisible(false);
                                         setModalPage("");
+                                    } else if (attachMovieLocation === "addToDiary"){
+                                        setModalVisible(false);
+                                        setMovieName(details.title);
+                                        setMovieId(generateID());
+                                        setMovieYr(new Date(details.release_date.replace("-", "/")).getFullYear());
+                                        setMovieUrl(`https://image.tmdb.org/t/p/original/${details.poster_path}`);
+                                        setModalPage("logMovie");
+                                        setModalVisible(true);
                                     }
                                 }}>
                                 {movie.title} {yrReleased ? '(' + yrReleased + ')' : ''}

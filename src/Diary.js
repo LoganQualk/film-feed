@@ -19,7 +19,7 @@ const monthDict = {0:'January',
 
 const Diary = () => {
 
-    const {logs} = useContext(GlobalContext);
+    const {logs, setModalPage, setModalVisible, setAttachMovieLocation} = useContext(GlobalContext);
     
     const logData = Object.entries(logs);
     const months = [{"February2022":{"MonthYear": "February 2022",
@@ -116,7 +116,11 @@ const Diary = () => {
         <>
             <Header />
             <div>
-                <button className="diary-logbtn"><span>&#43;</span> <strong>Log Movie</strong></button>
+                <button className="diary-logbtn" onClick={() => {
+                    setModalPage("attachMovie");
+                    setModalVisible(true);
+                    setAttachMovieLocation("addToDiary");
+                }}><span>&#43;</span> <strong>Log Movie</strong></button>
             </div>
             <br />
             <br />
