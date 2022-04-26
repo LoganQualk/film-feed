@@ -135,6 +135,18 @@
   margin-right: .25rem;
 }
 
+.marginRightSmall {
+  margin-right: 1rem;
+}
+
+.marginRightMed {
+  margin-right: 3.5rem;
+}
+
+.pSetWidth {
+  width: 15rem;
+}
+
 /* Default Styling */
 
 body {
