@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Results from './Results';
 import Header from './components/Header';
+import UserResults from './UserResults';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -64,7 +65,7 @@ export default function BasicTabs() {
         <Results />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <UserResults />
       </TabPanel>
     </Box>
 </div>

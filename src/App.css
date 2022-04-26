@@ -804,6 +804,37 @@ body {
   justify-content: flex-start;
 }
 
+.userSearchResultsObj {
+  width: 700px;
+  display: flex;
+  padding: 20px;
+  flex-direction: row;
+
+  box-sizing: border-box;
+
+  background-color: var(--tertiary);
+  border-radius: 10px;
+}
+
+.folContainer {
+  align-self: center;
+}
+
+.folButton {
+  background-color: var(--dark-purple-text);
+  color: rgb(212, 212, 212);
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+}
+
+.unfolButton {
+  background-color: var(--alarm);
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+}
+
 .resultsPoster {
   width: 70px;
 }
