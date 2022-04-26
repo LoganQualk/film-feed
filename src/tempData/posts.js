@@ -6,13 +6,17 @@ const postData = [
         "attachedMovies": [
             {
                 "name": "The Dark Knight",
+                "id": "197834",
+                "tmdbId": 155,
                 "year": 2008,
-                "imageUrl": "https://m.media-amazon.com/images/I/61zBUhQj22L._AC_SY679_.jpg"
+                "imageUrl": "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg"
             },
             {
                 "name": "The Dark Knight Rises",
+                "id": "9834756",
+                "tmdbId": 49026,
                 "year": 2012,
-                "imageUrl": "https://i.ytimg.com/vi/H1JAeBT2FJ0/movieposter_en.jpg"
+                "imageUrl": "https://image.tmdb.org/t/p/original//85cWkCVftiVs0BVey6pxX8uNmLt.jpg"
             }
         ],
         "text": "Which of these movies is yall's favorite?  I just watched both and I think I prefer The Dark Knight.",
@@ -78,8 +82,10 @@ const postData = [
         "attachedMovies": [
             {
                 "name": "Aquaman",
+                "id": "893475",
+                "tmdbId": 297802,
                 "year": 2018,
-                "imageUrl": "https://pbs.twimg.com/media/Dsdlbj3U4AAJoO7.jpg"
+                "imageUrl": "https://image.tmdb.org/t/p/original//xLPffWMhMj1l50ND3KchMjYoKmE.jpg"
             }
         ],
         "text": "I don't know who this Jason Momoa guy is... But he is a fantastic actor!",
@@ -134,8 +140,10 @@ const postData = [
         "attachedMovies": [
             {
                 "name": "The Wiggles",
+                "id": "89234567",
+                "tmdbId": 40750,
                 "year": 1997,
-                "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBdCstjMJFV5KBjjPAAaV_DSbXLg6UnhKFD0XVlaZD1qSMGzD0"
+                "imageUrl": "https://image.tmdb.org/t/p/original//sobDkes6RibkRoX7tnGgXKQ8kyh.jpg"
             }
         ],
         "text": "You guys remember this movie? I absolute adore it.",

@@ -19,7 +19,7 @@ const Post = ({ data }) => {
     const [surpriseEmojiSelected, setSurpriseEmojiSelected] = useState(false);
     const [thumbsDownEmojiSelected, setThumbsDownEmojiSelected] = useState(false);
 
-    const { createComment } = useContext(GlobalContext);
+    const { createComment, changePage } = useContext(GlobalContext);
     const commentBoxRef = useRef(null);
 
     const displayComments = (comments, level) => {
@@ -60,8 +60,8 @@ const Post = ({ data }) => {
                         <div className='flexRow wrap'>
                             {data.attachedMovies.map((movie, index) =>
                                 <div key={index} className='posterContainer'>
-                                    {movie.imageUrl && !movie.imageUrl.includes('null') ? <img src={movie.imageUrl} alt={movie.name + " Poster"} /> : <div className="searchNoPoster">No Poster</div>}
-                                    <p title={movie.name}><strong>{movie.name}</strong></p>
+                                    {movie.imageUrl && !movie.imageUrl.includes('null') ? <img src={movie.imageUrl} alt={movie.name + " Poster"} className="pointer" onClick={() => changePage(`movie=${movie.tmdbId}`)} /> : <div className="searchNoPoster">No Poster</div>}
+                                    <p title={movie.name} className="pointer" onClick={() => changePage(`movie=${movie.tmdbId}`)}><strong>{movie.name}</strong></p>
                                 </div>
                             )}
                         </div>

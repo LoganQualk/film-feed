@@ -6,7 +6,7 @@ import { generateID } from "../tools/generateID";
 const AttachMovieModal = () => {
 
     const { displayAttachResults, attachResults, httpGetDetails, currentListId, attachMovieLocation, 
-        lists, setLists, setModalVisible, setModalPage } = useContext(GlobalContext);
+        lists, setLists, setModalVisible, setModalPage, postBoxAttachedMovie, setPostBoxAttachedMovie } = useContext(GlobalContext);
     
     return (
         <div>
@@ -44,7 +44,16 @@ const AttachMovieModal = () => {
                                         setModalVisible(false);
                                         setModalPage("");
                                     } else if (attachMovieLocation === "createPost") { // Logan put code here
-
+                                        postBoxAttachedMovie.push({
+                                            "name": details.title,
+                                            "id": generateID(),
+                                            "tmdbId": details.id,
+                                            "year": new Date(details.release_date.replace("-", "/")).getFullYear(),
+                                            "imageUrl": `https://image.tmdb.org/t/p/original/${details.poster_path}`
+                                        })
+                                        setPostBoxAttachedMovie([...postBoxAttachedMovie]);
+                                        setModalVisible(false);
+                                        setModalPage("");
                                     }
                                 }}>
                                 {movie.title} {yrReleased ? '(' + yrReleased + ')' : ''}

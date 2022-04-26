@@ -37,6 +37,7 @@ export const GlobalProvider = ({ children }) => {
     const [currentListId, setCurrentListId] = useLocalState("currentListId", null);
     const [attachMovieLocation, setAttachMovieLocation] = useLocalState("attachMovieLocation", "");
     const [tenPageResults, setTenPageResults] = useLocalState("tenPageResults", []);
+    const [postBoxAttachedMovie, setPostBoxAttachedMovie] = useLocalState("postBoxAttachedMovie", []);
 
     const [currentUser, setCurrentUser] = useLocalState("currentUser", "Sam Smith")
 
@@ -217,7 +218,8 @@ export const GlobalProvider = ({ children }) => {
         currentUser, setCurrentUser,
         httpGetDetails,
         currentListId, setCurrentListId,
-        attachMovieLocation, setAttachMovieLocation
+        attachMovieLocation, setAttachMovieLocation,
+        setPostBoxAttachedMovie, postBoxAttachedMovie
     };
 
     return (

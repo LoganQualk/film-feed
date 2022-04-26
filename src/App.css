@@ -131,6 +131,10 @@
   padding: .5rem;
 }
 
+.marginRightTiny {
+  margin-right: .25rem;
+}
+
 /* Default Styling */
 
 body {
