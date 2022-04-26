@@ -20,8 +20,8 @@ const AttachedModalItem = ({ id }) => {
     return (
         <div className="attachedModalContainer">
             <div className="attachedtoModal">
-                <span className="userCircleModal"><AccountCircleIcon /></span>
-                {id}
+                <span className="userCircleModal"><AccountCircleIcon style={{fontSize: '35px'}} /></span>
+                @{id}
                 <span className="deleteButtonContainerModal">
                     <button className="deleteButton" onClick={handleDelete}><DeleteIcon /></button>
                 </span>
