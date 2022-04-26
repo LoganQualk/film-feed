@@ -36,6 +36,7 @@ const RecMovieModal = () => {
     };
 
     const handleSubmit = () => {
+        setAttachedModalItems([]);
         setModalVisible(false);
     };
 
