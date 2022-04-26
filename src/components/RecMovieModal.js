@@ -52,7 +52,7 @@ const RecMovieModal = () => {
                         (<button key={userObj.username} 
                             id={userObj.username} 
                             className='autocomplete-items'
-                            onClick={(e) => handlePicked(e.target.getAttribute('id'))}>
+                            onClick={() => handlePicked(userObj.username)}>
                             @{userObj.username} <em className="userSearchResultName">{userObj.name}</em>
                         </button>)
                     )}
@@ -60,7 +60,7 @@ const RecMovieModal = () => {
             </div>
 
             <div className="flex flexCol alignCenter">
-                {attachedModalItems ? attachedModalItems.map((item) => <AttachedModalItem key={item} id={item}/>) : ''}
+                {attachedModalItems.map((item) => <AttachedModalItem key={item} id={item}/>)}
             </div>
             <div className="flex justifyEnd modalLogButton">
                 <Button onClick={handleSubmit}>Recommend</Button>
