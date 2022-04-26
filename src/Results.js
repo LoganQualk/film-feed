@@ -4,12 +4,19 @@ import ReactStars from "react-rating-stars-component";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 const compute5StarRating = (value) => {
     const step = 0.5;
     let inv = 1.0 / step;
     return Math.round(parseInt(value) * inv) / (inv * 2.0);
 };
+
+const filterGenres = ['Drama', 'Comedy', 'Horror', 'Action', 'Sci-fi', 'Fantasy', 'Romance', 'Western', 'Thriller'];
+
+const filterRates = ['G', 'PG', 'PG-13', 'R', 'NC-17'];
 
 const Results = () => {
     const { allResults, userSearchInput, setIdAndLoad, httpGetCredits, httpGetTenPageMovies } = useContext(GlobalContext);
@@ -73,15 +80,38 @@ const Results = () => {
                             </Dropdown.Menu>
                         </Dropdown>
 
-                        <Dropdown className="searchDropdown">
+                        <Dropdown className="searchDropdown" autoClose={false}>
                             <Dropdown.Toggle variant="primary" className="" id="dropdown-search-filter">
                                 Filter by: 
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#/notif1">Notif 1</Dropdown.Item>
-                                <Dropdown.Item href="#/notif2">Notif 2</Dropdown.Item>
-                                <Dropdown.Item href="#/notif3">Notif 3</Dropdown.Item>
+                                <Dropdown.ItemText>
+                                    Released between: 
+                                    <div className="flexRow">
+                                        <input className="filterYr" placeholder="Start year" />
+                                        <div className="filterAnd">and</div>
+                                        <input className="filterYr" placeholder="End year" />
+                                    </div>
+                                    <br />
+                                </Dropdown.ItemText>
+                                <Dropdown.Divider />
+                                <Dropdown.ItemText>
+                                    Genres:
+                                    <div>
+                                    <FormGroup>
+                                        {filterGenres.map((genreStr) => (<FormControlLabel key={genreStr} control={<Checkbox />} label={genreStr} />))}
+                                    </FormGroup>
+                                    </div>
+                                    <br />
+                                </Dropdown.ItemText>
+                                <Dropdown.Divider />
+                                <Dropdown.ItemText>
+                                    Rates: 
+                                    <FormGroup>
+                                        {filterRates.map((rateStr) => (<FormControlLabel key={rateStr} control={<Checkbox />} label={rateStr} />))}
+                                    </FormGroup>
+                                </Dropdown.ItemText>
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
