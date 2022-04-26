@@ -26,7 +26,6 @@ const Diary = () => {
                         "Month": 1,
                     "Year": 2022}}]; // track the months already in diary
     const monthYears = ["February 2022"];
-    const deleted = [];
     
     const updateMonths = () => {
         for(let i = 0; i < logData.length; i++){
