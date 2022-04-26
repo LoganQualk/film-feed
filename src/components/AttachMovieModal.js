@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import Button from 'react-bootstrap/Button';
 import { generateID } from "../tools/generateID";
@@ -8,7 +8,6 @@ const AttachMovieModal = () => {
     const { displayAttachResults, attachResults, httpGetDetails, currentListId, attachMovieLocation, 
         lists, setLists, setModalVisible, setModalPage, postBoxAttachedMovie, setPostBoxAttachedMovie,
         setMovieName, setMovieId, setMovieYr, setMovieUrl } = useContext(GlobalContext);
-    const [date, setDate] = useState(new Date());
     
     return (
         <div>
