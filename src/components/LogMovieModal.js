@@ -33,8 +33,8 @@ const LogMovieModal = () => {
         setLogChanged(true);
     };
 
-    const handleSubmit = (input) => {
-        let oldLogs = specificLogs;
+    const handleSubmit = () => {
+        // let oldLogs = specificLogs;
 
         let logText = logChanged ? notes : null;
         let logRating = ratingChanged ? rating : null;
