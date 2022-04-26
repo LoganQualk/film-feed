@@ -827,6 +827,15 @@ body {
   padding-left: 10px;
 }
 
+.filterYr {
+  width: 78px;
+}
+
+.filterAnd {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 /* Modals */
 .modalPadding {
   padding-left: 20px;
