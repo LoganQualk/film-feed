@@ -62,11 +62,11 @@ const Diary = () => {
             }
             
             if(log.rating < 5){
-                for(let i = 1; i <= 5-log.rating; i++){
-                    stars += `<i class="fa fa-star" style="font-size:36px;color:grey"></i>`;
-                }
                 if(5 - log.rating < 1){
                     stars += `<i class="fa fa-star-half-full" style="font-size:36px;color:gold"></i>`
+                }
+                for(let i = 1; i <= 5-log.rating; i++){
+                    stars += `<i class="fa fa-star" style="font-size:36px;color:grey"></i>`;
                 }
             }
             
@@ -96,7 +96,7 @@ const Diary = () => {
                             </div>
                             <div>
                                 <i class='fas fa-pencil-alt fa-stack-2x'></i>
-                                <button onclick={deleted.push(this.parentNode.parentNode.id)}><i class="fa fa-trash-o"></i></button>
+                                <button onClick={}><i class="fa fa-trash-o"></i></button>
                             </div>
                         </div>`;
             if(entry != null && month != null){
@@ -104,12 +104,7 @@ const Diary = () => {
             }                    
         }
     }
-
-    const deleteEntry = (id) =>{
-        console.log(id);
-        //document.getElementById(id).remove();
-    };
-
+      
     const sortDiary = () => {
     };
 
@@ -164,7 +159,7 @@ const Diary = () => {
                             </div>
                             <div>
                                 <i className='fas fa-pencil-alt'></i>
-                                <button onClick={() => deleteEntry(this.id)}><i className="fa fa-trash-o"></i></button>
+                                <button><i className="fa fa-trash-o"></i></button>
                             </div>
                         </div>
                     </div>
